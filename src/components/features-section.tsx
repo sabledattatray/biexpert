@@ -34,8 +34,12 @@ const FeatureCard = ({ icon, title, description, href }: FeatureCardProps) => (
         {description}
       </p>
       
-      <Link href={href} className="inline-flex items-center gap-2 text-xs font-bold text-blue-500 uppercase tracking-widest group-hover:gap-3 transition-all">
-        Learn More <ChevronRight size={14} />
+      <Link 
+        href={href} 
+        className="inline-flex items-center gap-2 text-xs font-bold text-blue-500 uppercase tracking-widest group-hover:gap-3 transition-all"
+        aria-label={`Learn more about ${title}`}
+      >
+        Learn More <span className="sr-only">about {title}</span> <ChevronRight size={14} />
       </Link>
     </div>
   </div>
@@ -131,7 +135,11 @@ export function FeaturesSection() {
             <p className="text-muted-foreground text-sm">We specialize in solving unique data challenges for complex organizations.</p>
           </div>
           <Link href="/contact">
-            <Button size="lg" className="h-12 px-8 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-none border-0">
+            <Button 
+              size="lg" 
+              className="h-12 px-8 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-none border-0"
+              aria-label="Request a custom BI strategy call"
+            >
               Request Strategy Call
             </Button>
           </Link>

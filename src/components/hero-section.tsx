@@ -150,7 +150,10 @@ function MainDashboardUI() {
               <RefreshCw className="w-2.5 h-2.5 animate-spin-slow" />
               <span className="hidden sm:inline">Live</span>
             </div>
-            <button className="p-1 border border-border hover:bg-muted transition-colors">
+            <button 
+              className="p-1 border border-border hover:bg-muted transition-colors"
+              aria-label="Download executive report"
+            >
               <Download className="w-3 h-3 text-muted-foreground" />
             </button>
           </div>
@@ -281,12 +284,21 @@ export function HeroSection() {
               className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto"
             >
               <Link href="/contact" className="w-full sm:w-auto">
-                <Button size="lg" className="w-full sm:w-48 h-12 text-sm font-bold bg-blue-600 hover:bg-blue-700 text-white border-0 shadow-xl shadow-blue-600/20 group">
+                <Button 
+                  size="lg" 
+                  className="w-full sm:w-48 h-12 text-sm font-bold bg-blue-600 hover:bg-blue-700 text-white border-0 shadow-xl shadow-blue-600/20 group"
+                  aria-label="Book a free BI consultation"
+                >
                   Book Consultation <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>
               <Link href="/services" className="w-full sm:w-auto">
-                <Button variant="outline" size="lg" className="w-full sm:w-48 h-12 text-sm font-bold border-border bg-muted/50 hover:bg-muted text-foreground">
+                <Button 
+                  variant="outline" 
+                  size="lg" 
+                  className="w-full sm:w-48 h-12 text-sm font-bold border-border bg-muted/50 hover:bg-muted text-foreground"
+                  aria-label="View our data solutions and services"
+                >
                   View Solutions
                 </Button>
               </Link>

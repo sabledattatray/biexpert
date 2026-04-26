@@ -59,7 +59,7 @@ function LogoMark({ size = "md" }: { size?: "sm" | "md" | "lg" }) {
   );
 }
 
-export function Logo({ size = "md", href = "/", className = "" }: LogoProps) {
+export function Logo({ size = "md", href = "/", className = "", ...props }: LogoProps & { "aria-label"?: string }) {
   const textSizes = {
     sm: "text-base",
     md: "text-lg",
@@ -81,7 +81,7 @@ export function Logo({ size = "md", href = "/", className = "" }: LogoProps) {
   );
 
   return href ? (
-    <Link href={href} className="w-fit">
+    <Link href={href} className="w-fit" aria-label={props["aria-label"] || "BI Expert"}>
       {inner}
     </Link>
   ) : (

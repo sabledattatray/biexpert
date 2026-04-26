@@ -207,9 +207,15 @@ function MegaPanel({ item, onClose }: { item: string; onClose: () => void }) {
                     <h4 className="text-sm font-black text-foreground group-hover/feat:text-blue-500 transition-colors uppercase tracking-tight truncate">{menu.featured.label}</h4>
                     <p className="text-[11px] text-muted-foreground mt-1 line-clamp-2">{menu.featured.desc}</p>
                   </div>
-                  <div className="flex h-10 w-10 items-center justify-center border border-border rounded-full group-hover/feat:border-blue-500/50 group-hover/feat:bg-blue-500/5 transition-all shrink-0">
+                  <a
+                    href={menu.featured.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`group flex items-center justify-center p-3 border border-border bg-card/50 text-muted-foreground hover:text-blue-500 hover:border-blue-500/50 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-blue-500/10`}
+                    aria-label={`Learn more about ${menu.featured.label}`}
+                  >
                     <ArrowRight size={14} className="text-muted-foreground group-hover/feat:text-blue-500" />
-                  </div>
+                  </a>
                 </div>
               </div>
             </Link>
@@ -255,7 +261,7 @@ export function Navbar() {
         <div className="flex h-16 items-center justify-between">
 
           {/* Logo */}
-          <Logo href="/" size="sm" />
+          <Logo href="/" size="sm" aria-label="BI Expert - Home" />
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-0 relative">
@@ -321,7 +327,7 @@ export function Navbar() {
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
               className="p-2 text-muted-foreground hover:text-foreground transition-colors"
-              aria-label="Toggle menu"
+              aria-label={mobileOpen ? "Close menu" : "Open navigation menu"}
             >
               {mobileOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
