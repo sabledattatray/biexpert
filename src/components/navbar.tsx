@@ -14,8 +14,9 @@ import {
 } from "lucide-react";
 import { Logo } from "./logo";
 import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
 
-// ── Mega menu data ───────────────────────────────────────────────────────────
+// --- Mega menu data ---
 
 const megaMenus: Record<string, {
   sections: { heading: string; items: { icon: React.ReactNode; label: string; desc: string; href: string }[] }[];
@@ -54,9 +55,9 @@ const megaMenus: Record<string, {
         heading: "By Industry",
         items: [
           { icon: <Landmark size={16} />, label: "BFSI", desc: "Banking & financial services", href: "/solutions/bfsi" },
-          { icon: <ShoppingCart size={16} />, label: "Retail & E-Commerce", desc: "Sales & inventory insights", href: "/solutions/bfsi" },
-          { icon: <HeartPulse size={16} />, label: "Healthcare", desc: "Patient & ops analytics", href: "/solutions/bfsi" },
-          { icon: <Building2 size={16} />, label: "Fintech", desc: "Real-time financial intelligence", href: "/solutions/bfsi" },
+          { icon: <ShoppingCart size={16} />, label: "Retail & E-Commerce", desc: "Sales & inventory insights", href: "/solutions/retail" },
+          { icon: <HeartPulse size={16} />, label: "Healthcare", desc: "Patient & ops analytics", href: "/solutions/healthcare" },
+          { icon: <Building2 size={16} />, label: "Fintech", desc: "Real-time financial intelligence", href: "/solutions/fintech" },
         ],
       },
       {
@@ -82,16 +83,16 @@ const megaMenus: Record<string, {
         heading: "Industries",
         items: [
           { icon: <Landmark size={16} />, label: "HDFC — MIS Overhaul", desc: "Saved 40 hrs/month in reporting", href: "/case-studies/hdfc" },
-          { icon: <ShoppingCart size={16} />, label: "Retail Chain Dashboard", desc: "Real-time POS analytics", href: "/case-studies/retail" },
+          { icon: <ShoppingCart size={16} />, label: "Retail Chain Dashboard", desc: "Real-time POS analytics", href: "/case-studies/retail-chain" },
           { icon: <HeartPulse size={16} />, label: "Hospital KPI Suite", desc: "Bed & staff utilisation", href: "/case-studies/hospital" },
         ],
       },
       {
         heading: "Impact Areas",
         items: [
-          { icon: <TrendingUp size={16} />, label: "ROI Stories", desc: "Measurable business outcomes", href: "/case-studies/hdfc" },
-          { icon: <Zap size={16} />, label: "Automation Wins", desc: "Hours saved, errors eliminated", href: "/case-studies/retail" },
-          { icon: <BarChart3 size={16} />, label: "Executive Dashboards", desc: "C-suite decision support", href: "/case-studies/hospital" },
+          { icon: <TrendingUp size={16} />, label: "ROI Stories", desc: "Measurable business outcomes", href: "/case-studies/roi" },
+          { icon: <Zap size={16} />, label: "Automation Wins", desc: "Hours saved, errors eliminated", href: "/case-studies/automation" },
+          { icon: <BarChart3 size={16} />, label: "Executive Dashboards", desc: "C-suite decision support", href: "/case-studies/executive" },
         ],
       },
     ],
@@ -141,20 +142,19 @@ const navItems = [
   { label: "Blog", href: "/blog" },
 ];
 
-// ── Mega Menu Panel ──────────────────────────────────────────────────────────
+// --- Mega Menu Panel ---
 
-function MegaPanel({ item, onClose }: { item: string; onClose: () => void }) {
+function MegaPanel({ item, onClose, onMouseEnter }: { item: string; onClose: () => void; onMouseEnter?: () => void }) {
   const menu = megaMenus[item];
   if (!menu) return null;
   return (
     <div
-      className="absolute top-full left-1/2 -translate-x-1/2 mt-0 w-[720px] max-w-[95vw] z-50"
+      className="absolute top-full left-1/2 -translate-x-1/2 mt-0 w-[720px] max-w-[95vw] z-[150]"
+      onMouseEnter={onMouseEnter}
       onMouseLeave={onClose}
     >
-      {/* bridge gap so hover doesn't break */}
-      <div className="h-2" />
-      <div className="bg-card border border-border shadow-2xl shadow-black/20 overflow-hidden"
-           style={{ borderRadius: 0 }}>
+      <div className="h-3" />
+      <div className="bg-card border border-border shadow-2xl shadow-black/20 overflow-hidden" style={{ borderRadius: 0 }}>
         <div className="grid grid-cols-[1fr_1fr] divide-x divide-border">
           {menu.sections.map((section) => (
             <div key={section.heading} className="p-6">
@@ -164,12 +164,11 @@ function MegaPanel({ item, onClose }: { item: string; onClose: () => void }) {
                   <li key={item.label}>
                     <Link
                       href={item.href}
-                      onClick={onClose}
-                      className="flex items-start gap-3 p-2.5 group hover:bg-muted transition-colors"
+                      className="flex items-start gap-3 p-2.5 group/item hover:bg-muted transition-colors"
                     >
-                      <span className="mt-0.5 text-blue-400 group-hover:text-blue-300 transition-colors shrink-0">{item.icon}</span>
+                      <span className="mt-0.5 text-blue-400 group-hover/item:text-blue-300 transition-colors shrink-0">{item.icon}</span>
                       <span>
-                        <span className="block text-sm font-semibold text-foreground group-hover:text-blue-500 transition-colors leading-tight">{item.label}</span>
+                        <span className="block text-sm font-semibold text-foreground group-hover/item:text-blue-500 transition-colors leading-tight">{item.label}</span>
                         <span className="block text-[11px] text-muted-foreground mt-0.5">{item.desc}</span>
                       </span>
                     </Link>
@@ -184,7 +183,6 @@ function MegaPanel({ item, onClose }: { item: string; onClose: () => void }) {
           <div className="border-t border-border bg-muted/30 p-4">
             <Link 
               href={menu.featured.href} 
-              onClick={onClose}
               className="flex items-stretch group/feat w-full border border-border bg-card/50 hover:border-blue-500/30 transition-all"
             >
               {menu.featured.image && (
@@ -207,15 +205,9 @@ function MegaPanel({ item, onClose }: { item: string; onClose: () => void }) {
                     <h4 className="text-sm font-black text-foreground group-hover/feat:text-blue-500 transition-colors uppercase tracking-tight truncate">{menu.featured.label}</h4>
                     <p className="text-[11px] text-muted-foreground mt-1 line-clamp-2">{menu.featured.desc}</p>
                   </div>
-                  <a
-                    href={menu.featured.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`group flex items-center justify-center p-3 border border-border bg-card/50 text-muted-foreground hover:text-blue-500 hover:border-blue-500/50 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-blue-500/10`}
-                    aria-label={`Learn more about ${menu.featured.label}`}
-                  >
+                  <div className="flex h-10 w-10 items-center justify-center border border-border rounded-full group-hover/feat:border-blue-500/50 group-hover/feat:bg-blue-500/5 transition-all">
                     <ArrowRight size={14} className="text-muted-foreground group-hover/feat:text-blue-500" />
-                  </a>
+                  </div>
                 </div>
               </div>
             </Link>
@@ -226,12 +218,13 @@ function MegaPanel({ item, onClose }: { item: string; onClose: () => void }) {
   );
 }
 
-// ── Navbar ───────────────────────────────────────────────────────────────────
+// --- Navbar ---
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [activeMenu, setActiveMenu] = useState<string | null>(null);
+  const [desktopActiveMenu, setDesktopActiveMenu] = useState<string | null>(null);
+  const [mobileActiveMenu, setMobileActiveMenu] = useState<string | null>(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
@@ -242,21 +235,22 @@ export function Navbar() {
 
   const openMenu = (label: string) => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
-    setActiveMenu(label);
+    setDesktopActiveMenu(label);
   };
 
   const scheduleClose = () => {
-    closeTimer.current = setTimeout(() => setActiveMenu(null), 120);
+    closeTimer.current = setTimeout(() => setDesktopActiveMenu(null), 150);
   };
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 w-full ${
+      className={`sticky top-0 z-[180] w-full transition-all duration-300 relative sm:px-8 lg:px-32 xl:px-[200px] border-b border-border ${
         scrolled
-          ? "bg-background/90 backdrop-blur-xl border-b border-border shadow-sm"
-          : "bg-background/50 backdrop-blur-md border-b border-border/10"
+          ? "bg-background/95 backdrop-blur-xl shadow-lg"
+          : "bg-background"
       }`}
     >
+
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
 
@@ -264,36 +258,36 @@ export function Navbar() {
           <Logo href="/" size="sm" aria-label="BI Expert - Home" />
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-0 relative">
+          <nav className="hidden md:flex items-center h-full">
             {navItems.map(({ label, href }) => {
               const hasMega = !!megaMenus[label];
+              const isActive = desktopActiveMenu === label;
+              
               return (
-                <div
-                  key={label}
-                  className="relative"
+                <div 
+                  key={label} 
+                  className="h-full flex items-center"
                   onMouseEnter={() => hasMega && openMenu(label)}
                   onMouseLeave={() => hasMega && scheduleClose()}
                 >
-                  <Link
-                    href={href}
-                    className={`flex items-center gap-1 px-4 py-2 text-sm font-medium transition-colors ${
-                      activeMenu === label ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+                  <button
+                    onClick={() => hasMega && setDesktopActiveMenu(isActive ? null : label)}
+                    className={`flex items-center gap-1.5 px-5 h-full text-[11px] font-black uppercase tracking-[0.2em] transition-all duration-300 border-b-2 outline-none ${
+                      isActive
+                        ? "text-blue-500 border-blue-500"
+                        : "text-muted-foreground border-transparent hover:text-foreground"
                     }`}
                   >
                     {label}
                     {hasMega && (
                       <ChevronDown
-                        size={13}
-                        className={`transition-transform duration-200 ${
-                          activeMenu === label ? "rotate-180 text-blue-400" : ""
+                        size={12}
+                        className={`transition-transform duration-300 ${
+                          isActive ? "rotate-180" : ""
                         }`}
                       />
                     )}
-                  </Link>
-
-                  {hasMega && activeMenu === label && (
-                    <MegaPanel item={label} onClose={() => setActiveMenu(null)} />
-                  )}
+                  </button>
                 </div>
               );
             })}
@@ -301,20 +295,14 @@ export function Navbar() {
 
           {/* Right Actions */}
           <div className="hidden md:flex items-center gap-3 shrink-0 ml-4">
-            <Link href="/login" passHref>
-              <Button
-                size="sm"
-                className="bg-gradient-to-r from-blue-500 to-violet-600 hover:from-blue-600 hover:to-violet-700 text-white shadow-lg shadow-blue-500/20 hover:shadow-blue-500/40 transition-all duration-200 border-0 rounded-none px-6 font-bold uppercase tracking-widest text-[10px]"
-              >
+            <Link href="/login">
+              <Button variant="ghost" size="sm" className="text-[10px] font-black uppercase tracking-widest text-muted-foreground hover:text-foreground">
                 Login
               </Button>
             </Link>
-            <Link href="/signup" passHref>
-              <Button
-                size="sm"
-                className="bg-gradient-to-r from-blue-500 to-violet-600 hover:from-blue-600 hover:to-violet-700 text-white shadow-lg shadow-blue-500/20 hover:shadow-blue-500/40 transition-all duration-200 border-0 rounded-none px-6 font-bold uppercase tracking-widest text-[10px]"
-              >
-                Sign Up
+            <Link href="/signup">
+              <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white text-[10px] font-black uppercase tracking-widest rounded-none border-0 px-6 h-9">
+                Join
               </Button>
             </Link>
             <div className="h-4 w-px bg-border mx-1" />
@@ -326,88 +314,151 @@ export function Navbar() {
             <ThemeToggle />
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="p-2 text-muted-foreground hover:text-foreground transition-colors"
+              className="p-2 text-blue-500 hover:text-blue-400 transition-colors z-[110]"
               aria-label={mobileOpen ? "Close menu" : "Open navigation menu"}
             >
-              {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+              {mobileOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      {mobileOpen && (
-        <div className="md:hidden bg-background/98 backdrop-blur-xl border-t border-border">
-          <div className="px-4 pt-2 pb-6 space-y-1">
-            {navItems.map(({ label, href }) => {
-              const hasMega = !!megaMenus[label];
-              const menu = megaMenus[label];
-              return (
-                <div key={label} className="border-b border-border last:border-0">
-                  <div className="flex items-center justify-between">
-                    <Link
-                      href={href}
-                      onClick={() => setMobileOpen(false)}
-                      className="flex-1 px-4 py-3 text-sm font-bold text-muted-foreground hover:text-foreground transition-colors"
-                    >
-                      {label}
-                    </Link>
-                    {hasMega && (
-                      <button
-                        onClick={() => setActiveMenu(activeMenu === label ? null : label)}
-                        className="px-4 py-3 text-gray-500 hover:text-blue-400 transition-colors"
-                      >
-                        <ChevronDown
-                          size={16}
-                          className={`transition-transform duration-200 ${
-                            activeMenu === label ? "rotate-180 text-blue-400" : ""
-                          }`}
-                        />
-                      </button>
-                    )}
-                  </div>
-                  {hasMega && activeMenu === label && menu && (
-                    <div className="bg-muted/30 pb-4">
-                      {menu.sections.map((section) => (
-                        <div key={section.heading} className="mt-4 first:mt-2">
-                          <p className="px-6 text-[9px] font-black uppercase tracking-widest text-blue-500/60 mb-2">
-                            {section.heading}
-                          </p>
-                          <div className="space-y-1">
-                            {section.items.map((subItem) => (
-                              <Link
-                                key={subItem.label}
-                                href={subItem.href}
-                                onClick={() => setMobileOpen(false)}
-                                className="flex items-center gap-3 px-8 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
+      {/* Desktop Mega Menus Panel */}
+      <AnimatePresence>
+        {desktopActiveMenu && megaMenus[desktopActiveMenu] && (
+          <motion.div
+            initial={{ opacity: 0, y: -4 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -4 }}
+            transition={{ duration: 0.15 }}
+            className="hidden md:block"
+          >
+            <MegaPanel 
+              item={desktopActiveMenu} 
+              onClose={() => setDesktopActiveMenu(null)}
+              onMouseEnter={() => {
+                if (closeTimer.current) clearTimeout(closeTimer.current);
+              }}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Mobile Drawer */}
+      <AnimatePresence>
+        {mobileOpen && (
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setMobileOpen(false)}
+              className="fixed inset-0 z-[60] bg-background/80 backdrop-blur-sm md:hidden"
+            />
+            <motion.div
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
+              className="fixed top-0 right-0 bottom-0 w-[90vw] min-w-[320px] max-w-[420px] z-[200] bg-background border-l border-border shadow-2xl overflow-y-auto md:hidden"
+            >
+              <div className="flex flex-col h-full">
+                <div className="flex items-center justify-between p-4 border-b border-border">
+                  <Logo size="sm" />
+                  <button onClick={() => setMobileOpen(false)} className="p-2 text-muted-foreground"><X size={20} /></button>
+                </div>
+                <div className="flex-1 px-2 py-4 space-y-1">
+                  {navItems.map(({ label, href }) => {
+                    const hasMega = !!megaMenus[label];
+                    const menu = megaMenus[label];
+                    const isExpanded = mobileActiveMenu === label;
+                    return (
+                      <div key={label} className="overflow-hidden">
+                        <div className="border-b border-border/50">
+                          <div className="flex items-center justify-between">
+                            {hasMega ? (
+                              <button
+                                onClick={() => setMobileActiveMenu(isExpanded ? null : label)}
+                                className={`flex-1 flex items-center justify-between px-5 py-5 text-base font-bold transition-colors ${
+                                  isExpanded ? "text-blue-500" : "text-muted-foreground"
+                                }`}
                               >
-                                <span className="text-blue-400 shrink-0">{subItem.icon}</span>
-                                {subItem.label}
+                                {label}
+                                <ChevronDown
+                                  size={18}
+                                  className={`transition-transform duration-300 ${
+                                    isExpanded ? "rotate-180" : ""
+                                  }`}
+                                />
+                              </button>
+                            ) : (
+                              <Link
+                                href={href}
+                                onClick={() => setMobileOpen(false)}
+                                className="flex-1 px-5 py-5 text-base font-bold text-muted-foreground hover:text-blue-500 transition-colors"
+                              >
+                                {label}
                               </Link>
-                            ))}
+                            )}
                           </div>
                         </div>
-                      ))}
-                    </div>
-                  )}
+                        <AnimatePresence>
+                          {hasMega && isExpanded && (
+                            <motion.div 
+                              initial={{ height: 0, opacity: 0 }} 
+                              animate={{ height: "auto", opacity: 1 }} 
+                              exit={{ height: 0, opacity: 0 }} 
+                              className="bg-muted/30 border-l-2 border-blue-500/20 ml-1 overflow-hidden"
+                            >
+                              {menu?.sections.map((section) => (
+                                <div key={section.heading} className="py-2.5">
+                                  <p className="px-4 text-[10px] font-black uppercase tracking-widest text-blue-500 mb-2">{section.heading}</p>
+                                  <div className="space-y-1">
+                                    {section.items.map((subItem) => (
+                                      <Link 
+                                        key={subItem.label} 
+                                        href={subItem.href} 
+                                        onClick={() => setMobileOpen(false)} 
+                                        className="flex items-center gap-4 px-5 py-4 text-[15px] text-muted-foreground hover:text-blue-500 hover:bg-muted transition-all active:bg-muted/50"
+                                      >
+                                        <div className="text-blue-400 shrink-0 bg-blue-500/5 p-2 border border-blue-500/10">
+                                          {subItem.icon}
+                                        </div>
+                                        <div className="flex-1 min-w-0 flex items-center justify-between gap-2 overflow-hidden">
+                                          <div 
+                                            className="font-medium leading-normal text-foreground"
+                                            style={{ 
+                                              whiteSpace: 'normal', 
+                                              wordBreak: 'break-word',
+                                              display: 'block',
+                                              width: '100%'
+                                            }}
+                                          >
+                                            {subItem.label}
+                                          </div>
+                                          <ArrowRight size={12} className="text-muted-foreground/30 shrink-0" />
+                                        </div>
+                                      </Link>
+                                    ))}
+                                  </div>
+                                </div>
+                              ))}
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </div>
+                    );
+                  })}
                 </div>
-              );
-            })}
-            <div className="pt-6 flex flex-col gap-3 border-t border-border mt-6">
-              <Link href="/login" onClick={() => setMobileOpen(false)}>
-                <Button className="w-full h-12 bg-gradient-to-r from-blue-500 to-violet-600 text-white border-0 rounded-none font-bold uppercase tracking-widest text-xs shadow-lg shadow-blue-500/20" size="sm">
-                  Login
-                </Button>
-              </Link>
-              <Link href="/signup" onClick={() => setMobileOpen(false)}>
-                <Button className="w-full h-12 bg-gradient-to-r from-blue-500 to-violet-600 text-white border-0 rounded-none font-bold uppercase tracking-widest text-xs shadow-lg shadow-blue-500/20" size="sm">
-                  Sign Up
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </div>
-      )}
+                <div className="p-4 border-t border-border bg-muted/20 space-y-3">
+                  <Link href="/login" onClick={() => setMobileOpen(false)} className="block"><Button className="w-full h-11 bg-blue-600 text-white rounded-none font-bold uppercase tracking-widest text-[10px]" size="sm">Login</Button></Link>
+                  <Link href="/signup" onClick={() => setMobileOpen(false)} className="block"><Button className="w-full h-11 border border-border bg-card text-foreground rounded-none font-bold uppercase tracking-widest text-[10px]" size="sm">Sign Up</Button></Link>
+                </div>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </header>
   );
 }
