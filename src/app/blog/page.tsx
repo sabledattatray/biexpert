@@ -5,6 +5,8 @@ import { ArrowRight, Calendar, Search, Zap, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import prisma from "@/lib/prisma";
 
+export const dynamic = 'force-dynamic';
+
 const categories = [
   { label: "All", id: "all" },
   { label: "Power BI", id: "power-bi" },
