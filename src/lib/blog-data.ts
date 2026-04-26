@@ -49,7 +49,7 @@ export const posts: BlogPost[] = [
     category: "power-bi",
     tag: "Power BI",
     readTime: "11 min read",
-    image: "https://images.unsplash.com/photo-1518186239751-1710508ecf4a?q=80&w=2070&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070",
     author: { name: "Datta Sable", role: "Principal BI Architect", avatar: "/author.jpg" },
     content: `<h2>Why Real-Time Matters</h2><p>In high-frequency trading, a 4-hour data lag is an eternity.</p>`
   },
@@ -113,7 +113,7 @@ export const posts: BlogPost[] = [
     category: "automation",
     tag: "Automation",
     readTime: "10 min read",
-    image: "https://images.unsplash.com/photo-1454165833767-129670c02755?q=80&w=2070&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2026",
     author: { name: "Datta Sable", role: "Principal BI Architect", avatar: "/author.jpg" },
     content: `<h2>Speeding up Finance</h2><p>Trigger-based reporting ensures refreshes happen exactly when data is ready.</p>`
   },

@@ -55,7 +55,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    const actualPassword = localStorage.getItem("adminPassword") || "admin123";
+    const actualPassword = localStorage.getItem("adminPassword") || "Jobless@1511";
     
     if (username === "admin" && password === actualPassword) {
       sessionStorage.setItem("adminAuth", "true");

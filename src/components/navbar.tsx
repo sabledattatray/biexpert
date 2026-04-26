@@ -139,14 +139,24 @@ const navItems = [
   { label: "Services", href: "/services" },
   { label: "Solutions", href: "/solutions" },
   { label: "Case Studies", href: "/case-studies" },
+  { label: "Downloads", href: "/downloads" },
   { label: "Blog", href: "/blog" },
 ];
 
 // --- Mega Menu Panel ---
 
-function MegaPanel({ item, onClose, onMouseEnter }: { item: string; onClose: () => void; onMouseEnter?: () => void }) {
-  const menu = megaMenus[item];
-  if (!menu) return null;
+function MegaPanel({ 
+  menu, 
+  onClose, 
+  onMouseEnter 
+}: { 
+  menu: { 
+    sections: { heading: string; items: { icon: React.ReactNode; label: string; desc: string; href: string }[] }[]; 
+    featured?: { label: string; desc: string; href: string; image?: string; tag?: string } 
+  }; 
+  onClose: () => void; 
+  onMouseEnter?: () => void 
+}) {
   return (
     <div
       className="absolute top-full left-1/2 -translate-x-1/2 mt-0 w-[720px] max-w-[95vw] z-[150]"
@@ -260,18 +270,20 @@ export function Navbar() {
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center h-full">
             {navItems.map(({ label, href }) => {
-              const hasMega = !!megaMenus[label];
+              const megaMenu = megaMenus[label];
+              const hasMega = !!megaMenu;
               const isActive = desktopActiveMenu === label;
               
               return (
                 <div 
-                  key={label} 
-                  className="h-full flex items-center"
+                  key={label}
+                  className="h-full"
                   onMouseEnter={() => hasMega && openMenu(label)}
                   onMouseLeave={() => hasMega && scheduleClose()}
                 >
-                  <button
-                    onClick={() => hasMega && setDesktopActiveMenu(isActive ? null : label)}
+                  <Link
+                    href={href}
+                    onClick={() => setDesktopActiveMenu(null)}
                     className={`flex items-center gap-1.5 px-5 h-full text-[11px] font-black uppercase tracking-[0.2em] transition-all duration-300 border-b-2 outline-none ${
                       isActive
                         ? "text-blue-500 border-blue-500"
@@ -287,7 +299,7 @@ export function Navbar() {
                         }`}
                       />
                     )}
-                  </button>
+                  </Link>
                 </div>
               );
             })}
@@ -301,8 +313,8 @@ export function Navbar() {
               </Button>
             </Link>
             <Link href="/signup">
-              <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white text-[10px] font-black uppercase tracking-widest rounded-none border-0 px-6 h-9">
-                Join
+              <Button size="sm" className="bg-transparent border border-blue-500 text-blue-500 hover:bg-blue-600 hover:text-white hover:border-blue-600 text-[10px] font-black uppercase tracking-widest rounded-none px-6 h-9 transition-all">
+                Sign Up
               </Button>
             </Link>
             <div className="h-4 w-px bg-border mx-1" />
@@ -334,8 +346,8 @@ export function Navbar() {
             className="hidden md:block"
           >
             <MegaPanel 
-              item={desktopActiveMenu} 
-              onClose={() => setDesktopActiveMenu(null)}
+              menu={megaMenus[desktopActiveMenu]} 
+              onClose={scheduleClose}
               onMouseEnter={() => {
                 if (closeTimer.current) clearTimeout(closeTimer.current);
               }}

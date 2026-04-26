@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import { 
   TrendingUp, 
   Users, 
@@ -163,14 +164,14 @@ export default function AdminDashboard() {
             <h3 className="text-lg font-black tracking-tighter text-white uppercase mb-2 relative z-10">Quick Actions</h3>
             <p className="text-white/80 text-xs mb-6 relative z-10">Frequently used system tasks.</p>
             <div className="grid grid-cols-2 gap-3 relative z-10">
-              <button className="bg-white/10 hover:bg-white/20 p-3 flex flex-col items-center gap-2 transition-colors">
+              <Link href="/admin/content/new" className="bg-white/10 hover:bg-white/20 p-3 flex flex-col items-center gap-2 transition-colors group">
                 <FileText size={18} className="text-white" />
                 <span className="text-[9px] font-black uppercase tracking-widest text-white">New Post</span>
-              </button>
-              <button className="bg-white/10 hover:bg-white/20 p-3 flex flex-col items-center gap-2 transition-colors">
+              </Link>
+              <Link href="/admin/media" className="bg-white/10 hover:bg-white/20 p-3 flex flex-col items-center gap-2 transition-colors group">
                 <ImageIcon size={18} className="text-white" />
                 <span className="text-[9px] font-black uppercase tracking-widest text-white">Upload</span>
-              </button>
+              </Link>
             </div>
           </div>
         </div>

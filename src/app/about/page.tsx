@@ -174,7 +174,7 @@ export default function AboutPage() {
               <div className="mt-8 flex items-center gap-4">
                 <SocialLink platform="linkedin" href="https://linkedin.com/in/dattasable" size={20} />
                 <SocialLink platform="github" href="https://github.com/dattasable" size={20} />
-                <SocialLink platform="telegram" href="https://t.me/sabledtta" size={20} />
+                <SocialLink platform="telegram" href="https://t.me/sabledatta" size={20} />
               </div>
 
               <div className="mt-12 flex gap-8">

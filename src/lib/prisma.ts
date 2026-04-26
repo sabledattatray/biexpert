@@ -1,35 +1,19 @@
 import { PrismaClient } from "@prisma/client";
+import { PrismaPg } from "@prisma/adapter-pg";
+import { Pool } from "pg";
 
-// This function only runs when the database is actually NEEDED
+const globalForPrisma = global as unknown as { prisma: PrismaClient };
+
 const getPrismaClient = () => {
-  return new PrismaClient();
+  const connectionString = process.env.DATABASE_URL;
+  const pool = new Pool({ connectionString });
+  const adapter = new PrismaPg(pool);
+  return new PrismaClient({ adapter });
 };
 
-declare global {
-  var prismaV4: PrismaClient | undefined;
-}
+export const prisma =
+  globalForPrisma.prisma || getPrismaClient();
 
-// We use a Proxy to ensure new PrismaClient() is NEVER called during the Build phase
-export const prisma = new Proxy({} as PrismaClient, {
-  get: (target, prop) => {
-    // If we are building, return a dummy object to stop the crash
-    if (process.env.NEXT_PHASE === "phase-production-build") {
-      if (prop === "findMany" || prop === "findUnique" || prop === "findFirst") {
-        return () => Promise.resolve([]);
-      }
-      return () => ({});
-    }
-    
-    if (!globalThis.prismaV4) {
-      globalThis.prismaV4 = getPrismaClient();
-    }
-    
-    const value = (globalThis.prismaV4 as any)[prop];
-    if (typeof value === 'function') {
-      return value.bind(globalThis.prismaV4);
-    }
-    return value;
-  }
-});
+if (process.env.NODE_ENV !== "production") globalForPrisma.prisma = prisma;
 
 export default prisma;

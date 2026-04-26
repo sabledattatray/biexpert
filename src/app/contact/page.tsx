@@ -90,7 +90,14 @@ export default function ContactPage() {
                     <MapPin className="text-blue-500 mt-1" />
                     <div>
                       <p className="text-[10px] font-black uppercase tracking-widest text-muted-foreground mb-1">Location</p>
-                      <p className="text-lg font-bold text-foreground">Pune, MH, India (Global Service)</p>
+                      <p className="text-lg font-bold text-foreground">Mumbai, Maharashtra, India 421503</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <Phone className="text-blue-500 mt-1" />
+                    <div>
+                      <p className="text-[10px] font-black uppercase tracking-widest text-muted-foreground mb-1">Call Us</p>
+                      <p className="text-lg font-bold text-foreground">+91 8010803756</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
@@ -107,7 +114,7 @@ export default function ContactPage() {
                   <div className="flex gap-4">
                     <SocialLink platform="linkedin" href="https://linkedin.com/in/dattasable" size={18} />
                     <SocialLink platform="github" href="https://github.com/dattasable" size={18} />
-                    <SocialLink platform="telegram" href="https://t.me/sabledtta" size={18} />
+                    <SocialLink platform="telegram" href="https://t.me/sabledatta" size={18} />
                   </div>
                 </div>
               </div>

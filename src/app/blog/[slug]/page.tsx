@@ -1,274 +1,172 @@
-import { posts } from "@/lib/blog-data";
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, Calendar, Clock, User, Share2, GitBranch, Send, Bookmark, MessageSquare, Share } from "lucide-react";
+import { 
+  ArrowLeft, 
+  Calendar, 
+  Clock, 
+  Share2, 
+  Send,
+  Zap,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { SocialLink } from "@/components/social-link";
+import prisma from "@/lib/prisma";
+import { LinkedInIcon, GithubIcon } from "@/components/social-icons";
 
-interface PageProps {
-  params: Promise<{ slug: string }>;
-}
-
-export async function generateStaticParams() {
-  return posts.map((post) => ({
-    slug: post.slug,
-  }));
-}
-
-import { Metadata } from "next";
-
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const decodedSlug = decodeURIComponent(slug);
-  const post = posts.find((p) => p.slug === decodedSlug);
   
-  if (!post) return { title: "Post Not Found" };
-  
-  return {
-    title: `${post.title} | BI Expert Insights`,
-    description: post.desc,
-    openGraph: {
-      title: post.title,
-      description: post.desc,
-      images: [post.image],
+  const post = await prisma.post.findUnique({
+    where: { slug },
+    include: { author: true }
+  });
+
+  if (!post) {
+    notFound();
+  }
+
+  const dateFormatter = new Intl.DateTimeFormat("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  });
+
+  // Fetch some related posts from DB
+  const relatedPosts = await prisma.post.findMany({
+    where: { 
+      published: true,
+      id: { not: post.id }
     },
-  };
-}
-
-export default async function BlogPostDetail({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
-  const decodedSlug = decodeURIComponent(slug);
-  const post = posts.find((p) => p.slug === decodedSlug);
-  
-  if (!post) notFound();
-
-  const relatedPosts = posts
-    .filter((p) => p.category === post.category && p.slug !== post.slug)
-    .slice(0, 3);
+    take: 3,
+    orderBy: { createdAt: 'desc' }
+  });
 
   return (
-    <article className="min-h-screen bg-background text-foreground pb-20">
-      {/* ── READING PROGRESS BAR (Simplified) ───────────────────── */}
-      <div className="fixed top-0 left-0 w-full h-1 bg-blue-600/10 z-[100]">
-        <div className="h-full bg-blue-600 w-1/3" /> {/* Mock progress */}
-      </div>
-
-      {/* ── HERO ────────────────────────────────────────────────── */}
-      <header className="relative pt-32 pb-20 overflow-hidden border-b border-border">
-        <div className="absolute inset-0 -z-10 overflow-hidden">
+    <div className="min-h-screen bg-background">
+      {/* Hero Header */}
+      <section className="relative pt-32 pb-20 overflow-hidden border-b border-border">
+        <div className="absolute inset-0 -z-10">
           <Image 
-            src={post.image || "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2000&auto=format&fit=crop"} 
-            alt={post.title} 
-            fill
-            className="object-cover opacity-[0.15] blur-[2px] scale-110" 
-            priority
+            src={post.image || "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070"} 
+            alt={post.title}
+            fill 
+            className="object-cover opacity-[0.15] grayscale" 
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/95 to-background" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/90 to-background" />
         </div>
 
         <div className="container mx-auto px-6 lg:px-12 relative">
-          <Link 
-            href="/blog" 
-            className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.3em] text-blue-400 mb-12 hover:gap-4 transition-all"
-          >
-            <ArrowLeft size={14} /> Back to Insights
-          </Link>
-
           <div className="max-w-4xl">
-            <div className="flex items-center gap-4 mb-8">
-              <span className="px-3 py-1 bg-blue-600 text-[10px] font-black uppercase tracking-widest text-white shadow-lg shadow-blue-600/30">
-                {post.tag}
-              </span>
-              <div className="flex items-center gap-4 text-[10px] font-black uppercase tracking-widest text-muted-foreground">
-                 <span className="flex items-center gap-1.5"><Calendar size={12} /> {post.date}</span>
-                 <div className="w-1 h-1 bg-border rounded-full" />
-                 <span className="flex items-center gap-1.5"><Clock size={12} /> {post.readTime}</span>
-              </div>
+            <Link 
+              href="/blog" 
+              className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-blue-400 hover:text-blue-300 transition-colors mb-12 group"
+            >
+              <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" /> Back to Intelligence Hub
+            </Link>
+
+            <div className="flex items-center gap-4 text-[10px] font-black uppercase tracking-widest text-muted-foreground mb-6">
+              <span className="px-3 py-1 bg-blue-600/10 border border-blue-600/20 text-blue-500 font-black">ARTICLE</span>
+              <span>{dateFormatter.format(post.createdAt)}</span>
+              <span>•</span>
+              <span>10 MIN READ</span>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tighter leading-[1.1] mb-8 uppercase text-foreground">
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tighter uppercase leading-[0.9] text-foreground mb-10">
               {post.title}
             </h1>
 
-            <div className="flex items-center gap-4">
-              <div className="relative w-12 h-12 rounded-full border-2 border-background shadow-xl overflow-hidden">
-                <Image 
-                  src="/author.jpg" 
-                  alt={post.author.name} 
-                  fill 
-                  className="object-cover" 
-                />
+            <div className="flex flex-wrap items-center gap-8 pt-8 border-t border-border/50">
+              <div className="flex items-center gap-4">
+                <div className="h-12 w-12 rounded-full bg-blue-600 flex items-center justify-center text-white font-black shadow-lg shadow-blue-600/20">
+                  {post.author.name?.[0] || "A"}
+                </div>
+                <div>
+                  <p className="text-xs font-black uppercase tracking-widest text-foreground">{post.author.name || "Admin"}</p>
+                  <p className="text-[10px] text-muted-foreground uppercase tracking-widest">Principal Architect</p>
+                </div>
               </div>
-              <div>
-                <p className="text-sm font-black uppercase tracking-tight text-foreground">{post.author.name}</p>
-                <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">{post.author.role}</p>
+              
+              <div className="flex items-center gap-3">
+                <Button variant="outline" size="icon-sm" className="rounded-none border-border hover:text-blue-400"><GithubIcon size={14} /></Button>
+                <Button variant="outline" size="icon-sm" className="rounded-none border-border hover:text-blue-500"><LinkedInIcon size={14} /></Button>
+                <Button variant="outline" size="icon-sm" className="rounded-none border-border hover:text-foreground"><Share2 size={14} /></Button>
               </div>
-            </div>
-
-            {/* Main Featured Image */}
-            <div className="mt-12 relative h-[400px] sm:h-[500px] w-full border border-border overflow-hidden bg-muted shadow-2xl">
-              <Image 
-                src={post.image || "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2000&auto=format&fit=crop"} 
-                alt={post.title} 
-                fill
-                className="object-cover"
-                priority
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent pointer-events-none" />
             </div>
           </div>
         </div>
-      </header>
+      </section>
 
-      {/* ── MAIN CONTENT GRID ───────────────────────────────────── */}
-      <div className="container mx-auto px-6 lg:px-12 py-20">
-        <div className="grid lg:grid-cols-[1fr_300px] gap-20">
-          
-          {/* ── Left: Article Content ── */}
-          <div className="max-w-none prose prose-invert prose-headings:font-black prose-headings:uppercase prose-headings:tracking-tighter prose-h2:text-3xl prose-h3:text-xl prose-p:text-lg prose-p:leading-relaxed prose-p:text-muted-foreground prose-strong:text-foreground prose-blockquote:border-blue-600 prose-blockquote:bg-blue-600/5 prose-blockquote:p-8 prose-blockquote:not-italic prose-blockquote:text-xl prose-blockquote:font-bold prose-img:border prose-img:border-border">
-            <div dangerouslySetInnerHTML={{ __html: post.content }} />
+      {/* Article Content */}
+      <section className="py-20">
+        <div className="container mx-auto px-6 lg:px-12">
+          <div className="grid lg:grid-cols-12 gap-16">
             
-            {/* ── DYNAMIC TECHNICAL EXPANSION (Ensures 900+ Word Depth) ── */}
-            <div className="mt-12 space-y-12">
-              <h2>1. Strategic Architecture Overview</h2>
-              <p>
-                In our decade of experience implementing BI solutions for BFSI and Fintech enterprises, we've found that the most successful projects aren't built on the newest tools, but on the most robust architectures. Whether you are dealing with {post.tag} or enterprise-scale SQL warehouses, the fundamental principles of data integrity and low-latency retrieval remain the same.
-              </p>
-              <p>
-                For this specific implementation of <strong>{post.title}</strong>, we focus on a "Security-First" approach. This means ensuring that every data packet is encrypted at rest and that access is strictly controlled via Row-Level Security (RLS) or Object-Level Security (OLS) patterns.
-              </p>
+            {/* Sidebar */}
+            <aside className="lg:col-span-3 hidden lg:block">
+              <div className="sticky top-32 space-y-12">
+                <div>
+                  <h3 className="text-[10px] font-black uppercase tracking-widest text-muted-foreground mb-6 pb-2 border-b border-border">Insights</h3>
+                  <div className="flex flex-wrap gap-2">
+                    <span className="px-3 py-1 bg-muted border border-border text-[9px] font-black uppercase tracking-widest text-muted-foreground">STRATEGY</span>
+                    <span className="px-3 py-1 bg-muted border border-border text-[9px] font-black uppercase tracking-widest text-muted-foreground">ARCHITECTURE</span>
+                  </div>
+                </div>
 
-              {post.category === 'power-bi' && (
-                <>
-                  <h3>Advanced DAX & Data Modeling</h3>
-                  <p>When working with Power BI, performance is paramount. We recommend shifting as much calculation as possible to the 'Left' of the data lifecycle. This means handling complex transformations in SQL or Power Query before they reach the DAX engine. This 'Thin Report' strategy ensures that your visuals remain responsive even under heavy user load.</p>
-                  <ul>
-                    <li>Use calculated columns sparingly; measures are your best friend for performance.</li>
-                    <li>Avoid bi-directional filters unless absolutely necessary for specific UX requirements.</li>
-                    <li>Leverage 'Star Schema' modeling—Snowflake schemas are often the root cause of slow report refreshes.</li>
-                  </ul>
-                </>
-              )}
+                <div className="p-6 bg-blue-600/5 border border-blue-600/10">
+                  <Zap size={20} className="text-blue-500 mb-4" />
+                  <h4 className="text-xs font-black uppercase tracking-widest text-foreground mb-2">Need Custom BI?</h4>
+                  <p className="text-[10px] text-muted-foreground leading-relaxed mb-4 uppercase tracking-tight">
+                    We help enterprise teams architect scalable data systems.
+                  </p>
+                  <Link href="/contact" className="text-[9px] font-black uppercase tracking-[0.2em] text-blue-500 hover:underline">Book a consult</Link>
+                </div>
 
-              {post.category === 'sql' && (
-                <>
-                  <h3>Infrastructure and Indexing Strategies</h3>
-                  <p>In the world of high-performance SQL architectures, the way you store data is just as important as how you query it. For analytical workloads, Columnstore indexes are no longer optional—they are the standard. By compressing data by up to 10x, we can reduce I/O bottlenecks and significantly speed up aggregate queries.</p>
-                  <p>Furthermore, partitioned tables allow us to manage 'Sliding Window' scenarios where we can archive old data while keeping the last 24 months of operational data in hot storage for immediate access.</p>
-                </>
-              )}
+                <div>
+                   <h3 className="text-[10px] font-black uppercase tracking-widest text-muted-foreground mb-6 pb-2 border-b border-border">Recent Reads</h3>
+                   <div className="space-y-6">
+                      {relatedPosts.map(rp => (
+                        <Link key={rp.id} href={`/blog/${rp.slug}`} className="block group">
+                           <h5 className="text-[11px] font-bold text-foreground group-hover:text-blue-500 transition-colors uppercase leading-tight mb-1">{rp.title}</h5>
+                           <p className="text-[9px] text-muted-foreground uppercase tracking-widest">{dateFormatter.format(rp.createdAt)}</p>
+                        </Link>
+                      ))}
+                   </div>
+                </div>
+              </div>
+            </aside>
 
-              {post.category === 'automation' && (
-                <>
-                  <h3>The Automation Lifecycle: From Script to Scale</h3>
-                  <p>Automation isn't just about writing a script; it's about building a self-healing pipeline. We implement robust 'Error Handling' and 'Audit Logging' in every workflow. If an API call fails or a file is missing from a SharePoint folder, the system shouldn't just break—it should retry, log the error, and notify the administrator via MS Teams.</p>
-                  <p>By using Python's <code>pandas</code> library or Azure Data Factory's control flow, we can transform hours of manual effort into seconds of automated precision.</p>
-                </>
-              )}
+            {/* Main Body */}
+            <div className="lg:col-span-7">
+              <div 
+                className="prose prose-invert prose-blue max-w-none 
+                prose-h2:text-2xl prose-h2:font-black prose-h2:uppercase prose-h2:tracking-tight prose-h2:mt-12 prose-h2:mb-6
+                prose-p:text-muted-foreground prose-p:text-lg prose-p:leading-relaxed prose-p:mb-8
+                prose-strong:text-foreground prose-strong:font-bold
+                prose-ul:list-none prose-ul:pl-0
+                prose-li:border-l-2 prose-li:border-blue-500 prose-li:pl-6 prose-li:py-2 prose-li:mb-4 prose-li:bg-blue-500/5
+                "
+                dangerouslySetInnerHTML={{ __html: post.content }}
+              />
 
-              <h2>2. Technical Deep Dive & Implementation</h2>
-              <p>
-                Implementing <strong>{post.title}</strong> requires a deep understanding of both the business logic and the technical stack. We recommend a three-phased approach:
-              </p>
-              <ol className="space-y-4">
-                <li><strong>Discovery:</strong> Identify the critical path for your data and the primary pain points for the end-users.</li>
-                <li><strong>Prototyping:</strong> Build a low-fidelity version of the pipeline or dashboard to validate the logic with stakeholders.</li>
-                <li><strong>Hardening:</strong> Add security, optimize performance, and set up automated monitoring.</li>
-              </ol>
-
-              <blockquote>
-                "The goal of Business Intelligence is not to provide data, but to provide the confidence to act on it."
-              </blockquote>
-
-              <h2>3. Conclusion & Executive Summary</h2>
-              <p>
-                As we move into 2026, the demand for real-time, automated intelligence will only increase. By following the strategies outlined in this guide for <strong>{post.title}</strong>, your organization will be better positioned to make data-driven decisions that impact the bottom line.
-              </p>
-              <p>
-                If you are ready to implement these high-performance patterns in your own environment, reach out to us for a specialized audit of your current data stack.
-              </p>
-            </div>
-
-            {/* Tags */}
-            <div className="mt-20 pt-10 border-t border-border flex flex-wrap gap-3">
-              {["BI Strategy", "Enterprise", "Performance Tuning", "Automation", post.tag].map(t => (
-                <span key={t} className="px-4 py-2 border border-border text-[10px] font-black uppercase tracking-widest text-muted-foreground">
-                  #{t.replace(' ', '')}
-                </span>
-              ))}
+              {/* Newsletter Callout */}
+              <div className="mt-20 p-10 bg-card border border-border relative overflow-hidden group">
+                <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                  <Send size={80} />
+                </div>
+                <h3 className="text-2xl font-black uppercase tracking-tighter mb-4 relative z-10">Stay Ahead of the Data Curve</h3>
+                <p className="text-muted-foreground mb-8 text-sm max-w-md relative z-10">
+                  Join 5,000+ data leaders receiving our weekly technical deep-dives and architectural patterns.
+                </p>
+                <form className="flex flex-col sm:flex-row gap-0 max-w-md relative z-10 border border-border p-1 bg-background shadow-xl">
+                  <input type="email" placeholder="work email" className="flex-1 bg-transparent px-4 py-3 text-sm focus:outline-none" required />
+                  <Button type="submit" className="rounded-none bg-blue-600 hover:bg-blue-700 text-white font-black uppercase tracking-widest text-[9px] h-12 px-6">Subscribe</Button>
+                </form>
+              </div>
             </div>
           </div>
-
-          {/* ── Right: Sidebar ── */}
-          <aside className="space-y-12">
-            {/* Author Profile */}
-            <div className="p-8 border border-border bg-card/50 text-center">
-              <div className="relative w-24 h-24 mx-auto mb-6">
-                <div className="absolute inset-0 bg-blue-500 blur-xl opacity-20 rounded-full" />
-                <div className="relative w-full h-full rounded-full border-2 border-blue-500 overflow-hidden shadow-2xl">
-                  <Image 
-                    src="/author.jpg" 
-                    alt={post.author.name} 
-                    fill 
-                    className="object-cover" 
-                  />
-                </div>
-              </div>
-              <h4 className="text-lg font-black uppercase tracking-tighter text-foreground mb-1">{post.author.name}</h4>
-              <p className="text-[10px] font-bold uppercase tracking-widest text-blue-500 mb-4">{post.author.role}</p>
-              <p className="text-xs text-muted-foreground leading-relaxed mb-6">
-                Expert in Power BI, SQL Server, and MIS Automation with over 10+ years of experience helping BFSI and Fintech firms unlock the power of their data.
-              </p>
-              <div className="flex items-center justify-center gap-4">
-                <Link href="/about" className="text-[10px] font-black uppercase tracking-widest text-foreground hover:text-blue-400 transition-colors">
-                  View Profile
-                </Link>
-                <div className="h-3 w-px bg-border" />
-                <div className="flex items-center gap-3">
-                   <SocialLink platform="linkedin" href="https://linkedin.com/in/dattasable" size={12} className="p-1 border-none bg-transparent hover:scale-110" />
-                   <SocialLink platform="github" href="https://github.com/dattasable" size={12} className="p-1 border-none bg-transparent hover:scale-110" />
-                   <SocialLink platform="telegram" href="https://t.me/sabledtta" size={12} className="p-1 border-none bg-transparent hover:scale-110" />
-                </div>
-              </div>
-            </div>
-
-            {/* Share */}
-            <div className="p-8 border border-border bg-card/50">
-              <h4 className="text-xs font-black uppercase tracking-widest mb-6">Connect & Share</h4>
-              <div className="grid grid-cols-3 gap-4">
-                <SocialLink platform="linkedin" href="https://linkedin.com/in/dattasable" size={18} className="w-full h-12" />
-                <SocialLink platform="github" href="https://github.com/dattasable" size={18} className="w-full h-12" />
-                <SocialLink platform="telegram" href="https://t.me/sabledtta" size={18} className="w-full h-12" />
-              </div>
-            </div>
-
-            {/* Newsletter */}
-            <div className="p-8 border border-blue-500/20 bg-blue-500/5">
-              <h4 className="text-xs font-black uppercase tracking-widest text-blue-400 mb-4">Newsletter</h4>
-              <p className="text-xs text-muted-foreground leading-relaxed mb-6">Get weekly data strategies delivered to your inbox.</p>
-              <input type="email" placeholder="Work email" className="w-full bg-background border border-border px-4 py-3 text-xs mb-4 focus:outline-none focus:border-blue-500" />
-              <Button className="w-full h-12 bg-blue-600 hover:bg-blue-700 text-white font-black uppercase tracking-widest text-[10px] rounded-none">Join now</Button>
-            </div>
-
-            {/* Related */}
-            <div>
-              <h4 className="text-xs font-black uppercase tracking-widest mb-8">Related Reads</h4>
-              <div className="space-y-8">
-                {relatedPosts.map(p => (
-                  <Link key={p.slug} href={`/blog/${p.slug}`} className="group block">
-                    <p className="text-[9px] font-black uppercase tracking-widest text-blue-500 mb-2">{p.tag}</p>
-                    <h5 className="text-sm font-bold text-foreground group-hover:text-blue-400 transition-colors leading-snug">
-                      {p.title}
-                    </h5>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </aside>
-
         </div>
-      </div>
-    </article>
+      </section>
+    </div>
   );
 }

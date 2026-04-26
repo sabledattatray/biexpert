@@ -29,6 +29,7 @@ const NAV = {
   company: [
     { label: "About", href: "/about" },
     { label: "Case Studies", href: "/case-studies" },
+    { label: "Downloads", href: "/downloads" },
     { label: "Blog", href: "/blog" },
     { label: "Contact", href: "/contact" },
   ],
@@ -42,13 +43,13 @@ const NAV = {
 const SOCIAL = [
   { platform: "linkedin" as const, href: "https://linkedin.com/in/dattasable" },
   { platform: "github" as const, href: "https://github.com/dattasable" },
-  { platform: "telegram" as const, href: "https://t.me/sabledtta" },
+  { platform: "telegram" as const, href: "https://t.me/sabledatta" },
 ];
 
 const CONTACT = [
   { icon: <Mail size={14} />, text: "hello@biexpert.in" },
-  { icon: <Phone size={14} />, text: "+91 98765 43210" },
-  { icon: <MapPin size={14} />, text: "Mumbai, India" },
+  { icon: <Phone size={14} />, text: "+91 8010803756" },
+  { icon: <MapPin size={14} />, text: "Mumbai, Maharashtra, India 421503" },
 ];
 
 export function Footer() {
