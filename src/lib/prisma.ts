@@ -14,15 +14,8 @@ const getPrismaClient = () => {
     return new PrismaClient();
   }
 
-  // Use standard PrismaClient - it works perfectly with Vercel/Neon 
-  // and is much more stable during build time than the PG Adapter.
-  return new PrismaClient({
-    datasources: {
-      db: {
-        url: url
-      }
-    }
-  });
+  // Simplest initialization - Prisma automatically uses DATABASE_URL from environment
+  return new PrismaClient();
 };
 
 export const prisma = globalThis.prismaV4 || getPrismaClient();
