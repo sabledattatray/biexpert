@@ -32,7 +32,9 @@ const socialProviders = [
 ].filter(Boolean);
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
-  adapter: PrismaAdapter(prisma as any),
+  adapter: process.env.NEXT_PHASE === "phase-production-build" 
+    ? undefined 
+    : PrismaAdapter(prisma as any),
   session: { strategy: "jwt" },
   providers: [
     ...(socialProviders as any[]),
