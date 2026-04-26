@@ -8,9 +8,11 @@ declare global {
 
 const getPrismaClient = () => {
   const url = process.env.DATABASE_URL;
+  const isBuild = process.env.NODE_ENV === "production" && process.env.NEXT_PHASE === "phase-production-build";
   
-  if (!url || url.includes("127.0.0.1")) {
-    console.warn("WARNING: DATABASE_URL is missing or local. Using standard client for build stability.");
+  // During build, use a completely clean, standard Prisma client with no adapters
+  if (isBuild || !url || url.includes("127.0.0.1")) {
+    console.warn("Build Mode: Using standard Prisma client.");
     return new PrismaClient();
   }
 
@@ -19,7 +21,7 @@ const getPrismaClient = () => {
     const adapter = new PrismaPg(pool);
     return new PrismaClient({ adapter });
   } catch (error) {
-    console.warn("Prisma Adapter initialization failed. Falling back to default client.");
+    console.warn("Runtime: Falling back to default client.");
     return new PrismaClient();
   }
 };
