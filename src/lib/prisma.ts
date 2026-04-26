@@ -23,7 +23,12 @@ export const prisma = new Proxy({} as PrismaClient, {
     if (!globalThis.prismaV4) {
       globalThis.prismaV4 = getPrismaClient();
     }
-    return (globalThis.prismaV4 as any)[prop];
+    
+    const value = (globalThis.prismaV4 as any)[prop];
+    if (typeof value === 'function') {
+      return value.bind(globalThis.prismaV4);
+    }
+    return value;
   }
 });
 
