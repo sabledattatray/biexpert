@@ -2,6 +2,8 @@ import React from "react";
 import prisma from "@/lib/prisma";
 import { redirect } from "next/navigation";
 
+export const dynamic = 'force-dynamic';
+
 const postsToSync = [
   {
     slug: "mastering-dax-patterns-2026",
@@ -146,12 +148,12 @@ export default async function SeedPage() {
            <pre className="text-xs text-muted-foreground whitespace-pre-wrap bg-background p-4 border border-border">
              {error.message}
            </pre>
-           <button 
-             onClick={() => window.location.reload()}
-             className="mt-6 px-6 py-2 bg-rose-500 text-white text-[10px] font-bold uppercase tracking-widest"
+           <a 
+             href="/admin/seed"
+             className="mt-6 inline-block px-6 py-2 bg-rose-500 text-white text-[10px] font-bold uppercase tracking-widest text-center"
            >
              Retry Activation
-           </button>
+           </a>
         </div>
       </div>
     );
