@@ -31,10 +31,10 @@ const socialProviders = [
     : null,
 ].filter(Boolean);
 
+const isBuild = process.env.NODE_ENV === "production" && process.env.NEXT_PHASE === "phase-production-build";
+
 export const { handlers, signIn, signOut, auth } = NextAuth({
-  adapter: process.env.NEXT_PHASE === "phase-production-build" 
-    ? undefined 
-    : PrismaAdapter(prisma as any),
+  adapter: isBuild ? undefined : PrismaAdapter(prisma as any),
   session: { strategy: "jwt" },
   providers: [
     ...(socialProviders as any[]),
@@ -68,5 +68,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       return session;
     },
   },
+  secret: process.env.NEXTAUTH_SECRET || "build_time_fallback_secret_do_not_use_in_prod",
 });
 
