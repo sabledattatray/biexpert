@@ -16,7 +16,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
   return (
     <div className="relative flex min-h-screen flex-col mx-0 sm:mx-8 lg:mx-32 xl:mx-[200px] border-x border-border" style={{ boxShadow: 'var(--layout-shadow)' }}>
       <Navbar />
-      <main className="flex-1 flex flex-col">{children}</main>
+      <main className="flex-1 flex flex-col pt-16">{children}</main>
       <Footer />
     </div>
   );
