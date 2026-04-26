@@ -37,12 +37,12 @@ export default function SQLArchitecturePage() {
 
         <div className="container mx-auto px-6 lg:px-12 relative">
           <div className="max-w-4xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 border border-violet-500/20 bg-violet-500/5 text-violet-400 text-[10px] font-black uppercase tracking-[0.3em] mb-8">
+            <div className="inline-flex items-center gap-2 px-3 py-1 border border-violet-500/20 bg-violet-500/5 text-violet-400 text-[10px] font-bold uppercase tracking-[0.3em] mb-8">
               <Database size={12} /> The Foundation
             </div>
             
-            <h1 className="text-5xl sm:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.85] mb-8 uppercase text-foreground">
-              SQL <br />
+            <h1 className="text-[46px] sm:text-[46px] lg:text-[46px] font-bold tracking-tighter leading-[0.85] mb-8 uppercase text-foreground">
+              SQL  
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-indigo-400 to-blue-500">
                 Architecture
               </span>
@@ -85,13 +85,13 @@ export default function SQLArchitecturePage() {
           <div className="grid lg:grid-cols-[1fr_400px] gap-20">
             <div className="space-y-12">
               <div>
-                <h2 className="text-3xl font-black mb-6 uppercase tracking-tighter text-foreground">ETL Pipeline Automation</h2>
+                <h2 className="text-3xl font-bold mb-6 uppercase tracking-tighter text-foreground">ETL Pipeline Automation</h2>
                 <p className="text-muted-foreground leading-relaxed">
                   We build automated workflows using Azure Data Factory and SSIS to pull data from disparate sources (CRMs, ERPs, Flat Files) into a centralized, single version of truth.
                 </p>
               </div>
               <div>
-                <h2 className="text-3xl font-black mb-6 uppercase tracking-tighter text-foreground">Query Optimization</h2>
+                <h2 className="text-3xl font-bold mb-6 uppercase tracking-tighter text-foreground">Query Optimization</h2>
                 <p className="text-muted-foreground leading-relaxed">
                   Is your dashboard slow? We specialize in T-SQL tuning, indexing strategies, and execution plan analysis to reduce report load times from minutes to seconds.
                 </p>
@@ -100,7 +100,7 @@ export default function SQLArchitecturePage() {
             <div className="bg-violet-600/5 border border-violet-500/10 p-8 space-y-8">
                <div className="flex items-center gap-3 text-violet-400">
                   <ShieldCheck size={24} />
-                  <span className="text-[10px] font-black uppercase tracking-widest">Enterprise Security</span>
+                  <span className="text-[10px] font-bold uppercase tracking-widest">Enterprise Security</span>
                </div>
                <p className="text-sm text-muted-foreground leading-relaxed">
                  "Our architectures are built specifically for BFSI compliance, ensuring every line of data is encrypted and accessible only to authorized users."

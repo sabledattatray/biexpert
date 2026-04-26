@@ -85,13 +85,13 @@ export default function Settings() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6">
         <div>
-          <h1 className="text-3xl font-black tracking-tighter uppercase text-foreground">Site Settings</h1>
+          <h1 className="text-3xl font-bold tracking-tighter uppercase text-foreground">Site Settings</h1>
           <p className="text-muted-foreground text-sm mt-1">Configure global platform behavior, integrations, and security.</p>
         </div>
         <Button 
           onClick={handleSave}
           disabled={isSaving}
-          className="rounded-none bg-blue-600 hover:bg-blue-700 text-white text-[10px] font-black uppercase tracking-widest h-12 px-8 border-0 shadow-lg shadow-blue-500/20 disabled:opacity-50"
+          className="rounded-none bg-blue-600 hover:bg-blue-700 text-white text-[10px] font-bold uppercase tracking-widest h-12 px-8 border-0 shadow-lg shadow-blue-500/20 disabled:opacity-50"
         >
           <Save size={16} className={`mr-2 ${isSaving ? "animate-pulse" : ""}`} /> 
           {isSaving ? "Saving..." : "Save Configuration"}
@@ -128,10 +128,10 @@ export default function Settings() {
             <>
               {/* Section 1 */}
               <div className="bg-card border border-border p-6 md:p-8">
-                <h2 className="text-lg font-black uppercase tracking-tighter text-foreground mb-6">General Information</h2>
+                <h2 className="text-lg font-bold uppercase tracking-tighter text-foreground mb-6">General Information</h2>
                 <div className="space-y-6 max-w-2xl">
                   <div>
-                    <label className="block text-[10px] font-black uppercase tracking-widest text-muted-foreground mb-2">Site Name</label>
+                    <label className="block text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-2">Site Name</label>
                     <input 
                       type="text" 
                       value={config.siteName}
@@ -140,7 +140,7 @@ export default function Settings() {
                     />
                   </div>
                   <div>
-                    <label className="block text-[10px] font-black uppercase tracking-widest text-muted-foreground mb-2">Primary Domain</label>
+                    <label className="block text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-2">Primary Domain</label>
                     <input 
                       type="text" 
                       value={config.primaryDomain}
@@ -149,7 +149,7 @@ export default function Settings() {
                     />
                   </div>
                   <div>
-                    <label className="block text-[10px] font-black uppercase tracking-widest text-muted-foreground mb-2">Support Email</label>
+                    <label className="block text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-2">Support Email</label>
                     <input 
                       type="email" 
                       value={config.supportEmail}
@@ -162,10 +162,10 @@ export default function Settings() {
 
               {/* Section 2 */}
               <div className="bg-card border border-border p-6 md:p-8">
-                <h2 className="text-lg font-black uppercase tracking-tighter text-foreground mb-6">SEO Defaults</h2>
+                <h2 className="text-lg font-bold uppercase tracking-tighter text-foreground mb-6">SEO Defaults</h2>
                 <div className="space-y-6 max-w-2xl">
                   <div>
-                    <label className="block text-[10px] font-black uppercase tracking-widest text-muted-foreground mb-2">Global Meta Description</label>
+                    <label className="block text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-2">Global Meta Description</label>
                     <textarea 
                       rows={4}
                       value={config.metaDescription}
@@ -189,7 +189,7 @@ export default function Settings() {
               {/* Section 3 */}
               <div className="bg-card border border-rose-500/20 p-6 md:p-8 relative overflow-hidden">
                 <div className="absolute top-0 left-0 w-1 h-full bg-rose-500" />
-                <h2 className="text-lg font-black uppercase tracking-tighter text-rose-500 mb-2">Danger Zone</h2>
+                <h2 className="text-lg font-bold uppercase tracking-tighter text-rose-500 mb-2">Danger Zone</h2>
                 <p className="text-muted-foreground text-sm mb-6 max-w-xl">These actions are destructive and cannot be undone. Proceed with extreme caution.</p>
                 <div className="space-y-4">
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 border border-rose-500/20 bg-rose-500/5">
@@ -211,7 +211,7 @@ export default function Settings() {
             <div className="space-y-8">
               {/* Existing Security Settings */}
               <div className="bg-card border border-border p-6 md:p-8">
-                <h2 className="text-lg font-black uppercase tracking-tighter text-foreground mb-6">Security & Authentication</h2>
+                <h2 className="text-lg font-bold uppercase tracking-tighter text-foreground mb-6">Security & Authentication</h2>
                 <div className="space-y-6 max-w-2xl">
                   <div className="flex items-center justify-between p-4 bg-muted/30 border border-border">
                     <div>
@@ -238,7 +238,7 @@ export default function Settings() {
 
               {/* Password Change Section */}
               <div className="bg-card border border-border p-6 md:p-8">
-                <h2 className="text-lg font-black uppercase tracking-tighter text-foreground mb-6">Admin Credentials</h2>
+                <h2 className="text-lg font-bold uppercase tracking-tighter text-foreground mb-6">Admin Credentials</h2>
                 <form 
                   className="space-y-6 max-w-2xl" 
                   onSubmit={(e) => { 
@@ -269,7 +269,7 @@ export default function Settings() {
                   }}
                 >
                   <div>
-                    <label className="block text-[10px] font-black uppercase tracking-widest text-muted-foreground mb-2">Current Password</label>
+                    <label className="block text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-2">Current Password</label>
                     <input 
                       type="password" 
                       name="current"
@@ -280,7 +280,7 @@ export default function Settings() {
                   </div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>
-                      <label className="block text-[10px] font-black uppercase tracking-widest text-muted-foreground mb-2">New Password</label>
+                      <label className="block text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-2">New Password</label>
                       <input 
                         type="password" 
                         name="newPass"
@@ -290,7 +290,7 @@ export default function Settings() {
                       />
                     </div>
                     <div>
-                      <label className="block text-[10px] font-black uppercase tracking-widest text-muted-foreground mb-2">Confirm Password</label>
+                      <label className="block text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-2">Confirm Password</label>
                       <input 
                         type="password" 
                         name="confirmPass"
@@ -300,7 +300,7 @@ export default function Settings() {
                       />
                     </div>
                   </div>
-                  <Button type="submit" className="rounded-none bg-blue-600 hover:bg-blue-700 text-white text-[10px] font-black uppercase tracking-widest h-12 px-8 border-0 shadow-lg shadow-blue-500/20">
+                  <Button type="submit" className="rounded-none bg-blue-600 hover:bg-blue-700 text-white text-[10px] font-bold uppercase tracking-widest h-12 px-8 border-0 shadow-lg shadow-blue-500/20">
                     Update Password
                   </Button>
                 </form>
@@ -311,10 +311,10 @@ export default function Settings() {
           {/* --- API KEYS TAB --- */}
           {activeTab === "api" && (
             <div className="bg-card border border-border p-6 md:p-8">
-              <h2 className="text-lg font-black uppercase tracking-tighter text-foreground mb-6">API & Integrations</h2>
+              <h2 className="text-lg font-bold uppercase tracking-tighter text-foreground mb-6">API & Integrations</h2>
               <div className="space-y-6 max-w-2xl">
                 <div>
-                  <label className="block text-[10px] font-black uppercase tracking-widest text-muted-foreground mb-2">SendGrid API Key (Email)</label>
+                  <label className="block text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-2">SendGrid API Key (Email)</label>
                   <input 
                     type="password" 
                     value={config.sendgridKey}
@@ -323,7 +323,7 @@ export default function Settings() {
                   />
                 </div>
                 <div>
-                  <label className="block text-[10px] font-black uppercase tracking-widest text-muted-foreground mb-2">Cloudinary Secret (Media)</label>
+                  <label className="block text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-2">Cloudinary Secret (Media)</label>
                   <input 
                     type="password" 
                     value={config.cloudinarySecret}
@@ -338,7 +338,7 @@ export default function Settings() {
           {/* --- NOTIFICATIONS TAB --- */}
           {activeTab === "notifications" && (
             <div className="bg-card border border-border p-6 md:p-8">
-              <h2 className="text-lg font-black uppercase tracking-tighter text-foreground mb-6">System Notifications</h2>
+              <h2 className="text-lg font-bold uppercase tracking-tighter text-foreground mb-6">System Notifications</h2>
               <div className="space-y-4 max-w-2xl">
                 <div className="flex items-center justify-between p-4 bg-muted/30 border border-border">
                   <div>
@@ -367,7 +367,7 @@ export default function Settings() {
           {/* --- HOSTING TAB --- */}
           {activeTab === "hosting" && (
             <div className="bg-card border border-border p-6 md:p-8">
-              <h2 className="text-lg font-black uppercase tracking-tighter text-foreground mb-6">Hosting Environment</h2>
+              <h2 className="text-lg font-bold uppercase tracking-tighter text-foreground mb-6">Hosting Environment</h2>
               <div className="space-y-6 max-w-2xl">
                 <div className="p-4 bg-emerald-500/10 border border-emerald-500/20 flex flex-col gap-2">
                   <div className="flex justify-between text-xs font-bold text-emerald-500 uppercase tracking-widest">
@@ -377,7 +377,7 @@ export default function Settings() {
                   <p className="text-xs text-emerald-600/80">All global CDN nodes are currently routing traffic successfully.</p>
                 </div>
                 <div>
-                  <label className="block text-[10px] font-black uppercase tracking-widest text-muted-foreground mb-2">Deployment Branch</label>
+                  <label className="block text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-2">Deployment Branch</label>
                   <select 
                     value={config.deploymentBranch}
                     onChange={(e) => updateConfig("deploymentBranch", e.target.value)}
@@ -395,10 +395,10 @@ export default function Settings() {
           {/* --- DATABASE TAB --- */}
           {activeTab === "database" && (
             <div className="bg-card border border-border p-6 md:p-8">
-              <h2 className="text-lg font-black uppercase tracking-tighter text-foreground mb-6">Database Configuration</h2>
+              <h2 className="text-lg font-bold uppercase tracking-tighter text-foreground mb-6">Database Configuration</h2>
               <div className="space-y-6 max-w-2xl">
                 <div>
-                  <label className="block text-[10px] font-black uppercase tracking-widest text-muted-foreground mb-2">Connection String (URL)</label>
+                  <label className="block text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-2">Connection String (URL)</label>
                   <input 
                     type="password" 
                     value={config.dbString}
@@ -407,10 +407,10 @@ export default function Settings() {
                   />
                 </div>
                 <div className="flex gap-4 pt-4 border-t border-border mt-4">
-                   <Button variant="outline" className="rounded-none border-border bg-card text-[10px] font-black uppercase tracking-widest h-10 px-6">
+                   <Button variant="outline" className="rounded-none border-border bg-card text-[10px] font-bold uppercase tracking-widest h-10 px-6">
                     Test Connection
                   </Button>
-                  <Button variant="outline" className="rounded-none border-rose-500/50 text-rose-500 hover:bg-rose-500 hover:text-white h-10 px-6 text-[10px] font-black uppercase tracking-widest">
+                  <Button variant="outline" className="rounded-none border-rose-500/50 text-rose-500 hover:bg-rose-500 hover:text-white h-10 px-6 text-[10px] font-bold uppercase tracking-widest">
                     Run Migrations
                   </Button>
                 </div>

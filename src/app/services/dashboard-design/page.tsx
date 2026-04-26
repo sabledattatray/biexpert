@@ -37,12 +37,12 @@ export default function DashboardDesignPage() {
 
         <div className="container mx-auto px-6 lg:px-12 relative">
           <div className="max-w-4xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 border border-blue-500/20 bg-blue-500/5 text-blue-400 text-[10px] font-black uppercase tracking-[0.3em] mb-8">
+            <div className="inline-flex items-center gap-2 px-3 py-1 border border-blue-500/20 bg-blue-500/5 text-blue-400 text-[10px] font-bold uppercase tracking-[0.3em] mb-8">
               <BarChart3 size={12} /> Executive Intelligence
             </div>
             
-            <h1 className="text-5xl sm:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.85] mb-8 uppercase text-foreground">
-              Power BI & <br />
+            <h1 className="text-[46px] sm:text-[46px] lg:text-[46px] font-bold tracking-tighter leading-[0.85] mb-8 uppercase text-foreground">
+              Power BI &  
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-violet-500">
                 Dashboards
               </span>
@@ -83,7 +83,7 @@ export default function DashboardDesignPage() {
         <div className="container mx-auto px-6 lg:px-12">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
-              <h2 className="text-4xl font-black tracking-tighter mb-8 text-foreground">Visual Excellence. <br /> Technical Precision.</h2>
+              <h2 className="text-4xl font-bold tracking-tighter mb-8 text-foreground">Visual Excellence.   Technical Precision.</h2>
               <p className="text-muted-foreground leading-relaxed mb-8">
                 Our dashboards are built on a solid foundation of STAR schema data modeling and optimized DAX calculations. This means your reports don't just look good — they are lightning fast and 100% accurate.
               </p>
@@ -104,7 +104,7 @@ export default function DashboardDesignPage() {
                />
                <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent flex items-end p-8">
                   <div>
-                    <p className="text-[10px] font-black uppercase tracking-widest text-blue-400 mb-1">Portfolio Spotlight</p>
+                    <p className="text-[10px] font-bold uppercase tracking-widest text-blue-400 mb-1">Portfolio Spotlight</p>
                     <p className="text-lg font-bold text-foreground">Financial Performance Suite</p>
                   </div>
                </div>
@@ -116,7 +116,7 @@ export default function DashboardDesignPage() {
       {/* CTA */}
       <section className="py-32 text-center">
         <div className="container mx-auto px-6 lg:px-12">
-          <h2 className="text-4xl font-black tracking-tighter mb-4 uppercase text-foreground">See a Live Demo</h2>
+          <h2 className="text-4xl font-bold tracking-tighter mb-4 uppercase text-foreground">See a Live Demo</h2>
           <p className="text-muted-foreground mb-10 max-w-xl mx-auto">Want to see our dashboards in action? We'll show you how we transform complex BFSI datasets into intuitive visual stories.</p>
           <Link href="/contact">
             <Button size="lg" className="h-14 px-12 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-none border-0">

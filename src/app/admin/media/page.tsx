@@ -21,10 +21,10 @@ export default function MediaLibrary() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6">
         <div>
-          <h1 className="text-3xl font-black tracking-tighter uppercase text-foreground">Media Library</h1>
+          <h1 className="text-3xl font-bold tracking-tighter uppercase text-foreground">Media Library</h1>
           <p className="text-muted-foreground text-sm mt-1">Centralized repository for all site assets and files.</p>
         </div>
-        <Button className="rounded-none bg-blue-600 hover:bg-blue-700 text-white text-[10px] font-black uppercase tracking-widest h-12 px-8 border-0 shadow-lg shadow-blue-500/20">
+        <Button className="rounded-none bg-blue-600 hover:bg-blue-700 text-white text-[10px] font-bold uppercase tracking-widest h-12 px-8 border-0 shadow-lg shadow-blue-500/20">
           <UploadCloud size={16} className="mr-2" /> Upload Assets
         </Button>
       </div>
@@ -51,20 +51,20 @@ export default function MediaLibrary() {
           />
         </div>
         <div className="flex items-center gap-3 w-full lg:w-auto overflow-x-auto no-scrollbar">
-          <Button variant="outline" className="h-10 px-4 rounded-none border-border bg-card text-[10px] font-black uppercase tracking-widest whitespace-nowrap">
+          <Button variant="outline" className="h-10 px-4 rounded-none border-border bg-card text-[10px] font-bold uppercase tracking-widest whitespace-nowrap">
             All Files
           </Button>
-          <Button variant="ghost" className="h-10 px-4 rounded-none text-muted-foreground text-[10px] font-black uppercase tracking-widest whitespace-nowrap">
+          <Button variant="ghost" className="h-10 px-4 rounded-none text-muted-foreground text-[10px] font-bold uppercase tracking-widest whitespace-nowrap">
             Images
           </Button>
-          <Button variant="ghost" className="h-10 px-4 rounded-none text-muted-foreground text-[10px] font-black uppercase tracking-widest whitespace-nowrap">
+          <Button variant="ghost" className="h-10 px-4 rounded-none text-muted-foreground text-[10px] font-bold uppercase tracking-widest whitespace-nowrap">
             Videos
           </Button>
-          <Button variant="ghost" className="h-10 px-4 rounded-none text-muted-foreground text-[10px] font-black uppercase tracking-widest whitespace-nowrap">
+          <Button variant="ghost" className="h-10 px-4 rounded-none text-muted-foreground text-[10px] font-bold uppercase tracking-widest whitespace-nowrap">
             Documents
           </Button>
           <div className="h-6 w-px bg-border hidden lg:block" />
-          <Button variant="outline" className="h-10 px-4 rounded-none border-border bg-card text-[10px] font-black uppercase tracking-widest">
+          <Button variant="outline" className="h-10 px-4 rounded-none border-border bg-card text-[10px] font-bold uppercase tracking-widest">
             <Filter size={14} className="mr-2 text-muted-foreground" /> Sort
           </Button>
         </div>
@@ -111,8 +111,8 @@ export default function MediaLibrary() {
 
       {/* Pagination */}
       <div className="flex items-center justify-between pt-4 border-t border-border">
-        <p className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">Showing 8 of 142 files</p>
-        <Button variant="outline" className="h-10 px-6 rounded-none border-border bg-card text-[10px] font-black uppercase tracking-widest text-blue-500">
+        <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Showing 8 of 142 files</p>
+        <Button variant="outline" className="h-10 px-6 rounded-none border-border bg-card text-[10px] font-bold uppercase tracking-widest text-blue-500">
           Load More Files
         </Button>
       </div>

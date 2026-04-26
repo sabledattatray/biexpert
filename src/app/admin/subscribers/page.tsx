@@ -14,7 +14,7 @@ export default async function SubscribersPage() {
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-black uppercase tracking-tighter text-foreground mb-1">
+          <h1 className="text-3xl font-bold uppercase tracking-tighter text-foreground mb-1">
             Newsletter Subscribers
           </h1>
           <p className="text-sm text-muted-foreground">Manage your audience and export email lists.</p>
@@ -29,18 +29,18 @@ export default async function SubscribersPage() {
       {/* Stats */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
         <div className="bg-card border border-border p-6">
-          <p className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground mb-2">Total Audience</p>
-          <p className="text-3xl font-black text-foreground">{subscribers.length}</p>
+          <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground mb-2">Total Audience</p>
+          <p className="text-3xl font-bold text-foreground">{subscribers.length}</p>
           <div className="mt-4 h-1 w-full bg-blue-500/10"><div className="h-full bg-blue-500 w-full" /></div>
         </div>
         <div className="bg-card border border-border p-6">
-          <p className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground mb-2">Growth (30d)</p>
-          <p className="text-3xl font-black text-emerald-400">+12%</p>
+          <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground mb-2">Growth (30d)</p>
+          <p className="text-3xl font-bold text-emerald-400">+12%</p>
           <div className="mt-4 h-1 w-full bg-emerald-500/10"><div className="h-full bg-emerald-500 w-1/3" /></div>
         </div>
         <div className="bg-card border border-border p-6">
-          <p className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground mb-2">Status</p>
-          <p className="text-3xl font-black text-blue-500 uppercase">Live</p>
+          <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground mb-2">Status</p>
+          <p className="text-3xl font-bold text-blue-500 uppercase">Live</p>
           <div className="mt-4 h-1 w-full bg-blue-500/10"><div className="h-full bg-blue-500 w-1/2 animate-pulse" /></div>
         </div>
       </div>
@@ -56,16 +56,16 @@ export default async function SubscribersPage() {
               className="w-full h-10 bg-muted/50 border border-border pl-10 pr-4 text-xs focus:outline-none focus:border-blue-500 rounded-none transition-colors"
             />
           </div>
-          <p className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">Showing {subscribers.length} entries</p>
+          <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Showing {subscribers.length} entries</p>
         </div>
 
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
               <tr className="bg-muted/30">
-                <th className="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-muted-foreground border-b border-border">Email Address</th>
-                <th className="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-muted-foreground border-b border-border">Joined Date</th>
-                <th className="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-muted-foreground border-b border-border text-right">Actions</th>
+                <th className="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-muted-foreground border-b border-border">Email Address</th>
+                <th className="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-muted-foreground border-b border-border">Joined Date</th>
+                <th className="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-muted-foreground border-b border-border text-right">Actions</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-border">

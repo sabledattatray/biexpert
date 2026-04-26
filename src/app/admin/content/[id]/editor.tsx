@@ -11,6 +11,8 @@ import {
   Lock,
   CheckCircle2,
   AlertCircle,
+  Image as ImageIcon,
+  Upload,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { updatePost, createPost } from "../actions";
@@ -23,6 +25,10 @@ interface Post {
   title: string;
   slug: string;
   content: string;
+  image?: string | null;
+  metaTitle?: string | null;
+  metaDesc?: string | null;
+  excerpt?: string | null;
   published: boolean;
 }
 
@@ -75,7 +81,7 @@ export default function PostEditor({ post, isNew = false }: { post: Post, isNew?
               <ArrowLeft size={18} />
             </button>
             <div>
-              <h1 className="text-xl font-black tracking-tighter uppercase text-foreground leading-none">
+              <h1 className="text-xl font-bold tracking-tighter uppercase text-foreground leading-none">
                 {isNew ? "New Intelligence" : "Edit Resource"}
               </h1>
               <p className="text-[9px] text-muted-foreground uppercase tracking-widest mt-1">
@@ -88,7 +94,7 @@ export default function PostEditor({ post, isNew = false }: { post: Post, isNew?
             <Button 
               onClick={handleSubmit}
               disabled={isSaving}
-              className="rounded-none bg-blue-600 hover:bg-blue-700 text-white text-[10px] font-black uppercase tracking-widest h-11 px-8 border-0 shadow-lg shadow-blue-500/20"
+              className="rounded-none bg-blue-600 hover:bg-blue-700 text-white text-[10px] font-bold uppercase tracking-widest h-11 px-8 border-0 shadow-lg shadow-blue-500/20"
             >
               {isSaving ? "Syncing..." : (
                 <><Save size={16} className="mr-2" /> {isNew ? "Publish Now" : "Save Changes"}</>
@@ -111,22 +117,35 @@ export default function PostEditor({ post, isNew = false }: { post: Post, isNew?
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           <div className="lg:col-span-8 space-y-8">
-            <div className="bg-card border border-border p-8">
-              <label className="text-[10px] font-black uppercase tracking-[0.3em] text-muted-foreground mb-4 block">Primary Heading</label>
-              <input 
-                type="text" 
-                value={formData.title}
-                onChange={(e) => setFormData({...formData, title: e.target.value})}
-                className="w-full bg-transparent text-4xl sm:text-5xl font-black tracking-tighter uppercase focus:outline-none placeholder:text-muted-foreground/30"
-                placeholder="Enter Impactful Title..."
-              />
-              <div className="mt-4 flex items-center gap-2 text-[10px] text-muted-foreground uppercase tracking-widest">
-                <span>Slug: /blog/</span>
+            <div className="bg-card border border-border overflow-hidden rounded-sm shadow-sm">
+              <div className="p-8 border-b border-border bg-muted/10">
+                <label className="text-[10px] font-bold uppercase tracking-[0.3em] text-blue-500 mb-4 block">Main Heading</label>
                 <input 
-                  type="text"
-                  value={formData.slug}
-                  onChange={(e) => setFormData({...formData, slug: e.target.value})}
-                  className="bg-transparent border-b border-border focus:border-blue-500 focus:outline-none px-1"
+                  type="text" 
+                  value={formData.title}
+                  onChange={(e) => setFormData({...formData, title: e.target.value})}
+                  className="w-full bg-transparent text-3xl font-bold tracking-tight focus:outline-none placeholder:text-muted-foreground/30 leading-tight"
+                  placeholder="Enter Resource Title..."
+                />
+                <div className="mt-4 flex items-center gap-2 text-[10px] text-muted-foreground uppercase tracking-widest bg-muted/30 w-fit px-3 py-1.5 rounded-full border border-border">
+                  <span className="opacity-50">URL Handle:</span>
+                  <span className="text-foreground/70">/blog/</span>
+                  <input 
+                    type="text"
+                    value={formData.slug}
+                    onChange={(e) => setFormData({...formData, slug: e.target.value})}
+                    className="bg-transparent border-b border-muted-foreground/20 focus:border-blue-500 focus:outline-none px-1 font-bold lowercase"
+                  />
+                </div>
+              </div>
+
+              <div className="p-8">
+                <label className="text-[10px] font-bold uppercase tracking-[0.3em] text-blue-500 mb-4 block">Executive Summary</label>
+                <textarea 
+                  value={formData.excerpt || ""}
+                  onChange={(e) => setFormData({...formData, excerpt: e.target.value})}
+                  className="w-full bg-muted/20 border border-border p-4 text-base font-medium leading-relaxed focus:outline-none focus:border-blue-500/50 placeholder:text-muted-foreground/30 min-h-[120px] resize-none transition-all"
+                  placeholder="Summarise this resource for the intelligence grid..."
                 />
               </div>
             </div>
@@ -140,30 +159,145 @@ export default function PostEditor({ post, isNew = false }: { post: Post, isNew?
           </div>
 
           <div className="lg:col-span-4 space-y-8">
-            <div className="bg-card border border-border p-8 space-y-8">
-              <div className="flex items-center gap-2">
-                <Settings size={16} className="text-blue-500" />
-                <h3 className="text-sm font-black uppercase tracking-widest">Visibility Hub</h3>
+            {/* Visibility & Status */}
+            <div className="bg-card border border-border overflow-hidden rounded-sm shadow-sm">
+              <div className="p-6 border-b border-border bg-muted/20 flex items-center gap-3">
+                <div className="h-8 w-8 rounded-full bg-blue-500/10 flex items-center justify-center">
+                  <Settings size={14} className="text-blue-500" />
+                </div>
+                <h3 className="text-xs font-bold uppercase tracking-widest">Publication Hub</h3>
               </div>
 
-              <div className="space-y-4">
-                <div className="flex items-center justify-between p-4 bg-muted/30 border border-border">
+              <div className="p-6 space-y-4">
+                <div className="flex items-center justify-between p-4 bg-muted/30 border border-border rounded-sm">
                   <div className="flex items-center gap-3">
                     <div className={`h-10 w-10 flex items-center justify-center ${formData.published ? 'bg-emerald-500/10 text-emerald-500' : 'bg-amber-500/10 text-amber-500'}`}>
                       {formData.published ? <Globe size={20} /> : <Lock size={20} />}
                     </div>
                     <div>
-                      <p className="text-[10px] font-black text-foreground uppercase tracking-widest">Global Status</p>
-                      <p className="text-[9px] text-muted-foreground uppercase tracking-widest">{formData.published ? 'Live & Indexed' : 'Private Draft'}</p>
+                      <p className="text-[10px] font-bold text-foreground uppercase tracking-widest">Visibility</p>
+                      <p className="text-[9px] text-muted-foreground uppercase tracking-widest">{formData.published ? 'Live & Public' : 'Private Draft'}</p>
                     </div>
                   </div>
                   <button 
                     type="button"
                     onClick={() => setFormData({...formData, published: !formData.published})}
-                    className={`h-7 w-14 rounded-full relative transition-all shadow-inner ${formData.published ? 'bg-emerald-500' : 'bg-muted-foreground/30'}`}
+                    className={`h-6 w-12 rounded-full relative transition-all ${formData.published ? 'bg-emerald-500' : 'bg-muted-foreground/30'}`}
                   >
-                    <div className={`absolute top-1 h-5 w-5 bg-white rounded-full transition-all shadow-md ${formData.published ? 'right-1' : 'left-1'}`} />
+                    <div className={`absolute top-0.5 h-5 w-5 bg-white rounded-full transition-all shadow-sm ${formData.published ? 'right-0.5' : 'left-0.5'}`} />
                   </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Featured Image */}
+            <div className="bg-card border border-border overflow-hidden rounded-sm shadow-sm">
+              <div className="p-6 border-b border-border bg-muted/20 flex items-center gap-3">
+                <div className="h-8 w-8 rounded-full bg-blue-500/10 flex items-center justify-center">
+                  <ImageIcon size={14} className="text-blue-500" />
+                </div>
+                <h3 className="text-xs font-bold uppercase tracking-widest">Featured Media</h3>
+              </div>
+
+              <div className="space-y-4">
+                {formData.image && (
+                  <div className="relative aspect-video border border-border overflow-hidden bg-muted">
+                    <img 
+                      src={formData.image} 
+                      alt="Featured Preview" 
+                      className="w-full h-full object-cover"
+                    />
+                    <button 
+                      onClick={() => setFormData({...formData, image: null})}
+                      className="absolute top-2 right-2 h-6 w-6 bg-rose-500 text-white flex items-center justify-center text-[10px] font-bold"
+                    >
+                      X
+                    </button>
+                  </div>
+                )}
+                
+                <div className="space-y-2">
+                  <label className="text-[9px] font-bold uppercase tracking-widest text-muted-foreground">Featured Image</label>
+                  
+                  <div className="flex gap-2">
+                    <input 
+                      type="text" 
+                      value={formData.image || ""}
+                      onChange={(e) => setFormData({...formData, image: e.target.value})}
+                      placeholder="Paste Image URL..."
+                      className="flex-1 bg-background border border-border p-3 text-[10px] focus:border-blue-500 focus:outline-none"
+                    />
+                    <div className="relative group">
+                      <input 
+                        type="file" 
+                        id="featured-image-upload"
+                        className="hidden" 
+                        accept="image/*"
+                        onChange={async (e) => {
+                          const file = e.target.files?.[0];
+                          if (!file) return;
+                          
+                          const formDataUpload = new FormData();
+                          formDataUpload.append("file", file);
+                          
+                          try {
+                            const res = await fetch("/api/upload", {
+                              method: "POST",
+                              body: formDataUpload,
+                            });
+                            const data = await res.json();
+                            if (data.url) {
+                              setFormData(prev => ({...prev, image: data.url}));
+                            }
+                          } catch (err) {
+                            console.error("Upload failed", err);
+                          }
+                        }}
+                      />
+                      <label 
+                        htmlFor="featured-image-upload"
+                        className="h-full px-4 border border-border bg-muted/50 hover:bg-muted transition-colors flex items-center justify-center cursor-pointer group-hover:border-blue-500"
+                      >
+                        <Upload size={14} className="text-muted-foreground group-hover:text-blue-500" />
+                      </label>
+                    </div>
+                  </div>
+                  
+                  <p className="text-[9px] text-muted-foreground uppercase leading-tight italic">
+                    Paste a URL or upload a file directly from your system.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* SEO Meta */}
+            <div className="bg-card border border-border overflow-hidden rounded-sm shadow-sm">
+              <div className="p-6 border-b border-border bg-muted/20 flex items-center gap-3">
+                <div className="h-8 w-8 rounded-full bg-blue-500/10 flex items-center justify-center">
+                  <Globe size={14} className="text-blue-500" />
+                </div>
+                <h3 className="text-xs font-bold uppercase tracking-widest">SEO Engine</h3>
+              </div>
+
+              <div className="space-y-4">
+                <div className="space-y-2">
+                  <label className="text-[9px] font-bold uppercase tracking-widest text-muted-foreground">Meta Title</label>
+                  <input 
+                    type="text" 
+                    value={formData.metaTitle || ""}
+                    onChange={(e) => setFormData({...formData, metaTitle: e.target.value})}
+                    placeholder="Search engine title..."
+                    className="w-full bg-background border border-border p-3 text-[10px] focus:border-blue-500 focus:outline-none"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-[9px] font-bold uppercase tracking-widest text-muted-foreground">Meta Description</label>
+                  <textarea 
+                    value={formData.metaDesc || ""}
+                    onChange={(e) => setFormData({...formData, metaDesc: e.target.value})}
+                    placeholder="Brief description for search results..."
+                    className="w-full bg-background border border-border p-3 text-[10px] focus:border-blue-500 focus:outline-none min-h-[80px] resize-none"
+                  />
                 </div>
               </div>
             </div>

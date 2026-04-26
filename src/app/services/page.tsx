@@ -72,34 +72,25 @@ export default function ServicesPage() {
     <div className="min-h-screen bg-background text-foreground">
 
       {/* Hero */}
-      <section className="relative pt-24 pb-20 overflow-hidden">
+      
+      {/* Hero */}
+      <section className="relative min-h-[250px] py-10 flex items-center justify-center overflow-hidden border-b border-border text-center">
         <div className="absolute inset-0 -z-10">
-          <Image src="/services-hero.png" alt="Services" fill className="object-cover opacity-20" />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/80 to-background" />
+          <Image src="/services-hero.png" alt="Services" fill className="object-cover opacity-[0.07]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/95 to-background" />
         </div>
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-600/15 blur-[120px] rounded-full -z-10" />
-        <div className="container mx-auto px-6 lg:px-12 text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 border border-blue-500/20 bg-blue-500/5 text-blue-400 text-[10px] font-black uppercase tracking-[0.3em] mb-8">
-            <BarChart3 className="w-3 h-3" /> What We Build
-          </div>
-          <h1 className="text-3xl xs:text-4xl sm:text-7xl font-black tracking-tighter leading-[0.95] mb-6">
-            Data Services That<br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-violet-500">Drive Real ROI</span>
-          </h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
-            From raw data to boardroom-ready insights — we design, build, and automate every layer of your business intelligence stack.
-          </p>
-          <div className="flex items-center justify-center gap-4">
-            <Link href="/contact">
-              <Button className="h-12 px-8 bg-blue-600 hover:bg-blue-700 text-white border-0 font-bold rounded-none">
-                Book Free Audit <ArrowRight className="w-4 h-4 ml-2" />
-              </Button>
-            </Link>
-            <Link href="/case-studies">
-              <Button variant="outline" className="h-12 px-8 border-border bg-muted/50 hover:bg-muted text-foreground font-bold rounded-none">
-                View Case Studies
-              </Button>
-            </Link>
+        <div className="container mx-auto px-6 lg:px-12 relative">
+          <div className="max-w-4xl mx-auto">
+            <div className="inline-flex items-center gap-2 px-3 py-1 border border-blue-500/20 bg-blue-500/5 text-blue-400 text-[10px] font-bold uppercase tracking-[0.3em] mb-4">
+              <Zap size={10} /> What We Build
+            </div>
+            <h1 className="text-[40px] sm:text-[46px] lg:text-[46px] font-bold tracking-tighter leading-[1] mb-4 uppercase text-foreground">
+              Data Services That 
+            Drive Real ROI
+            </h1>
+            <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+              From raw data to boardroom-ready insights — we design, build, and automate every layer of your business intelligence stack.
+            </p>
           </div>
         </div>
       </section>
@@ -113,7 +104,7 @@ export default function ServicesPage() {
                 <div className={`w-12 h-12 flex items-center justify-center bg-gradient-to-br ${s.accent} bg-opacity-10 mb-6 text-foreground`}>
                   {s.icon}
                 </div>
-                <h2 className="text-xl font-black mb-3 group-hover:text-blue-500 transition-colors">{s.title}</h2>
+                <h2 className="text-xl font-bold mb-3 group-hover:text-blue-500 transition-colors">{s.title}</h2>
                 <p className="text-muted-foreground text-sm leading-relaxed mb-5">{s.desc}</p>
                 <ul className="space-y-2 mb-6">
                   {s.bullets.map((b) => (
@@ -135,14 +126,14 @@ export default function ServicesPage() {
       <section className="py-20 border-t border-border">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="text-center mb-16">
-            <p className="text-[10px] font-black uppercase tracking-[0.3em] text-blue-400 mb-4">How We Work</p>
-            <h2 className="text-4xl font-black tracking-tighter text-foreground">Our Delivery Process</h2>
+            <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-blue-400 mb-4">How We Work</p>
+            <h2 className="text-4xl font-bold tracking-tighter text-foreground">Our Delivery Process</h2>
           </div>
           <div className="grid md:grid-cols-5 gap-px bg-border">
             {process.map((p) => (
               <div key={p.step} className="bg-background p-6 hover:bg-muted transition-colors">
-                <div className="text-4xl font-black text-foreground/10 mb-4">{p.step}</div>
-                <h3 className="font-black text-foreground mb-2">{p.title}</h3>
+                <div className="text-4xl font-bold text-foreground/10 mb-4">{p.step}</div>
+                <h3 className="font-bold text-foreground mb-2">{p.title}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">{p.desc}</p>
               </div>
             ))}
@@ -161,7 +152,7 @@ export default function ServicesPage() {
               { val: "99%", label: "Client Satisfaction" },
             ].map((s) => (
               <div key={s.label} className="bg-background p-8 xs:p-10 text-center hover:bg-muted transition-colors">
-                <div className="text-4xl xs:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-br from-blue-400 to-violet-500 mb-2">{s.val}</div>
+                <div className="text-4xl xs:text-[46px] font-bold text-transparent bg-clip-text bg-gradient-to-br from-blue-400 to-violet-500 mb-2">{s.val}</div>
                 <div className="text-xs xs:text-sm text-muted-foreground font-medium">{s.label}</div>
               </div>
             ))}
@@ -172,7 +163,7 @@ export default function ServicesPage() {
       {/* CTA */}
       <section className="py-24 border-t border-border">
         <div className="container mx-auto px-6 lg:px-12 text-center">
-          <h2 className="text-4xl font-black tracking-tighter mb-4 text-foreground">Ready to Transform Your Data?</h2>
+          <h2 className="text-4xl font-bold tracking-tighter mb-4 text-foreground">Ready to Transform Your Data?</h2>
           <p className="text-muted-foreground mb-8 max-w-xl mx-auto">Book a free 45-minute BI audit and we'll identify your biggest reporting wins.</p>
           <Link href="/contact">
             <Button className="h-14 px-12 bg-blue-600 hover:bg-blue-700 text-white border-0 font-bold text-base rounded-none">

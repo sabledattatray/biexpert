@@ -53,11 +53,11 @@ export default function ServiceClientPage({ slug }: { slug: string }) {
             transition={{ duration: 0.8 }}
             className="max-w-4xl mx-auto flex flex-col items-center"
           >
-            <Link href="/services" className="inline-flex items-center text-xs font-black uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors mb-8">
+            <Link href="/services" className="inline-flex items-center text-xs font-bold uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors mb-8">
               <ArrowLeft size={14} className="mr-2" /> Back to All Services
             </Link>
             
-            <h1 className="text-4xl sm:text-5xl md:text-8xl font-black tracking-tighter uppercase leading-[1] md:leading-[0.9] text-foreground mb-6 break-words">
+            <h1 className="text-4xl sm:text-[46px] md:text-[46px] font-bold tracking-tighter uppercase leading-[1] md:leading-[0.9] text-foreground mb-6 break-words">
               {data.title}
             </h1>
             <p className="text-lg md:text-xl text-blue-500 font-bold uppercase tracking-widest max-w-2xl mx-auto break-words">
@@ -76,7 +76,7 @@ export default function ServiceClientPage({ slug }: { slug: string }) {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-sm font-black uppercase tracking-widest text-muted-foreground mb-6 flex items-center justify-center gap-2">
+            <h2 className="text-sm font-bold uppercase tracking-widest text-muted-foreground mb-6 flex items-center justify-center gap-2">
               <Cpu size={16} /> Strategic Overview
             </h2>
             <p className="text-2xl md:text-3xl font-medium text-foreground leading-relaxed mb-12">
@@ -98,7 +98,7 @@ export default function ServiceClientPage({ slug }: { slug: string }) {
       <section className="py-24 bg-card border-b border-border">
         <div className="container px-4 sm:px-6 lg:px-8 mx-auto">
           <div className="text-center max-w-2xl mx-auto mb-12 md:mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tighter uppercase mb-4 text-foreground break-words">
+            <h2 className="text-3xl sm:text-4xl md:text-[46px] font-bold tracking-tighter uppercase mb-4 text-foreground break-words">
               Core <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-violet-500">Deliverables</span>
             </h2>
             <p className="text-muted-foreground">What you can expect from our specialized consulting engagement.</p>
@@ -130,7 +130,7 @@ export default function ServiceClientPage({ slug }: { slug: string }) {
       <section className="py-32 relative overflow-hidden bg-blue-600/5">
         <div className="container px-4 sm:px-6 lg:px-8 relative z-10 text-center max-w-3xl mx-auto">
           <CheckCircle2 size={48} className="text-blue-500 mx-auto mb-8 opacity-50" />
-          <h2 className="text-3xl sm:text-4xl md:text-6xl font-black tracking-tighter uppercase mb-6 text-foreground break-words">
+          <h2 className="text-3xl sm:text-4xl md:text-[46px] font-bold tracking-tighter uppercase mb-6 text-foreground break-words">
             Initiate Project
           </h2>
           <p className="text-xl text-muted-foreground mb-10">
@@ -138,7 +138,7 @@ export default function ServiceClientPage({ slug }: { slug: string }) {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link href="/contact">
-              <Button className="h-14 px-8 bg-blue-600 hover:bg-blue-700 text-white font-black uppercase tracking-widest text-[10px] rounded-none shadow-2xl shadow-blue-500/20">
+              <Button className="h-14 px-8 bg-blue-600 hover:bg-blue-700 text-white font-bold uppercase tracking-widest text-[10px] rounded-none shadow-2xl shadow-blue-500/20">
                 Book a Technical Audit <ArrowRight size={16} className="ml-2" />
               </Button>
             </Link>

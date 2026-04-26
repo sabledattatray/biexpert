@@ -42,27 +42,31 @@ export default function CaseStudiesPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Hero */}
-      <section className="relative pt-24 pb-20 overflow-hidden">
+      
+      {/* Hero */}
+      <section className="relative min-h-[250px] py-10 flex items-center justify-center overflow-hidden border-b border-border text-center">
         <div className="absolute inset-0 -z-10">
           <Image 
             src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop" 
             alt="Case Studies" 
             fill 
-            className="object-cover opacity-15" 
+            className="object-cover opacity-[0.07]" 
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/85 to-background" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/95 to-background" />
         </div>
-        <div className="container mx-auto px-6 lg:px-12 text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 border border-blue-500/20 bg-blue-500/5 text-blue-400 text-[10px] font-black uppercase tracking-[0.3em] mb-8">
-            Success Stories
+        <div className="container mx-auto px-6 lg:px-12 relative">
+          <div className="max-w-4xl mx-auto">
+            <div className="inline-flex items-center gap-2 px-3 py-1 border border-blue-500/20 bg-blue-500/5 text-blue-400 text-[10px] font-bold uppercase tracking-[0.3em] mb-4">
+              <Zap size={10} /> Success Stories
+            </div>
+            <h1 className="text-[40px] sm:text-[46px] lg:text-[46px] font-bold tracking-tighter leading-[1] mb-4 uppercase text-foreground">
+              Data-Driven  
+            Impact Stories
+            </h1>
+            <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+              Real problems solved with real data. Explore how our custom BI architectures drive measurable ROI across industries.
+            </p>
           </div>
-          <h1 className="text-5xl sm:text-7xl font-black tracking-tighter leading-[0.95] mb-6 text-foreground">
-            Data-Driven <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-violet-500">Impact Stories</span>
-          </h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
-            Real problems solved with real data. Explore how our custom BI architectures drive measurable ROI across industries.
-          </p>
         </div>
       </section>
 
@@ -87,7 +91,7 @@ export default function CaseStudiesPage() {
                   <div className="text-emerald-500 text-sm font-bold mb-2 flex items-center gap-2">
                     <TrendingUp size={14} /> {cs.metric}
                   </div>
-                  <h3 className="text-xl font-black mb-3 group-hover:text-blue-400 transition-colors text-foreground">{cs.title}</h3>
+                  <h3 className="text-xl font-bold mb-3 group-hover:text-blue-400 transition-colors text-foreground">{cs.title}</h3>
                   <p className="text-muted-foreground text-sm leading-relaxed mb-6">{cs.desc}</p>
                   <ul className="space-y-2 mb-8">
                     {cs.impact.map((item) => (
@@ -109,7 +113,7 @@ export default function CaseStudiesPage() {
       {/* CTA */}
       <section className="py-24 border-t border-border bg-secondary/30 text-center">
         <div className="container mx-auto px-6 lg:px-12">
-          <h2 className="text-4xl font-black tracking-tighter mb-4 text-foreground">Start Your Own Success Story</h2>
+          <h2 className="text-4xl font-bold tracking-tighter mb-4 text-foreground">Start Your Own Success Story</h2>
           <p className="text-muted-foreground mb-8 max-w-xl mx-auto">We've helped over 150 companies turn their data into market dominance. You're next.</p>
           <Link href="/contact">
             <Button className="h-14 px-12 bg-blue-600 hover:bg-blue-700 text-white border-0 font-bold text-base rounded-none">

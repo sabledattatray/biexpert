@@ -82,15 +82,15 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-violet-600" />
           <div className="flex flex-col items-center mb-8">
             <div className="h-12 w-12 rounded-none bg-gradient-to-br from-blue-500 to-violet-600 flex items-center justify-center shadow-lg shadow-blue-500/20 mb-4">
-              <span className="text-white font-black text-lg">BI</span>
+              <span className="text-white font-bold text-lg">BI</span>
             </div>
-            <h1 className="text-2xl font-black uppercase tracking-tighter text-foreground">Control Center</h1>
+            <h1 className="text-2xl font-bold uppercase tracking-tighter text-foreground">Control Center</h1>
             <p className="text-muted-foreground text-xs font-bold uppercase tracking-widest mt-1">Restricted Access</p>
           </div>
           
           <form onSubmit={handleLogin} className="space-y-6">
             <div>
-              <label className="block text-[10px] font-black uppercase tracking-widest text-muted-foreground mb-2">Username</label>
+              <label className="block text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-2">Username</label>
               <input 
                 type="text" 
                 value={username}
@@ -100,7 +100,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
               />
             </div>
             <div>
-              <label className="block text-[10px] font-black uppercase tracking-widest text-muted-foreground mb-2">Password</label>
+              <label className="block text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-2">Password</label>
               <input 
                 type="password" 
                 value={password}
@@ -110,7 +110,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
               />
             </div>
             {error && <p className="text-rose-500 text-xs font-bold">{error}</p>}
-            <Button type="submit" className="w-full h-12 bg-blue-600 hover:bg-blue-700 text-white font-black uppercase tracking-widest text-[10px] rounded-none border-0 shadow-lg shadow-blue-500/20">
+            <Button type="submit" className="w-full h-12 bg-blue-600 hover:bg-blue-700 text-white font-bold uppercase tracking-widest text-[10px] rounded-none border-0 shadow-lg shadow-blue-500/20">
               Authenticate
             </Button>
           </form>
@@ -148,7 +148,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                 <span className="text-white font-bold text-xs">BI</span>
               </div>
               {sidebarOpen && (
-                <span className="font-black text-sm tracking-tighter uppercase text-foreground">
+                <span className="font-bold text-sm tracking-tighter uppercase text-foreground">
                   Control <span className="text-blue-500">Center</span>
                 </span>
               )}
@@ -192,7 +192,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
               className="w-full justify-start gap-3 text-muted-foreground hover:text-rose-500 hover:bg-rose-500/5 px-3 rounded-none"
             >
               <LogOut size={18} />
-              {sidebarOpen && <span className="text-[10px] font-black uppercase tracking-widest">Sign Out</span>}
+              {sidebarOpen && <span className="text-[10px] font-bold uppercase tracking-widest">Sign Out</span>}
             </Button>
           </div>
         </div>
@@ -220,7 +220,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           </div>
 
           <div className="flex items-center gap-4">
-            <div className="flex items-center gap-1 px-2 py-1 bg-emerald-500/10 text-emerald-500 border border-emerald-500/20 text-[9px] font-black uppercase tracking-widest">
+            <div className="flex items-center gap-1 px-2 py-1 bg-emerald-500/10 text-emerald-500 border border-emerald-500/20 text-[9px] font-bold uppercase tracking-widest">
               <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
               System Live
             </div>

@@ -39,53 +39,31 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen bg-background text-foreground selection:bg-blue-500/30">
       {/* 1. LAYERED HERO SECTION */}
-      <section className="relative min-h-[90vh] flex items-center pt-20 overflow-hidden border-b border-border">
-        <div className="container mx-auto px-6 lg:px-12 relative">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <motion.div 
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 border border-border bg-muted/50 text-[10px] font-black uppercase tracking-[0.4em] mb-8">
-                <span className="w-2 h-2 bg-blue-500 rounded-full animate-pulse" /> Established 2014
-              </div>
-              <h1 className="text-4xl xs:text-5xl sm:text-7xl lg:text-[100px] font-black tracking-tighter leading-[0.85] mb-10">
-                The Art of <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-violet-500">
-                  Data Warfare.
-                </span>
-              </h1>
-              <p className="text-xl text-muted-foreground font-medium leading-relaxed max-w-2xl mb-12">
-                We empower industry leaders to weaponize their data. From MIS automation to enterprise-grade Power BI and Tableau architectures, we build the intelligence layers that drive global finance.
-              </p>
-              <div className="flex flex-wrap gap-6">
-                <Link href="/contact">
-                  <Button className="h-16 px-12 bg-white text-black hover:bg-gray-200 font-black text-lg rounded-none transition-transform hover:-translate-y-1">
-                    Start Your Audit
-                  </Button>
-                </Link>
-              </div>
-            </motion.div>
-
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1, delay: 0.2 }}
-              className="relative aspect-[4/5] lg:aspect-square bg-card border border-border overflow-hidden group"
-            >
-              <Image 
+      
+      {/* Hero */}
+      <section className="relative min-h-[250px] py-10 flex items-center justify-center overflow-hidden border-b border-border text-center">
+        <div className="absolute inset-0 -z-10">
+          <Image 
                 src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop" 
                 alt="Datta Sable Professional" 
                 fill 
                 className="object-cover grayscale hover:grayscale-0 transition-all duration-700 group-hover:scale-105" 
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
-              <div className="absolute bottom-8 left-8 border-l-2 border-blue-500 pl-6">
-                <p className="text-[10px] font-black uppercase tracking-[0.4em] text-blue-400 mb-2">Strategy & Execution</p>
-                <p className="text-2xl font-black text-foreground">"Data is the new oil, <br /> but intelligence is the engine."</p>
-              </div>
-            </motion.div>
+          <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/95 to-background" />
+        </div>
+        <div className="container mx-auto px-6 lg:px-12 relative">
+          <div className="max-w-4xl mx-auto">
+            <div className="inline-flex items-center gap-2 px-3 py-1 border border-blue-500/20 bg-blue-500/5 text-blue-400 text-[10px] font-bold uppercase tracking-[0.3em] mb-4">
+              <Zap size={10} /> Established 2014
+            </div>
+            <h1 className="text-[40px] sm:text-[46px] lg:text-[46px] font-bold tracking-tighter leading-[1] mb-4 uppercase text-foreground">
+              The Art of  
+                
+                  Data Warfare.
+            </h1>
+            <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+              We empower industry leaders to weaponize their data. From MIS automation to enterprise-grade Power BI and Tableau architectures, we build the intelligence layers that drive global finance.
+            </p>
           </div>
         </div>
       </section>
@@ -103,12 +81,12 @@ export default function AboutPage() {
                 transition={{ delay: i * 0.1 }}
                 className="relative group"
               >
-                <div className="text-7xl font-black text-foreground/5 absolute -top-8 -left-4 group-hover:text-blue-500/10 transition-colors select-none">
+                <div className="text-[46px] font-bold text-foreground/5 absolute -top-8 -left-4 group-hover:text-blue-500/10 transition-colors select-none">
                   0{i + 1}
                 </div>
                 <div className="relative">
-                  <div className="text-5xl font-black mb-2 tracking-tighter text-foreground">{stat.val}</div>
-                  <div className="text-[10px] font-black uppercase tracking-[0.3em] text-blue-500">{stat.label}</div>
+                  <div className="text-[46px] font-bold mb-2 tracking-tighter text-foreground">{stat.val}</div>
+                  <div className="text-[10px] font-bold uppercase tracking-[0.3em] text-blue-500">{stat.label}</div>
                 </div>
               </motion.div>
             ))}
@@ -123,10 +101,10 @@ export default function AboutPage() {
         <div className="container mx-auto px-6 lg:px-12">
           <div className="flex flex-col lg:flex-row justify-between items-end mb-20 gap-8">
             <div className="max-w-2xl">
-              <h2 className="text-4xl sm:text-6xl font-black tracking-tighter mb-6 uppercase text-foreground">Built on Three <br /> Unshakable Pillars.</h2>
+              <h2 className="text-4xl sm:text-[46px] font-bold tracking-tighter mb-6 uppercase text-foreground">Built on Three   Unshakable Pillars.</h2>
               <p className="text-muted-foreground text-lg">We don't follow trends. We set the standards for how financial data should be governed, processed, and visualized.</p>
             </div>
-            <Link href="/services" className="group flex items-center gap-3 text-sm font-black uppercase tracking-widest text-blue-400 hover:text-white transition-colors">
+            <Link href="/services" className="group flex items-center gap-3 text-sm font-bold uppercase tracking-widest text-blue-400 hover:text-white transition-colors">
               Explore Our Methods <ArrowRight className="group-hover:translate-x-2 transition-transform" />
             </Link>
           </div>
@@ -142,7 +120,7 @@ export default function AboutPage() {
                 <div className="w-14 h-14 bg-muted border border-border flex items-center justify-center text-foreground mb-8 group-hover:bg-foreground group-hover:text-background transition-all">
                   {p.icon}
                 </div>
-                <h2 className="text-3xl font-black mb-6 uppercase tracking-tighter text-foreground">Strategic BFSI Expertise</h2>
+                <h2 className="text-3xl font-bold mb-6 uppercase tracking-tighter text-foreground">Strategic BFSI Expertise</h2>
                 <p className="text-muted-foreground leading-relaxed text-sm">{p.desc}</p>
               </motion.div>
             ))}
@@ -155,10 +133,10 @@ export default function AboutPage() {
         <div className="container mx-auto px-6 lg:px-12">
           <div className="grid lg:grid-cols-[1fr_500px] gap-20 items-center">
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 border border-violet-500/20 bg-violet-500/5 text-violet-400 text-[10px] font-black uppercase tracking-[0.3em] mb-8">
+              <div className="inline-flex items-center gap-2 px-3 py-1 border border-violet-500/20 bg-violet-500/5 text-violet-400 text-[10px] font-bold uppercase tracking-[0.3em] mb-8">
                 Founder & Lead Architect
               </div>
-              <h2 className="text-4xl xs:text-5xl font-black tracking-tighter mb-8 text-foreground">Meet Datta Sable.</h2>
+              <h2 className="text-4xl xs:text-[46px] font-bold tracking-tighter mb-8 text-foreground">Meet Datta Sable.</h2>
               <div className="space-y-6 text-muted-foreground text-lg leading-relaxed">
                 <p>
                   With over 10 years of experience in the BFSI sector, I've spent my career bridging the gap between complex raw data and strategic board-room decisions.
@@ -179,13 +157,13 @@ export default function AboutPage() {
 
               <div className="mt-12 flex gap-8">
                 <div>
-                  <p className="text-2xl font-black text-foreground">Pune, IN</p>
-                  <p className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">Base of Operations</p>
+                  <p className="text-2xl font-bold text-foreground">Pune, IN</p>
+                  <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Base of Operations</p>
                 </div>
                 <div className="w-px h-12 bg-border" />
                 <div>
-                  <p className="text-2xl font-black text-foreground">Global</p>
-                  <p className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">Service Coverage</p>
+                  <p className="text-2xl font-bold text-foreground">Global</p>
+                  <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Service Coverage</p>
                 </div>
               </div>
             </div>
@@ -198,8 +176,8 @@ export default function AboutPage() {
               />
                <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
                <div className="absolute bottom-8 left-8">
-                  <p className="text-xs font-black uppercase tracking-[0.3em] text-blue-500 mb-2">Expertise Verified</p>
-                  <h4 className="text-3xl font-black text-foreground">Datta Sable</h4>
+                  <p className="text-xs font-bold uppercase tracking-[0.3em] text-blue-500 mb-2">Expertise Verified</p>
+                  <h4 className="text-3xl font-bold text-foreground">Datta Sable</h4>
                </div>
             </div>
           </div>
@@ -209,13 +187,13 @@ export default function AboutPage() {
       {/* 5. CTA FINAL */}
       <section className="py-40 text-center relative">
         <div className="container mx-auto px-6 lg:px-12">
-          <h2 className="text-6xl sm:text-8xl font-black tracking-tighter mb-10 leading-none text-foreground">
-            READY TO RULE <br />
+          <h2 className="text-[46px] sm:text-[46px] font-bold tracking-tighter mb-10 leading-none text-foreground">
+            READY TO RULE  
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-violet-500 underline underline-offset-[10px] decoration-border">YOUR MARKET?</span>
           </h2>
           <p className="text-muted-foreground text-lg sm:text-xl mb-16 max-w-2xl mx-auto">Join the ranks of elite financial firms who trust us with their intelligence layer.</p>
           <Link href="/contact">
-            <Button size="lg" className="h-20 px-20 bg-primary text-primary-foreground font-black text-xl rounded-none transition-all hover:tracking-widest border-0">
+            <Button size="lg" className="h-20 px-20 bg-primary text-primary-foreground font-bold text-xl rounded-none transition-all hover:tracking-widest border-0">
               LET'S TALK DATA
             </Button>
           </Link>

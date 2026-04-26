@@ -142,13 +142,13 @@ export default async function SeedPage() {
     return (
       <div className="flex flex-col items-center justify-center min-h-screen bg-background p-10">
         <div className="max-w-2xl w-full bg-rose-500/10 border border-rose-500/20 p-8">
-           <h1 className="text-2xl font-black uppercase tracking-tighter text-rose-500 mb-4">Activation Error</h1>
+           <h1 className="text-2xl font-bold uppercase tracking-tighter text-rose-500 mb-4">Activation Error</h1>
            <pre className="text-xs text-muted-foreground whitespace-pre-wrap bg-background p-4 border border-border">
              {error.message}
            </pre>
            <button 
              onClick={() => window.location.reload()}
-             className="mt-6 px-6 py-2 bg-rose-500 text-white text-[10px] font-black uppercase tracking-widest"
+             className="mt-6 px-6 py-2 bg-rose-500 text-white text-[10px] font-bold uppercase tracking-widest"
            >
              Retry Activation
            </button>

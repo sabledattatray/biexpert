@@ -60,20 +60,20 @@ export default function CaseStudyClientPage({ slug }: { slug: string }) {
             transition={{ duration: 0.8 }}
             className="max-w-4xl"
           >
-            <Link href="/case-studies" className="inline-flex items-center text-xs font-black uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors mb-8">
+            <Link href="/case-studies" className="inline-flex items-center text-xs font-bold uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors mb-8">
               <ArrowLeft size={14} className="mr-2" /> Back to Case Studies
             </Link>
             
             <div className="flex flex-wrap items-center gap-4 mb-6">
-              <span className="px-3 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-500 text-[10px] font-black uppercase tracking-widest">
+              <span className="px-3 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-500 text-[10px] font-bold uppercase tracking-widest">
                 {data.industry}
               </span>
-              <span className="px-3 py-1 bg-muted border border-border text-muted-foreground text-[10px] font-black uppercase tracking-widest">
+              <span className="px-3 py-1 bg-muted border border-border text-muted-foreground text-[10px] font-bold uppercase tracking-widest">
                 {data.date}
               </span>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl md:text-7xl font-black tracking-tighter uppercase leading-[1] md:leading-[0.9] text-foreground mb-6 break-words">
+            <h1 className="text-4xl sm:text-[46px] md:text-[46px] font-bold tracking-tighter uppercase leading-[1] md:leading-[0.9] text-foreground mb-6 break-words">
               {data.title}
             </h1>
           </motion.div>
@@ -92,7 +92,7 @@ export default function CaseStudyClientPage({ slug }: { slug: string }) {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-sm font-black uppercase tracking-widest text-rose-500 mb-6 flex items-center gap-2">
+              <h2 className="text-sm font-bold uppercase tracking-widest text-rose-500 mb-6 flex items-center gap-2">
                 <Database size={16} /> The Challenge
               </h2>
               <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
@@ -107,7 +107,7 @@ export default function CaseStudyClientPage({ slug }: { slug: string }) {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <h2 className="text-sm font-black uppercase tracking-widest text-emerald-500 mb-6 flex items-center gap-2">
+              <h2 className="text-sm font-bold uppercase tracking-widest text-emerald-500 mb-6 flex items-center gap-2">
                 <CheckCircle2 size={16} /> The Solution
               </h2>
               <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-8">
@@ -147,7 +147,7 @@ export default function CaseStudyClientPage({ slug }: { slug: string }) {
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
-                  <p className="text-xs font-black uppercase tracking-widest text-white">Interactive Dashboard Preview</p>
+                  <p className="text-xs font-bold uppercase tracking-widest text-white">Interactive Dashboard Preview</p>
                 </div>
               </motion.div>
             ))}
@@ -159,7 +159,7 @@ export default function CaseStudyClientPage({ slug }: { slug: string }) {
       <section className="py-24 border-b border-border bg-card">
         <div className="container px-4 sm:px-6 lg:px-8 mx-auto">
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tighter uppercase mb-4 text-foreground break-words">
+            <h2 className="text-3xl sm:text-4xl md:text-[46px] font-bold tracking-tighter uppercase mb-4 text-foreground break-words">
               Measurable <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-500">Impact</span>
             </h2>
             <p className="text-muted-foreground">Quantifiable results achieved within 30 days of deployment.</p>
@@ -179,7 +179,7 @@ export default function CaseStudyClientPage({ slug }: { slug: string }) {
                 <div className="w-12 h-12 bg-muted flex items-center justify-center mb-6 rounded-none">
                   {metric.icon}
                 </div>
-                <h4 className="text-5xl font-black text-foreground tracking-tighter mb-2">{metric.value}</h4>
+                <h4 className="text-[46px] font-bold text-foreground tracking-tighter mb-2">{metric.value}</h4>
                 <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">{metric.label}</p>
               </motion.div>
             ))}
@@ -191,7 +191,7 @@ export default function CaseStudyClientPage({ slug }: { slug: string }) {
       <section className="py-32 relative overflow-hidden">
         <div className="absolute inset-0 bg-blue-600/5 mix-blend-overlay" />
         <div className="container px-4 sm:px-6 lg:px-8 mx-auto relative z-10 text-center">
-          <h2 className="text-3xl sm:text-4xl md:text-6xl font-black tracking-tighter uppercase mb-6 text-foreground break-words">
+          <h2 className="text-3xl sm:text-4xl md:text-[46px] font-bold tracking-tighter uppercase mb-6 text-foreground break-words">
             Ready for a similar <br className="hidden md:block"/>
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-violet-500">Transformation?</span>
           </h2>
@@ -200,12 +200,12 @@ export default function CaseStudyClientPage({ slug }: { slug: string }) {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link href="/contact">
-              <Button className="h-14 px-8 bg-blue-600 hover:bg-blue-700 text-white font-black uppercase tracking-widest text-[10px] rounded-none shadow-2xl shadow-blue-500/20">
+              <Button className="h-14 px-8 bg-blue-600 hover:bg-blue-700 text-white font-bold uppercase tracking-widest text-[10px] rounded-none shadow-2xl shadow-blue-500/20">
                 Book a Free Audit <ArrowRight size={16} className="ml-2" />
               </Button>
             </Link>
             <Link href="/services">
-              <Button variant="outline" className="h-14 px-8 border-border text-foreground hover:bg-muted font-black uppercase tracking-widest text-[10px] rounded-none">
+              <Button variant="outline" className="h-14 px-8 border-border text-foreground hover:bg-muted font-bold uppercase tracking-widest text-[10px] rounded-none">
                 Explore All Services
               </Button>
             </Link>

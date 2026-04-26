@@ -37,12 +37,12 @@ export default function BFSIPage() {
 
         <div className="container mx-auto px-6 lg:px-12 relative">
           <div className="max-w-4xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 border border-indigo-500/20 bg-indigo-500/5 text-indigo-400 text-[10px] font-black uppercase tracking-[0.3em] mb-8">
+            <div className="inline-flex items-center gap-2 px-3 py-1 border border-indigo-500/20 bg-indigo-500/5 text-indigo-400 text-[10px] font-bold uppercase tracking-[0.3em] mb-8">
               <Landmark size={12} /> Industry Vertical
             </div>
             
-            <h1 className="text-5xl sm:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.85] mb-8 uppercase text-foreground">
-              BFSI <br />
+            <h1 className="text-[46px] sm:text-[46px] lg:text-[46px] font-bold tracking-tighter leading-[0.85] mb-8 uppercase text-foreground">
+              BFSI  
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-violet-400 to-blue-500">
                 Intelligence
               </span>
@@ -73,7 +73,7 @@ export default function BFSIPage() {
                   {d.icon}
                 </div>
                 <div>
-                  <h3 className="text-xl font-black mb-3 uppercase tracking-tighter text-foreground">{d.title}</h3>
+                  <h3 className="text-xl font-bold mb-3 uppercase tracking-tighter text-foreground">{d.title}</h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">{d.desc}</p>
                 </div>
               </div>
@@ -86,13 +86,13 @@ export default function BFSIPage() {
       <section className="py-24 border-b border-border">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-4xl font-black tracking-tighter mb-8 uppercase text-foreground">Built for Compliance</h2>
+            <h2 className="text-4xl font-bold tracking-tighter mb-8 uppercase text-foreground">Built for Compliance</h2>
             <p className="text-muted-foreground leading-relaxed mb-12">
               Coming from a decade of experience in financial services, we understand that data security is non-negotiable. Our BFSI solutions come with built-in audit trails, Row-Level Security, and full compliance with banking data regulations.
             </p>
             <div className="flex flex-wrap justify-center gap-6">
               {["RBI Compliant", "ISO 27001 Patterns", "Zero Data Stored", "Full Audit Logs"].map(tag => (
-                <div key={tag} className="px-4 py-2 border border-border text-[10px] font-black uppercase tracking-widest text-muted-foreground">
+                <div key={tag} className="px-4 py-2 border border-border text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
                   {tag}
                 </div>
               ))}
@@ -104,7 +104,7 @@ export default function BFSIPage() {
       {/* CTA */}
       <section className="py-32 text-center bg-gradient-to-b from-background to-secondary/30">
         <div className="container mx-auto px-6 lg:px-12">
-          <h2 className="text-4xl font-black tracking-tighter mb-4 uppercase text-foreground">Discuss Your Vertical Challenge</h2>
+          <h2 className="text-4xl font-bold tracking-tighter mb-4 uppercase text-foreground">Discuss Your Vertical Challenge</h2>
           <p className="text-muted-foreground mb-10 max-w-xl mx-auto">From NPA reporting to real-time treasury dashboards, we've built it before. Let's build yours.</p>
           <Link href="/contact">
             <Button size="lg" className="h-14 px-12 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-none border-0">

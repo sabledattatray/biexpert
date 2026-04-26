@@ -15,6 +15,59 @@ const categories = [
   { label: "News", id: "news" },
 ];
 
+const fallbackPosts = [
+  {
+    id: "f1",
+    slug: "mastering-dax-patterns-2026",
+    title: "Mastering Advanced DAX: High-Performance Patterns for 2026",
+    excerpt: "Deep dive into performance optimization and complex calculation patterns in Power BI.",
+    content: "Deep dive into performance optimization and complex calculation patterns in Power BI.",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1600",
+    createdAt: new Date(),
+    author: { name: "Datta Sable" }
+  },
+  {
+    id: "f2",
+    slug: "power-bi-fabric-integration-2026",
+    title: "Microsoft Fabric & Power BI: The Unified Data Architecture",
+    excerpt: "Exploring the revolutionary integration of Power BI within the Microsoft Fabric ecosystem.",
+    content: "Exploring the revolutionary integration of Power BI within the Microsoft Fabric ecosystem.",
+    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1600",
+    createdAt: new Date(),
+    author: { name: "Datta Sable" }
+  },
+  {
+    id: "f3",
+    slug: "real-time-streaming-analytics-power-bi",
+    title: "Real-Time Streaming Analytics: Sub-Second Dashboards",
+    excerpt: "How to build high-frequency data visualizations using streaming datasets.",
+    content: "How to build high-frequency data visualizations using streaming datasets.",
+    image: "https://images.unsplash.com/photo-1558489580-f169229d727b?auto=format&fit=crop&q=80&w=1600",
+    createdAt: new Date(),
+    author: { name: "Datta Sable" }
+  },
+  {
+    id: "f4",
+    slug: "sql-server-window-functions-advanced",
+    title: "SQL Window Functions: Solving Complex Analytical Challenges",
+    excerpt: "Advanced analytical techniques using OVER(), PARTITION BY, and framing.",
+    content: "Advanced analytical techniques using OVER(), PARTITION BY, and framing.",
+    image: "https://images.unsplash.com/photo-1542831371-29b0f74f9713?auto=format&fit=crop&q=80&w=1600",
+    createdAt: new Date(),
+    author: { name: "Datta Sable" }
+  },
+  {
+    id: "f5",
+    slug: "sql-json-data-warehousing",
+    title: "JSON in SQL Server: Bridging the Gap Between NoSQL and RDBMS",
+    excerpt: "Techniques for storing, querying, and optimizing JSON data in relational databases.",
+    content: "Techniques for storing, querying, and optimizing JSON data in relational databases.",
+    image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80&w=1600",
+    createdAt: new Date(),
+    author: { name: "Datta Sable" }
+  }
+];
+
 export default async function BlogPage({ 
   searchParams 
 }: { 
@@ -22,28 +75,35 @@ export default async function BlogPage({
 }) {
   const { category = "all", search = "" } = await searchParams;
   
-  // Fetch real posts from database
-  const posts = await prisma.post.findMany({
-    where: {
-      published: true,
-      AND: [
-        category !== "all" ? { 
-          OR: [
-            { slug: { contains: category, mode: 'insensitive' } },
-            { title: { contains: category, mode: 'insensitive' } }
-          ]
-        } : {},
-        search ? {
-          OR: [
-            { title: { contains: search, mode: 'insensitive' } },
-            { content: { contains: search, mode: 'insensitive' } }
-          ]
-        } : {}
-      ]
-    },
-    orderBy: { createdAt: "desc" },
-    include: { author: true }
-  });
+  let posts: any[] = [];
+  
+  try {
+    // Fetch real posts from database
+    posts = await prisma.post.findMany({
+      where: {
+        published: true,
+        AND: [
+          category !== "all" ? { 
+            OR: [
+              { slug: { contains: category, mode: 'insensitive' } },
+              { title: { contains: category, mode: 'insensitive' } }
+            ]
+          } : {},
+          search ? {
+            OR: [
+              { title: { contains: search, mode: 'insensitive' } },
+              { content: { contains: search, mode: 'insensitive' } }
+            ]
+          } : {}
+        ]
+      },
+      orderBy: { createdAt: "desc" },
+      include: { author: true }
+    });
+  } catch (error) {
+    // Database is currently unreachable
+    posts = fallbackPosts;
+  }
 
   const dateFormatter = new Intl.DateTimeFormat("en-US", {
     month: "short",
@@ -54,33 +114,32 @@ export default async function BlogPage({
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Hero */}
-      <section className="relative pt-32 pb-24 overflow-hidden border-b border-border">
+      <section className="relative min-h-[250px] py-10 flex items-center justify-center overflow-hidden border-b border-border">
         <div className="absolute inset-0 -z-10">
           <Image 
             src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=2070&auto=format&fit=crop" 
             alt="Blog Hero" 
             fill 
-            className="object-cover opacity-[0.1]" 
+            className="object-cover opacity-[0.07]" 
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/90 to-background" />
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-600/10 blur-[120px] rounded-full" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/95 to-background" />
         </div>
 
         <div className="container mx-auto px-6 lg:px-12 relative text-center">
           <div className="max-w-4xl mx-auto">
-            <div className="inline-flex items-center gap-2 px-3 py-1 border border-blue-500/20 bg-blue-500/5 text-blue-400 text-[10px] font-black uppercase tracking-[0.3em] mb-8">
-              <Zap size={12} /> The Intelligence Hub
+            <div className="inline-flex items-center gap-2 px-3 py-1 border border-blue-500/20 bg-blue-500/5 text-blue-400 text-[10px] font-bold uppercase tracking-[0.3em] mb-4">
+              <Zap size={10} /> The Intelligence Hub
             </div>
             
-            <h1 className="text-5xl sm:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.85] mb-8 uppercase text-foreground">
-              Insights & <br />
+            <h1 className="text-[40px] sm:text-[46px] lg:text-[46px] font-bold tracking-tighter leading-[1] mb-4 uppercase text-foreground">
+              Insights &  
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-violet-500">
                 Strategies.
               </span>
             </h1>
             
-            <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-              Deep dives into the technical and strategic world of Business Intelligence, data engineering, and automation.
+            <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+              Technical and strategic deep dives into BI, Data Engineering, and Automation.
             </p>
           </div>
         </div>
@@ -95,7 +154,7 @@ export default async function BlogPage({
                 <Link
                   key={cat.id}
                   href={cat.id === "all" ? "/blog" : `/blog?category=${cat.id}`}
-                  className={`px-5 py-2 border text-[9px] font-black uppercase tracking-widest transition-all ${
+                  className={`px-5 py-2 border text-[9px] font-bold uppercase tracking-widest transition-all ${
                     category === cat.id
                       ? "bg-foreground text-background border-foreground shadow-lg shadow-foreground/10"
                       : "bg-background/50 text-muted-foreground border-border hover:border-blue-500/50 hover:text-blue-400"
@@ -134,25 +193,25 @@ export default async function BlogPage({
                       fill 
                       className="object-cover group-hover:scale-110 transition-all duration-700 brightness-[0.8] group-hover:brightness-100" 
                     />
-                    <div className="absolute top-4 left-4 px-3 py-1 bg-blue-600 text-[10px] font-black uppercase tracking-widest text-white shadow-lg shadow-blue-600/30">
+                    <div className="absolute top-4 left-4 px-3 py-1 bg-blue-600 text-[10px] font-bold uppercase tracking-widest text-white shadow-lg shadow-blue-600/30">
                        RESOURCE
                     </div>
                   </Link>
                   
-                  <div className="flex items-center gap-4 text-[10px] font-black uppercase tracking-widest text-blue-400 mb-4">
+                  <div className="flex items-center gap-4 text-[10px] font-bold uppercase tracking-widest text-blue-400 mb-4">
                      <span className="flex items-center gap-1.5"><Calendar size={12} /> {dateFormatter.format(post.createdAt)}</span>
                      <div className="w-1 h-1 bg-border rounded-full" />
                      <span className="flex items-center gap-1.5"><Clock size={12} /> 10 MIN READ</span>
                   </div>
 
-                  <h2 className="text-2xl font-black mb-4 uppercase tracking-tighter leading-tight text-foreground group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-violet-500 transition-all duration-300">
+                  <h2 className="text-2xl font-bold mb-4 uppercase tracking-tighter leading-tight text-foreground group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-violet-500 transition-all duration-300">
                     <Link href={`/blog/${post.slug}`}>{post.title}</Link>
                   </h2>
                   
-                  <div className="text-muted-foreground text-sm leading-relaxed mb-8 line-clamp-3" dangerouslySetInnerHTML={{ __html: post.content.substring(0, 150) + "..." }} />
+                  <div className="text-muted-foreground text-sm leading-relaxed mb-8 line-clamp-3" dangerouslySetInnerHTML={{ __html: (post.content || "").substring(0, 150) + "..." }} />
 
                   <div className="mt-auto">
-                    <Link href={`/blog/${post.slug}`} className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-foreground group-hover:gap-4 group-hover:text-blue-400 transition-all">
+                    <Link href={`/blog/${post.slug}`} className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-foreground group-hover:gap-4 group-hover:text-blue-400 transition-all">
                       Read Deep Dive <ArrowRight size={14} />
                     </Link>
                   </div>
@@ -168,34 +227,6 @@ export default async function BlogPage({
         </div>
       </section>
 
-      {/* Newsletter */}
-      <section className="py-32 border-y border-border relative overflow-hidden">
-        <div className="absolute inset-0 bg-blue-600/5 -z-10" />
-        <div className="container mx-auto px-6 lg:px-12">
-          <div className="max-w-4xl mx-auto text-center relative z-10">
-             <div className="inline-flex h-12 w-12 items-center justify-center bg-blue-600 text-white mb-8">
-               <Zap size={24} />
-             </div>
-             <h2 className="text-4xl sm:text-6xl font-black tracking-tighter mb-6 uppercase text-foreground leading-none">
-               Join 5,000+ Data <br /> Leaders Weekly.
-             </h2>
-             <p className="text-muted-foreground text-lg mb-12 max-w-xl mx-auto">
-               Get the latest Power BI architectures and SQL tuning strategies delivered straight to your inbox.
-             </p>
-             <form className="flex flex-col sm:flex-row gap-0 max-w-xl mx-auto border border-border p-1 bg-background shadow-2xl">
-                <input 
-                  type="email" 
-                  placeholder="Enter your work email" 
-                  className="flex-1 bg-transparent px-6 py-4 text-foreground focus:outline-none focus:border-blue-500 rounded-none text-sm" 
-                  required
-                />
-                <Button type="submit" className="h-14 sm:h-auto px-10 bg-blue-600 hover:bg-blue-700 text-white font-black uppercase tracking-widest text-[10px] rounded-none border-0 shadow-lg shadow-blue-600/20">
-                  Subscribe
-                </Button>
-             </form>
-          </div>
-        </div>
-      </section>
     </div>
   );
 }

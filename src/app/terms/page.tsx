@@ -1,31 +1,31 @@
-import { FileText, ArrowLeft } from "lucide-react";
+import { FileText, ArrowLeft, Zap } from "lucide-react";
 import Link from "next/link";
 
 export default function TermsPage() {
   return (
-    <main className="min-h-screen bg-background pt-32 pb-20">
-      <div className="container mx-auto px-6 lg:px-12 max-w-4xl">
-        <Link 
-          href="/" 
-          className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.3em] text-violet-400 mb-12 hover:gap-4 transition-all"
-        >
-          <ArrowLeft size={14} /> Back to Home
-        </Link>
+    <main className="min-h-screen bg-background pb-20">
 
-        <div className="flex items-center gap-4 mb-8">
-          <div className="p-3 bg-violet-600/10 border border-violet-600/20 text-violet-400">
-            <FileText size={24} />
-          </div>
-          <h1 className="text-4xl sm:text-5xl font-black tracking-tighter uppercase text-foreground">
-            Terms of Service
-          </h1>
+      {/* Hero */}
+      <section className="relative min-h-[250px] py-10 flex items-center justify-center overflow-hidden border-b border-border text-center">
+        <div className="absolute inset-0 -z-10">
+          <div className="absolute inset-0 bg-blue-600/5 -z-10" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/95 to-background" />
         </div>
-
-        <p className="text-sm font-bold uppercase tracking-widest text-muted-foreground mb-12">
-          Last Updated: April 26, 2026
-        </p>
-
-        <div className="prose prose-invert max-w-none prose-p:text-muted-foreground prose-headings:text-foreground prose-headings:font-black prose-headings:uppercase prose-headings:tracking-tighter">
+        <div className="container mx-auto px-6 lg:px-12 relative">
+          <div className="max-w-4xl mx-auto">
+            <div className="inline-flex items-center gap-2 px-3 py-1 border border-blue-500/20 bg-blue-500/5 text-blue-400 text-[10px] font-bold uppercase tracking-[0.3em] mb-4">
+              <Zap size={10} /> Legal
+            </div>
+            <h1 className="text-[40px] sm:text-[46px] lg:text-[46px] font-bold tracking-tighter leading-[1] mb-4 uppercase text-foreground">
+              Page Title
+            </h1>
+            <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+              By accessing or using the BI Expert website and services, you agree to be bound by these Terms of Service. If you do not agree to all of these terms, do not use our services.
+            </p>
+          </div>
+        </div>
+      </section>
+<div className="container mx-auto px-6 lg:px-12 max-w-4xl mt-20 prose-headings:tracking-tighter">
           <section className="mb-12">
             <h2>1. Acceptance of Terms</h2>
             <p>By accessing or using the BI Expert website and services, you agree to be bound by these Terms of Service. If you do not agree to all of these terms, do not use our services.</p>

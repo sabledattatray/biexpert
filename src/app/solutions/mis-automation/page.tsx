@@ -36,12 +36,12 @@ export default function MISAutomationPage() {
 
         <div className="container mx-auto px-6 lg:px-12 relative">
           <div className="max-w-4xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 border border-emerald-500/20 bg-emerald-500/5 text-emerald-400 text-[10px] font-black uppercase tracking-[0.3em] mb-8">
+            <div className="inline-flex items-center gap-2 px-3 py-1 border border-emerald-500/20 bg-emerald-500/5 text-emerald-400 text-[10px] font-bold uppercase tracking-[0.3em] mb-8">
               <FileSpreadsheet size={12} /> The Efficiency Engine
             </div>
             
-            <h1 className="text-5xl sm:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.85] mb-8 uppercase text-foreground">
-              MIS <br />
+            <h1 className="text-[46px] sm:text-[46px] lg:text-[46px] font-bold tracking-tighter leading-[0.85] mb-8 uppercase text-foreground">
+              MIS  
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-emerald-400 to-indigo-500">
                 Automation
               </span>
@@ -108,7 +108,7 @@ export default function MISAutomationPage() {
       {/* CTA */}
       <section className="py-32 text-center">
         <div className="container mx-auto px-6 lg:px-12">
-          <h2 className="text-4xl font-black tracking-tighter mb-4 text-foreground">Calculate Your ROI</h2>
+          <h2 className="text-4xl font-bold tracking-tighter mb-4 text-foreground">Calculate Your ROI</h2>
           <p className="text-muted-foreground mb-10 max-w-xl mx-auto">Tell us your team size and reporting frequency, and we'll show you exactly how many hours we can save you.</p>
           <Link href="/contact">
             <Button size="lg" className="h-14 px-12 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-none border-0">

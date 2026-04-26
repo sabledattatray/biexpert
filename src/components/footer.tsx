@@ -89,9 +89,9 @@ export function Footer() {
             <div className="max-w-md">
               <div className="flex items-center gap-2 mb-2">
                 <Zap className="w-4 h-4 text-blue-400" />
-                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-blue-400">Newsletter</span>
+                <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-blue-400">Newsletter</span>
               </div>
-              <h3 className="text-xl sm:text-2xl font-black tracking-tighter text-foreground mb-1">
+              <h3 className="text-xl sm:text-2xl font-bold tracking-tighter text-foreground mb-1">
                 Stay Ahead with Data Insights
               </h3>
               <p className="text-sm text-muted-foreground">
@@ -118,7 +118,7 @@ export function Footer() {
                   />
                   <button
                     type="submit"
-                    className="px-5 py-3 bg-blue-600 hover:bg-blue-700 text-white text-xs font-black uppercase tracking-widest transition-colors border border-blue-600 shrink-0 flex items-center gap-2"
+                    className="px-5 py-3 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold uppercase tracking-widest transition-colors border border-blue-600 shrink-0 flex items-center gap-2"
                   >
                     Subscribe <ArrowRight size={14} />
                   </button>
@@ -171,7 +171,7 @@ export function Footer() {
 
           {/* Services — 3 cols */}
           <div className="lg:col-span-3">
-            <h4 className="text-[10px] font-black uppercase tracking-[0.25em] text-muted-foreground mb-6 flex items-center gap-2">
+            <h4 className="text-[10px] font-bold uppercase tracking-[0.25em] text-muted-foreground mb-6 flex items-center gap-2">
               <span className="w-4 h-px bg-blue-500 inline-block" /> Services
             </h4>
             <ul className="space-y-3.5">
@@ -191,7 +191,7 @@ export function Footer() {
 
           {/* Company — 2 cols */}
           <div className="lg:col-span-2">
-            <h4 className="text-[10px] font-black uppercase tracking-[0.25em] text-muted-foreground mb-6 flex items-center gap-2">
+            <h4 className="text-[10px] font-bold uppercase tracking-[0.25em] text-muted-foreground mb-6 flex items-center gap-2">
               <span className="w-4 h-px bg-violet-500 inline-block" /> Company
             </h4>
             <ul className="space-y-3.5">
@@ -211,7 +211,7 @@ export function Footer() {
 
           {/* Legal — 2 cols */}
           <div className="lg:col-span-2">
-            <h4 className="text-[10px] font-black uppercase tracking-[0.25em] text-muted-foreground mb-6 flex items-center gap-2">
+            <h4 className="text-[10px] font-bold uppercase tracking-[0.25em] text-muted-foreground mb-6 flex items-center gap-2">
               <span className="w-4 h-px bg-emerald-500 inline-block" /> Legal
             </h4>
             <ul className="space-y-3.5">

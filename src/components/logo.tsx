@@ -71,7 +71,7 @@ export function Logo({ size = "md", href = "/", className = "", ...props }: Logo
       <span className="drop-shadow-lg group-hover:drop-shadow-xl transition-all duration-300 group-hover:scale-105">
         <LogoMark size={size} />
       </span>
-      <span className={`font-black ${textSizes[size]} tracking-tight leading-none`}>
+      <span className={`font-bold ${textSizes[size]} tracking-tight leading-none`}>
         <span className="text-foreground">BI</span>
         <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-violet-500">
           {" "}EXPERT

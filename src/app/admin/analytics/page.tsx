@@ -25,14 +25,14 @@ export default function Analytics() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6">
         <div>
-          <h1 className="text-3xl font-black tracking-tighter uppercase text-foreground">Traffic Analytics</h1>
+          <h1 className="text-3xl font-bold tracking-tighter uppercase text-foreground">Traffic Analytics</h1>
           <p className="text-muted-foreground text-sm mt-1">Deep dive into visitor behavior, traffic sources, and conversion metrics.</p>
         </div>
         <div className="flex items-center gap-3">
-          <Button variant="outline" className="rounded-none border-border bg-card text-[10px] font-black uppercase tracking-widest h-10 px-6">
+          <Button variant="outline" className="rounded-none border-border bg-card text-[10px] font-bold uppercase tracking-widest h-10 px-6">
             <Calendar size={14} className="mr-2" /> Last 30 Days
           </Button>
-          <Button className="rounded-none bg-blue-600 hover:bg-blue-700 text-white text-[10px] font-black uppercase tracking-widest h-10 px-6 border-0 shadow-lg shadow-blue-500/20">
+          <Button className="rounded-none bg-blue-600 hover:bg-blue-700 text-white text-[10px] font-bold uppercase tracking-widest h-10 px-6 border-0 shadow-lg shadow-blue-500/20">
             <Download size={14} className="mr-2" /> Export CSV
           </Button>
         </div>
@@ -43,15 +43,15 @@ export default function Analytics() {
         {overviewStats.map((stat, i) => (
           <div key={i} className="bg-card p-6">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">{stat.label}</h3>
-              <div className={`flex items-center gap-1 text-[10px] font-black uppercase tracking-widest ${
+              <h3 className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">{stat.label}</h3>
+              <div className={`flex items-center gap-1 text-[10px] font-bold uppercase tracking-widest ${
                 stat.trend === "up" ? "text-emerald-500" : "text-rose-500"
               }`}>
                 {stat.trend === "up" ? <ArrowUpRight size={10} /> : <ArrowDownRight size={10} />}
                 {stat.delta}
               </div>
             </div>
-            <p className="text-3xl font-black tracking-tighter text-foreground">{stat.value}</p>
+            <p className="text-3xl font-bold tracking-tighter text-foreground">{stat.value}</p>
           </div>
         ))}
       </div>
@@ -59,15 +59,15 @@ export default function Analytics() {
       {/* Main Chart Area */}
       <div className="bg-card border border-border p-8 min-h-[400px] flex flex-col">
         <div className="flex items-center justify-between mb-8">
-          <h3 className="text-sm font-black uppercase tracking-widest text-foreground">Acquisition Trends</h3>
+          <h3 className="text-sm font-bold uppercase tracking-widest text-foreground">Acquisition Trends</h3>
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-1.5">
               <div className="w-2 h-2 bg-blue-500" />
-              <span className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">Organic</span>
+              <span className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Organic</span>
             </div>
             <div className="flex items-center gap-1.5">
               <div className="w-2 h-2 bg-indigo-500" />
-              <span className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">Direct</span>
+              <span className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Direct</span>
             </div>
           </div>
         </div>
@@ -100,7 +100,7 @@ export default function Analytics() {
             )
           })}
         </div>
-        <div className="flex justify-between mt-4 border-t border-border pt-4 text-[9px] font-black uppercase tracking-widest text-muted-foreground">
+        <div className="flex justify-between mt-4 border-t border-border pt-4 text-[9px] font-bold uppercase tracking-widest text-muted-foreground">
           <span>Day 1</span>
           <span>Day 15</span>
           <span>Day 30</span>
@@ -110,13 +110,13 @@ export default function Analytics() {
       <div className="grid lg:grid-cols-2 gap-6">
         {/* Top Pages */}
         <div className="bg-card border border-border p-6">
-          <h3 className="text-sm font-black uppercase tracking-widest text-foreground mb-6">Top Performing Pages</h3>
+          <h3 className="text-sm font-bold uppercase tracking-widest text-foreground mb-6">Top Performing Pages</h3>
           <table className="w-full text-left border-collapse">
             <thead>
               <tr className="border-b border-border">
-                <th className="pb-3 text-[10px] font-black uppercase tracking-widest text-muted-foreground">Path</th>
-                <th className="pb-3 text-[10px] font-black uppercase tracking-widest text-muted-foreground text-right">Views</th>
-                <th className="pb-3 text-[10px] font-black uppercase tracking-widest text-muted-foreground text-right">Bounce</th>
+                <th className="pb-3 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Path</th>
+                <th className="pb-3 text-[10px] font-bold uppercase tracking-widest text-muted-foreground text-right">Views</th>
+                <th className="pb-3 text-[10px] font-bold uppercase tracking-widest text-muted-foreground text-right">Bounce</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-border">
@@ -134,7 +134,7 @@ export default function Analytics() {
         {/* Devices & Geography */}
         <div className="grid grid-cols-2 gap-px bg-border border border-border">
           <div className="bg-card p-6">
-            <h3 className="text-[10px] font-black uppercase tracking-widest text-muted-foreground mb-6 flex items-center gap-2">
+            <h3 className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-6 flex items-center gap-2">
               <MonitorSmartphone size={14} /> Devices
             </h3>
             <div className="space-y-4">
@@ -159,7 +159,7 @@ export default function Analytics() {
             </div>
           </div>
           <div className="bg-card p-6">
-            <h3 className="text-[10px] font-black uppercase tracking-widest text-muted-foreground mb-6 flex items-center gap-2">
+            <h3 className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-6 flex items-center gap-2">
               <Globe size={14} /> Regions
             </h3>
             <div className="space-y-4">

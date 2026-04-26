@@ -17,11 +17,47 @@ import { Button } from "@/components/ui/button";
 import prisma from "@/lib/prisma";
 import { DeleteButton } from "./delete-button";
 
+const fallbackPosts = [
+  {
+    id: "f1",
+    slug: "mastering-dax-patterns-2026",
+    title: "Mastering Advanced DAX: High-Performance Patterns for 2026",
+    createdAt: new Date(),
+    published: true,
+    author: { name: "Datta Sable", email: "admin@biexpert.com" }
+  },
+  {
+    id: "f2",
+    slug: "power-bi-fabric-integration-2026",
+    title: "Microsoft Fabric & Power BI: The Unified Data Architecture",
+    createdAt: new Date(),
+    published: true,
+    author: { name: "Datta Sable", email: "admin@biexpert.com" }
+  },
+  {
+    id: "f3",
+    slug: "real-time-streaming-analytics-power-bi",
+    title: "Real-Time Streaming Analytics: Sub-Second Dashboards",
+    createdAt: new Date(),
+    published: true,
+    author: { name: "Datta Sable", email: "admin@biexpert.com" }
+  }
+];
+
 export default async function ContentManagement() {
-  const posts = await prisma.post.findMany({
-    orderBy: { createdAt: "desc" },
-    include: { author: true }
-  });
+  let posts: any[] = [];
+  let isFallback = false;
+  
+  try {
+    posts = await prisma.post.findMany({
+      orderBy: { createdAt: "desc" },
+      include: { author: true }
+    });
+  } catch (error) {
+    // Database is currently unreachable, using demo data
+    posts = fallbackPosts;
+    isFallback = true;
+  }
 
   const dateFormatter = new Intl.DateTimeFormat("en-US", {
     month: "short",
@@ -34,16 +70,28 @@ export default async function ContentManagement() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6">
         <div>
-          <h1 className="text-3xl font-black tracking-tighter uppercase text-foreground leading-none">Content Management</h1>
+          <h1 className="text-3xl font-bold tracking-tighter uppercase text-foreground leading-none">Content Management</h1>
           <p className="text-muted-foreground text-sm mt-2">Manage your blog posts, case studies, and site pages.</p>
         </div>
         <Link 
           href="/admin/content/new"
-          className="rounded-none bg-blue-600 hover:bg-blue-700 text-white text-[10px] font-black uppercase tracking-widest h-12 px-8 flex items-center justify-center shadow-lg shadow-blue-500/20 transition-colors"
+          className="rounded-none bg-blue-600 hover:bg-blue-700 text-white text-[10px] font-bold uppercase tracking-widest h-12 px-8 flex items-center justify-center shadow-lg shadow-blue-500/20 transition-colors"
         >
           <Plus size={16} className="mr-2" /> New Resource
         </Link>
       </div>
+
+      {isFallback && (
+        <div className="bg-amber-500/10 border border-amber-500/20 p-4 flex items-center gap-4">
+          <div className="h-10 w-10 bg-amber-500/20 flex items-center justify-center shrink-0">
+             <Clock size={20} className="text-amber-500" />
+          </div>
+          <div>
+            <p className="text-sm font-bold text-amber-500 uppercase tracking-tight">Database Connectivity Alert</p>
+            <p className="text-xs text-muted-foreground">The local database proxy is currently unresponsive. Displaying <b>Demo Resources</b> for preview purposes. Your actual posts are safe and will appear once the connection is restored.</p>
+          </div>
+        </div>
+      )}
 
       {/* Filters Bar */}
       <div className="flex flex-col lg:flex-row items-center gap-4 bg-card border border-border p-4">
@@ -56,11 +104,11 @@ export default async function ContentManagement() {
           />
         </div>
         <div className="flex items-center gap-3 w-full lg:w-auto">
-          <Button variant="outline" className="flex-1 lg:flex-none h-10 px-4 rounded-none border-border bg-card text-[10px] font-black uppercase tracking-widest cursor-pointer">
+          <Button variant="outline" className="flex-1 lg:flex-none h-10 px-4 rounded-none border-border bg-card text-[10px] font-bold uppercase tracking-widest cursor-pointer">
             <Filter size={14} className="mr-2 text-muted-foreground" /> Filter By
           </Button>
           <div className="h-6 w-px bg-border hidden lg:block" />
-          <p className="text-[10px] font-black uppercase tracking-widest text-muted-foreground hidden lg:block">Displaying {posts.length} Resources</p>
+          <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground hidden lg:block">Displaying {posts.length} Resources</p>
         </div>
       </div>
 
@@ -69,11 +117,11 @@ export default async function ContentManagement() {
         <table className="w-full text-left border-collapse min-w-[800px]">
           <thead>
             <tr className="border-b border-border bg-muted/20">
-              <th className="p-4 text-[10px] font-black uppercase tracking-widest text-muted-foreground">Title</th>
-              <th className="p-4 text-[10px] font-black uppercase tracking-widest text-muted-foreground">Author</th>
-              <th className="p-4 text-[10px] font-black uppercase tracking-widest text-muted-foreground">Date</th>
-              <th className="p-4 text-[10px] font-black uppercase tracking-widest text-muted-foreground">Status</th>
-              <th className="p-4 text-[10px] font-black uppercase tracking-widest text-muted-foreground text-right">Actions</th>
+              <th className="p-4 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Title</th>
+              <th className="p-4 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Author</th>
+              <th className="p-4 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Date</th>
+              <th className="p-4 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Status</th>
+              <th className="p-4 text-[10px] font-bold uppercase tracking-widest text-muted-foreground text-right">Actions</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-border">
@@ -103,7 +151,7 @@ export default async function ContentManagement() {
                   </div>
                 </td>
                 <td className="p-4">
-                  <span className={`inline-flex items-center px-2 py-0.5 text-[9px] font-black uppercase tracking-widest rounded-none ${
+                  <span className={`inline-flex items-center px-2 py-0.5 text-[9px] font-bold uppercase tracking-widest rounded-none ${
                     post.published ? "bg-emerald-500/10 text-emerald-500 border border-emerald-500/20" : "bg-amber-500/10 text-amber-500 border border-amber-500/20"
                   }`}>
                     {post.published ? "Published" : "Draft"}

@@ -139,7 +139,6 @@ const navItems = [
   { label: "Services", href: "/services" },
   { label: "Solutions", href: "/solutions" },
   { label: "Case Studies", href: "/case-studies" },
-  { label: "Downloads", href: "/downloads" },
   { label: "Blog", href: "/blog" },
 ];
 
@@ -168,7 +167,7 @@ function MegaPanel({
         <div className="grid grid-cols-[1fr_1fr] divide-x divide-border">
           {menu.sections.map((section) => (
             <div key={section.heading} className="p-6">
-              <p className="text-[10px] font-black uppercase tracking-widest text-blue-400 mb-4">{section.heading}</p>
+              <p className="text-[11px] font-bold uppercase tracking-[0.15em] text-blue-500/80 mb-5">{section.heading}</p>
               <ul className="space-y-1">
                 {section.items.map((item) => (
                   <li key={item.label}>
@@ -210,9 +209,9 @@ function MegaPanel({
                 <div className="flex items-center justify-between gap-6">
                   <div className="min-w-0">
                     {menu.featured.tag && (
-                      <span className="text-[9px] font-black uppercase tracking-widest text-blue-500 mb-1.5 block">{menu.featured.tag}</span>
+                      <span className="text-[9px] font-bold uppercase tracking-widest text-blue-500 mb-1.5 block">{menu.featured.tag}</span>
                     )}
-                    <h4 className="text-sm font-black text-foreground group-hover/feat:text-blue-500 transition-colors uppercase tracking-tight truncate">{menu.featured.label}</h4>
+                    <h4 className="text-sm font-bold text-foreground group-hover/feat:text-blue-500 transition-colors uppercase tracking-tight truncate">{menu.featured.label}</h4>
                     <p className="text-[11px] text-muted-foreground mt-1 line-clamp-2">{menu.featured.desc}</p>
                   </div>
                   <div className="flex h-10 w-10 items-center justify-center border border-border rounded-full group-hover/feat:border-blue-500/50 group-hover/feat:bg-blue-500/5 transition-all">
@@ -284,10 +283,10 @@ export function Navbar() {
                   <Link
                     href={href}
                     onClick={() => setDesktopActiveMenu(null)}
-                    className={`flex items-center gap-1.5 px-5 h-full text-[11px] font-black uppercase tracking-[0.2em] transition-all duration-300 border-b-2 outline-none ${
+                    className={`flex items-center gap-1.5 px-5 h-full text-[13px] font-medium transition-all duration-300 border-b-2 outline-none ${
                       isActive
-                        ? "text-blue-500 border-blue-500"
-                        : "text-muted-foreground border-transparent hover:text-foreground"
+                        ? "text-blue-500 border-blue-500 bg-blue-500/5"
+                        : "text-muted-foreground border-transparent hover:text-foreground hover:bg-muted/30"
                     }`}
                   >
                     {label}
@@ -308,12 +307,12 @@ export function Navbar() {
           {/* Right Actions */}
           <div className="hidden md:flex items-center gap-3 shrink-0 ml-4">
             <Link href="/login">
-              <Button variant="ghost" size="sm" className="text-[10px] font-black uppercase tracking-widest text-muted-foreground hover:text-foreground">
+              <Button variant="ghost" size="sm" className="text-[13px] font-medium text-muted-foreground hover:text-foreground">
                 Login
               </Button>
             </Link>
             <Link href="/signup">
-              <Button size="sm" className="bg-transparent border border-blue-500 text-blue-500 hover:bg-blue-600 hover:text-white hover:border-blue-600 text-[10px] font-black uppercase tracking-widest rounded-none px-6 h-9 transition-all">
+              <Button size="sm" className="bg-blue-600 text-white hover:bg-blue-700 text-[13px] font-semibold rounded-none px-6 h-9 transition-all border-0 shadow-lg shadow-blue-500/10">
                 Sign Up
               </Button>
             </Link>
@@ -424,7 +423,7 @@ export function Navbar() {
                             >
                               {menu?.sections.map((section) => (
                                 <div key={section.heading} className="py-2.5">
-                                  <p className="px-4 text-[10px] font-black uppercase tracking-widest text-blue-500 mb-2">{section.heading}</p>
+                                  <p className="px-4 text-[10px] font-bold uppercase tracking-widest text-blue-500 mb-2">{section.heading}</p>
                                   <div className="space-y-1">
                                     {section.items.map((subItem) => (
                                       <Link 

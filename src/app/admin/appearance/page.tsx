@@ -83,21 +83,21 @@ export default function AppearanceCustomizer() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 shrink-0">
         <div>
-          <h1 className="text-3xl font-black tracking-tighter uppercase text-foreground">Live Customizer</h1>
+          <h1 className="text-3xl font-bold tracking-tighter uppercase text-foreground">Live Customizer</h1>
           <p className="text-muted-foreground text-sm mt-1">Globally alter colors, borders, padding, and layout structure in real-time.</p>
         </div>
         <div className="flex gap-4">
           <Button 
             onClick={handleReset}
             variant="outline"
-            className="rounded-none border-border bg-card text-[10px] font-black uppercase tracking-widest h-12 px-6 hover:text-rose-500"
+            className="rounded-none border-border bg-card text-[10px] font-bold uppercase tracking-widest h-12 px-6 hover:text-rose-500"
           >
             <RotateCcw size={16} className="mr-2" /> Reset
           </Button>
           <Button 
             onClick={handleSave}
             disabled={isSaving}
-            className="rounded-none bg-blue-600 hover:bg-blue-700 text-white text-[10px] font-black uppercase tracking-widest h-12 px-8 border-0 shadow-lg shadow-blue-500/20 disabled:opacity-50"
+            className="rounded-none bg-blue-600 hover:bg-blue-700 text-white text-[10px] font-bold uppercase tracking-widest h-12 px-8 border-0 shadow-lg shadow-blue-500/20 disabled:opacity-50"
           >
             <Save size={16} className={`mr-2 ${isSaving ? "animate-pulse" : ""}`} /> 
             {isSaving ? "Publishing..." : "Publish Theme"}
@@ -111,11 +111,11 @@ export default function AppearanceCustomizer() {
           
           {/* Colors */}
           <section className="space-y-4">
-            <div className="flex items-center gap-2 text-foreground font-black uppercase tracking-widest text-xs border-b border-border pb-2">
+            <div className="flex items-center gap-2 text-foreground font-bold uppercase tracking-widest text-xs border-b border-border pb-2">
               <Paintbrush size={14} /> Global Colors
             </div>
             <div>
-              <label className="block text-[10px] font-black uppercase tracking-widest text-muted-foreground mb-2">Primary Brand Color</label>
+              <label className="block text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-2">Primary Brand Color</label>
               <div className="flex gap-4">
                 <input 
                   type="color" 
@@ -135,11 +135,11 @@ export default function AppearanceCustomizer() {
 
           {/* Structure & Borders */}
           <section className="space-y-4">
-            <div className="flex items-center gap-2 text-foreground font-black uppercase tracking-widest text-xs border-b border-border pb-2">
+            <div className="flex items-center gap-2 text-foreground font-bold uppercase tracking-widest text-xs border-b border-border pb-2">
               <BoxSelect size={14} /> Geometry & Borders
             </div>
             <div>
-              <label className="block text-[10px] font-black uppercase tracking-widest text-muted-foreground mb-2">Global Border Radius ({theme.borderRadius})</label>
+              <label className="block text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-2">Global Border Radius ({theme.borderRadius})</label>
               <input 
                 type="range" 
                 min="0" max="24" step="2"
@@ -154,7 +154,7 @@ export default function AppearanceCustomizer() {
             </div>
             
             <div className="pt-2">
-              <label className="block text-[10px] font-black uppercase tracking-widest text-muted-foreground mb-2">Component Padding</label>
+              <label className="block text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-2">Component Padding</label>
               <select 
                 value={theme.cardPadding}
                 onChange={(e) => setTheme({...theme, cardPadding: e.target.value})}
@@ -169,11 +169,11 @@ export default function AppearanceCustomizer() {
 
           {/* Typography */}
           <section className="space-y-4">
-            <div className="flex items-center gap-2 text-foreground font-black uppercase tracking-widest text-xs border-b border-border pb-2">
+            <div className="flex items-center gap-2 text-foreground font-bold uppercase tracking-widest text-xs border-b border-border pb-2">
               <Type size={14} /> Typography
             </div>
             <div>
-              <label className="block text-[10px] font-black uppercase tracking-widest text-muted-foreground mb-2">Heading Font Family</label>
+              <label className="block text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-2">Heading Font Family</label>
               <select 
                 value={theme.fontFamily}
                 onChange={(e) => setTheme({...theme, fontFamily: e.target.value})}
@@ -188,11 +188,11 @@ export default function AppearanceCustomizer() {
 
           {/* Layout Elements */}
           <section className="space-y-4">
-            <div className="flex items-center gap-2 text-foreground font-black uppercase tracking-widest text-xs border-b border-border pb-2">
+            <div className="flex items-center gap-2 text-foreground font-bold uppercase tracking-widest text-xs border-b border-border pb-2">
               <LayoutTemplate size={14} /> Layout Elements
             </div>
             <div>
-              <label className="block text-[10px] font-black uppercase tracking-widest text-muted-foreground mb-2">Container Shadow</label>
+              <label className="block text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-2">Container Shadow</label>
               <select 
                 value={theme.layoutShadow}
                 onChange={(e) => setTheme({...theme, layoutShadow: e.target.value})}
@@ -214,7 +214,7 @@ export default function AppearanceCustomizer() {
               <div className="w-3 h-3 rounded-full bg-amber-500/80"></div>
               <div className="w-3 h-3 rounded-full bg-emerald-500/80"></div>
             </div>
-            <span className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">Live Interactive Preview</span>
+            <span className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Live Interactive Preview</span>
           </div>
           
           <div className="flex-1 p-8 overflow-y-auto preview-container bg-background" style={{ boxShadow: theme.layoutShadow }}>
@@ -224,17 +224,17 @@ export default function AppearanceCustomizer() {
               <div className="inline-flex items-center px-3 py-1 mb-6 preview-primary-text bg-muted border border-border text-xs font-bold uppercase tracking-widest preview-button">
                 v2.0 Released
               </div>
-              <h1 className="text-4xl md:text-5xl font-black tracking-tighter mb-6">
+              <h1 className="text-4xl md:text-[46px] font-bold tracking-tighter mb-6">
                 Data Architecture <span className="preview-primary-text">Perfected.</span>
               </h1>
               <p className="text-muted-foreground mb-8">
                 Watch how your design decisions instantly cascade across this entire mock interface.
               </p>
               <div className="flex justify-center gap-4">
-                <Button className="preview-button preview-primary-bg text-white hover:opacity-90 h-12 px-8 font-black uppercase tracking-widest text-[10px] shadow-lg">
+                <Button className="preview-button preview-primary-bg text-white hover:opacity-90 h-12 px-8 font-bold uppercase tracking-widest text-[10px] shadow-lg">
                   Get Started
                 </Button>
-                <Button variant="outline" className="preview-button h-12 px-8 font-black uppercase tracking-widest text-[10px]">
+                <Button variant="outline" className="preview-button h-12 px-8 font-bold uppercase tracking-widest text-[10px]">
                   Read Documentation
                 </Button>
               </div>
@@ -253,7 +253,7 @@ export default function AppearanceCustomizer() {
                 </p>
                 <div className="mt-auto pt-4 flex items-center justify-between border-t border-border/50">
                   <span className="text-xs font-bold text-muted-foreground">Query Speed</span>
-                  <span className="text-xs font-black preview-primary-text">+340%</span>
+                  <span className="text-xs font-bold preview-primary-text">+340%</span>
                 </div>
               </div>
 
@@ -268,7 +268,7 @@ export default function AppearanceCustomizer() {
                 </p>
                 <div className="mt-auto pt-4 flex items-center justify-between border-t border-border/50">
                   <span className="text-xs font-bold text-muted-foreground">Reports Generated</span>
-                  <span className="text-xs font-black preview-primary-text">12,450</span>
+                  <span className="text-xs font-bold preview-primary-text">12,450</span>
                 </div>
               </div>
             </div>

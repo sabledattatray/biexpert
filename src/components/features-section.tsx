@@ -92,11 +92,11 @@ export function FeaturesSection() {
     <section className="py-32 bg-background">
       <div className="container mx-auto px-6 lg:px-12">
         <div className="max-w-3xl mb-20">
-          <div className="inline-flex items-center gap-2 px-3 py-1 border border-blue-500/20 bg-blue-500/5 text-blue-400 text-[10px] font-black uppercase tracking-[0.3em] mb-6">
+          <div className="inline-flex items-center gap-2 px-3 py-1 border border-blue-500/20 bg-blue-500/5 text-blue-400 text-[10px] font-bold uppercase tracking-[0.3em] mb-6">
             Core Competencies
           </div>
-          <h2 className="text-4xl sm:text-5xl font-black tracking-tighter text-foreground leading-tight mb-6">
-            Precision-Engineered <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-violet-500">BI Solutions.</span>
+          <h2 className="text-4xl sm:text-[46px] font-bold tracking-tighter text-foreground leading-tight mb-6">
+            Precision-Engineered   <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-violet-500">BI Solutions.</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl">
             We bridge the gap between raw data and executive strategy. Our solutions are built for speed, accuracy, and enterprise scalability.
@@ -107,7 +107,7 @@ export function FeaturesSection() {
           <div>
             <div className="flex items-center gap-2 mb-8">
               <div className="h-px w-8 bg-blue-500" />
-              <h3 className="text-sm font-black uppercase tracking-[0.3em] text-muted-foreground">Expert Services</h3>
+              <h3 className="text-sm font-bold uppercase tracking-[0.3em] text-muted-foreground">Expert Services</h3>
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
               {serviceFeatures.map((feature, index) => (
@@ -119,7 +119,7 @@ export function FeaturesSection() {
           <div>
             <div className="flex items-center gap-2 mb-8">
               <div className="h-px w-8 bg-violet-500" />
-              <h3 className="text-sm font-black uppercase tracking-[0.3em] text-muted-foreground">Strategic Solutions</h3>
+              <h3 className="text-sm font-bold uppercase tracking-[0.3em] text-muted-foreground">Strategic Solutions</h3>
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
               {solutionFeatures.map((feature, index) => (

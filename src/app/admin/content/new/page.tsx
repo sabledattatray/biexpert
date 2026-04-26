@@ -8,9 +8,11 @@ export default function NewPostPage() {
     title: "",
     slug: "",
     content: "",
-    published: false,
+    image: "",
+    excerpt: "",
     metaTitle: "",
     metaDesc: "",
+    published: false,
   };
 
   return (

@@ -42,17 +42,17 @@ export default function AdminDashboard() {
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
         <div>
-          <div className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.3em] text-blue-500 mb-2">
+          <div className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.3em] text-blue-500 mb-2">
             <ShieldCheck size={12} /> Executive Overview
           </div>
-          <h1 className="text-4xl font-black tracking-tighter uppercase text-foreground">Intelligence Dashboard</h1>
+          <h1 className="text-4xl font-bold tracking-tighter uppercase text-foreground">Intelligence Dashboard</h1>
           <p className="text-muted-foreground text-sm mt-2">Real-time performance metrics and system health monitoring.</p>
         </div>
         <div className="flex items-center gap-3">
-          <Button variant="outline" className="rounded-none border-border bg-card text-[10px] font-black uppercase tracking-widest h-10 px-6">
+          <Button variant="outline" className="rounded-none border-border bg-card text-[10px] font-bold uppercase tracking-widest h-10 px-6">
             <Calendar size={14} className="mr-2" /> Select Range
           </Button>
-          <Button className="rounded-none bg-blue-600 hover:bg-blue-700 text-white text-[10px] font-black uppercase tracking-widest h-10 px-6 border-0 shadow-lg shadow-blue-500/20">
+          <Button className="rounded-none bg-blue-600 hover:bg-blue-700 text-white text-[10px] font-bold uppercase tracking-widest h-10 px-6 border-0 shadow-lg shadow-blue-500/20">
             Export Report
           </Button>
         </div>
@@ -73,15 +73,15 @@ export default function AdminDashboard() {
               <div className="p-2 bg-muted border border-border">
                 {stat.icon}
               </div>
-              <div className={`flex items-center gap-1 text-[10px] font-black uppercase tracking-widest ${
+              <div className={`flex items-center gap-1 text-[10px] font-bold uppercase tracking-widest ${
                 stat.trend === "up" ? "text-emerald-500" : "text-rose-500"
               }`}>
                 {stat.trend === "up" ? <ArrowUpRight size={10} /> : <ArrowDownRight size={10} />}
                 {stat.delta}
               </div>
             </div>
-            <h3 className="text-muted-foreground text-[10px] font-black uppercase tracking-widest mb-1">{stat.label}</h3>
-            <p className="text-3xl font-black tracking-tighter text-foreground">{stat.value}</p>
+            <h3 className="text-muted-foreground text-[10px] font-bold uppercase tracking-widest mb-1">{stat.label}</h3>
+            <p className="text-3xl font-bold tracking-tighter text-foreground">{stat.value}</p>
           </motion.div>
         ))}
       </div>
@@ -91,17 +91,17 @@ export default function AdminDashboard() {
         <div className="bg-card border border-border p-8 relative min-h-[400px] flex flex-col">
           <div className="flex items-center justify-between mb-10">
             <div>
-              <h3 className="text-lg font-black uppercase tracking-tighter text-foreground">Traffic Analysis</h3>
-              <p className="text-muted-foreground text-[10px] font-black uppercase tracking-widest">Global platform engagement metrics</p>
+              <h3 className="text-lg font-bold uppercase tracking-tighter text-foreground">Traffic Analysis</h3>
+              <p className="text-muted-foreground text-[10px] font-bold uppercase tracking-widest">Global platform engagement metrics</p>
             </div>
             <div className="flex gap-4">
               <div className="flex items-center gap-1.5">
                 <div className="w-1.5 h-1.5 rounded-full bg-blue-500" />
-                <span className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">Unique Views</span>
+                <span className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Unique Views</span>
               </div>
               <div className="flex items-center gap-1.5">
                 <div className="w-1.5 h-1.5 rounded-full bg-muted-foreground/30" />
-                <span className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">Total Events</span>
+                <span className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Total Events</span>
               </div>
             </div>
           </div>
@@ -115,14 +115,14 @@ export default function AdminDashboard() {
                 transition={{ delay: 0.5 + i * 0.05, duration: 1 }}
                 className="flex-1 bg-gradient-to-t from-blue-600/20 to-blue-500 relative group"
               >
-                <div className="absolute -top-8 left-1/2 -translate-x-1/2 bg-foreground text-background text-[8px] font-black px-1.5 py-0.5 opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="absolute -top-8 left-1/2 -translate-x-1/2 bg-foreground text-background text-[8px] font-bold px-1.5 py-0.5 opacity-0 group-hover:opacity-100 transition-opacity">
                   {h}K
                 </div>
               </motion.div>
             ))}
           </div>
           
-          <div className="flex justify-between mt-4 px-2 border-t border-border pt-4 text-[9px] font-black uppercase tracking-widest text-muted-foreground">
+          <div className="flex justify-between mt-4 px-2 border-t border-border pt-4 text-[9px] font-bold uppercase tracking-widest text-muted-foreground">
             <span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span>
           </div>
         </div>
@@ -131,7 +131,7 @@ export default function AdminDashboard() {
         <div className="space-y-6">
           <div className="bg-card border border-border p-6">
             <div className="flex items-center justify-between mb-6">
-              <h3 className="text-sm font-black uppercase tracking-widest text-foreground">Recent Events</h3>
+              <h3 className="text-sm font-bold uppercase tracking-widest text-foreground">Recent Events</h3>
               <Button variant="ghost" size="icon" className="h-6 w-6 text-muted-foreground hover:text-foreground">
                 <MoreVertical size={16} />
               </Button>
@@ -148,12 +148,12 @@ export default function AdminDashboard() {
                   <div>
                     <p className="text-xs font-bold text-foreground leading-none mb-1.5">{event.action}</p>
                     <p className="text-[11px] text-muted-foreground mb-1">{event.target}</p>
-                    <p className="text-[9px] font-black uppercase tracking-widest text-muted-foreground/60">{event.time}</p>
+                    <p className="text-[9px] font-bold uppercase tracking-widest text-muted-foreground/60">{event.time}</p>
                   </div>
                 </div>
               ))}
             </div>
-            <Button variant="ghost" className="w-full mt-8 border-t border-border pt-6 rounded-none text-[10px] font-black uppercase tracking-widest text-blue-500 hover:text-blue-400 h-auto">
+            <Button variant="ghost" className="w-full mt-8 border-t border-border pt-6 rounded-none text-[10px] font-bold uppercase tracking-widest text-blue-500 hover:text-blue-400 h-auto">
               View All Activity <ChevronRight size={14} className="ml-1" />
             </Button>
           </div>
@@ -161,16 +161,16 @@ export default function AdminDashboard() {
           {/* Quick Actions */}
           <div className="bg-blue-600 p-8 relative overflow-hidden">
             <div className="absolute top-[-20px] right-[-20px] w-40 h-40 bg-white/10 rounded-full blur-2xl" />
-            <h3 className="text-lg font-black tracking-tighter text-white uppercase mb-2 relative z-10">Quick Actions</h3>
+            <h3 className="text-lg font-bold tracking-tighter text-white uppercase mb-2 relative z-10">Quick Actions</h3>
             <p className="text-white/80 text-xs mb-6 relative z-10">Frequently used system tasks.</p>
             <div className="grid grid-cols-2 gap-3 relative z-10">
               <Link href="/admin/content/new" className="bg-white/10 hover:bg-white/20 p-3 flex flex-col items-center gap-2 transition-colors group">
                 <FileText size={18} className="text-white" />
-                <span className="text-[9px] font-black uppercase tracking-widest text-white">New Post</span>
+                <span className="text-[9px] font-bold uppercase tracking-widest text-white">New Post</span>
               </Link>
               <Link href="/admin/media" className="bg-white/10 hover:bg-white/20 p-3 flex flex-col items-center gap-2 transition-colors group">
                 <ImageIcon size={18} className="text-white" />
-                <span className="text-[9px] font-black uppercase tracking-widest text-white">Upload</span>
+                <span className="text-[9px] font-bold uppercase tracking-widest text-white">Upload</span>
               </Link>
             </div>
           </div>

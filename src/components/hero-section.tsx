@@ -61,7 +61,7 @@ function BarChart({ hoveredBar, setHoveredBar }: { hoveredBar: number | null; se
                 initial={{ opacity: 0, y: 4 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0 }}
-                className="absolute -top-7 px-2 py-0.5 bg-white text-black text-[9px] font-black rounded pointer-events-none z-30 whitespace-nowrap"
+                className="absolute -top-7 px-2 py-0.5 bg-white text-black text-[9px] font-bold rounded pointer-events-none z-30 whitespace-nowrap"
               >
                 {bar.label}
               </motion.div>
@@ -114,7 +114,7 @@ function DonutChart() {
         />
       </svg>
       <div className="absolute inset-0 flex flex-col items-center justify-center">
-        <span className="text-base font-black text-foreground">70%</span>
+        <span className="text-base font-bold text-foreground">70%</span>
         <span className="text-[7px] font-bold text-muted-foreground/40 uppercase">Enterprise</span>
       </div>
     </div>
@@ -146,7 +146,7 @@ function MainDashboardUI() {
             <span className="text-[11px] font-bold text-foreground/80 tracking-tight">BI Expert — Executive FY26</span>
           </div>
           <div className="flex items-center gap-2">
-            <div className="flex items-center gap-1 px-2 py-0.5 bg-emerald-500/10 border border-emerald-500/20 text-emerald-500 text-[9px] font-black uppercase tracking-widest">
+            <div className="flex items-center gap-1 px-2 py-0.5 bg-emerald-500/10 border border-emerald-500/20 text-emerald-500 text-[9px] font-bold uppercase tracking-widest">
               <RefreshCw className="w-2.5 h-2.5 animate-spin-slow" />
               <span className="hidden sm:inline">Live</span>
             </div>
@@ -178,8 +178,8 @@ function MainDashboardUI() {
             {kpiData.map((kpi, i) => (
               <div key={i} className="bg-muted/50 border border-border p-3 relative group overflow-hidden hover:border-blue-500/40 transition-colors cursor-crosshair">
                 <div className="absolute left-0 top-0 h-full w-0.5 bg-blue-600/0 group-hover:bg-blue-600/60 transition-colors" />
-                <p className="text-[8px] font-black text-muted-foreground uppercase tracking-widest truncate mb-1">{kpi.title}</p>
-                <p className="text-sm font-black text-foreground">{kpi.val}</p>
+                <p className="text-[8px] font-bold text-muted-foreground uppercase tracking-widest truncate mb-1">{kpi.title}</p>
+                <p className="text-sm font-bold text-foreground">{kpi.val}</p>
                 <p className={`text-[9px] font-bold ${kpi.color}`}>{kpi.delta}</p>
               </div>
             ))}
@@ -191,7 +191,7 @@ function MainDashboardUI() {
             <div className="col-span-2 bg-muted/50 border border-border p-3 relative">
               <div className="flex items-center justify-between mb-3">
                 <div>
-                  <p className="text-[9px] font-black text-foreground/70 uppercase tracking-widest">Revenue by Month</p>
+                  <p className="text-[9px] font-bold text-foreground/70 uppercase tracking-widest">Revenue by Month</p>
                   <p className="text-[8px] text-muted-foreground/50 uppercase">Actual vs Forecast</p>
                 </div>
                 <div className="flex items-center gap-1.5">
@@ -204,7 +204,7 @@ function MainDashboardUI() {
 
             {/* Donut – 1 col */}
             <div className="col-span-1 bg-muted/50 border border-border p-3 flex flex-col items-center justify-center gap-2">
-              <p className="text-[8px] font-black text-muted-foreground/50 uppercase tracking-widest">Market Share</p>
+              <p className="text-[8px] font-bold text-muted-foreground/50 uppercase tracking-widest">Market Share</p>
               <DonutChart />
               <div className="flex items-center gap-2 mt-1">
                 <div className="flex items-center gap-1"><div className="w-2 h-2 rounded-full bg-blue-500" /><span className="text-[7px] text-muted-foreground">Ent</span></div>
@@ -250,7 +250,7 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/5 px-4 py-1.5 text-[10px] font-black uppercase tracking-[0.3em] text-blue-400 mb-6"
+              className="inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/5 px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.3em] text-blue-400 mb-6"
             >
               <LayoutDashboard className="w-3 h-3 animate-pulse" />
               Data Architecture Elite
@@ -260,7 +260,7 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.1 }}
-              className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tighter leading-[1.05] text-foreground mb-5"
+              className="text-4xl sm:text-[46px] lg:text-[46px] xl:text-[46px] font-bold tracking-tighter leading-[1.05] text-foreground mb-5"
             >
               Transforming Raw Data Into{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-br from-blue-400 via-indigo-400 to-violet-500">

@@ -7,6 +7,10 @@ interface PostData {
   title: string;
   slug: string;
   content: string;
+  image?: string | null;
+  metaTitle?: string | null;
+  metaDesc?: string | null;
+  excerpt?: string | null;
   published: boolean;
 }
 
@@ -18,6 +22,10 @@ export async function updatePost(id: string, data: PostData) {
         title: data.title,
         slug: data.slug,
         content: data.content,
+        image: data.image,
+        metaTitle: data.metaTitle,
+        metaDesc: data.metaDesc,
+        excerpt: data.excerpt,
         published: data.published,
       }
     });
@@ -53,6 +61,10 @@ export async function createPost(data: PostData & { authorId: string }) {
         title: data.title,
         slug: data.slug,
         content: data.content,
+        image: data.image,
+        metaTitle: data.metaTitle,
+        metaDesc: data.metaDesc,
+        excerpt: data.excerpt,
         published: data.published,
         authorId: data.authorId,
       }
@@ -65,3 +77,4 @@ export async function createPost(data: PostData & { authorId: string }) {
     return { success: false, error: "Failed to create post." };
   }
 }
+

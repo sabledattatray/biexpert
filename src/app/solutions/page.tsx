@@ -57,22 +57,26 @@ export default function SolutionsPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Hero */}
-      <section className="relative pt-24 pb-20 overflow-hidden">
+      
+      {/* Hero */}
+      <section className="relative min-h-[250px] py-10 flex items-center justify-center overflow-hidden border-b border-border text-center">
         <div className="absolute inset-0 -z-10">
-          <Image src="/solutions-hero.png" alt="Solutions" fill className="object-cover opacity-20" />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/90 to-background" />
+          <Image src="/solutions-hero.png" alt="Solutions" fill className="object-cover opacity-[0.07]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/95 to-background" />
         </div>
-        <div className="container mx-auto px-6 lg:px-12 text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 border border-indigo-500/20 bg-indigo-500/5 text-indigo-400 text-[10px] font-black uppercase tracking-[0.3em] mb-8">
-            <ShieldCheck className="w-3 h-3" /> Expertise Applied
+        <div className="container mx-auto px-6 lg:px-12 relative">
+          <div className="max-w-4xl mx-auto">
+            <div className="inline-flex items-center gap-2 px-3 py-1 border border-blue-500/20 bg-blue-500/5 text-blue-400 text-[10px] font-bold uppercase tracking-[0.3em] mb-4">
+              <Zap size={10} /> Expertise Applied
+            </div>
+            <h1 className="text-[40px] sm:text-[46px] lg:text-[46px] font-bold tracking-tighter leading-[1] mb-4 uppercase text-foreground">
+              Vertical Solutions For 
+            Complex Industries
+            </h1>
+            <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+              Generic dashboards don't solve specific industry problems. We build tailored data architectures that address the unique challenges of your sector.
+            </p>
           </div>
-          <h1 className="text-3xl xs:text-4xl sm:text-7xl font-black tracking-tighter leading-[0.95] mb-6 text-foreground">
-            Vertical Solutions For<br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-blue-500">Complex Industries</span>
-          </h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
-            Generic dashboards don't solve specific industry problems. We build tailored data architectures that address the unique challenges of your sector.
-          </p>
         </div>
       </section>
 
@@ -85,7 +89,7 @@ export default function SolutionsPage() {
                 <div className="w-16 h-16 flex items-center justify-center bg-indigo-600/10 text-indigo-400 mb-8 group-hover:bg-indigo-600 group-hover:text-white transition-all">
                   {s.icon}
                 </div>
-                <h2 className="text-2xl font-black mb-4 uppercase tracking-tighter text-foreground">{s.title}</h2>
+                <h2 className="text-2xl font-bold mb-4 uppercase tracking-tighter text-foreground">{s.title}</h2>
                 <p className="text-muted-foreground text-sm leading-relaxed mb-8">{s.desc}</p>
                 <div className="space-y-3 mb-10">
                   {s.features.map(f => (
@@ -94,7 +98,7 @@ export default function SolutionsPage() {
                     </div>
                   ))}
                 </div>
-                <Link href={s.slug.startsWith('http') ? s.slug : `/solutions/${s.slug}`} className="inline-flex items-center gap-2 text-sm font-black uppercase tracking-widest text-indigo-400 hover:text-white transition-colors">
+                <Link href={s.slug.startsWith('http') ? s.slug : `/solutions/${s.slug}`} className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-indigo-400 hover:text-white transition-colors">
                   View Solution <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
@@ -106,7 +110,7 @@ export default function SolutionsPage() {
       {/* CTA */}
       <section className="py-32 border-t border-border bg-secondary/30">
         <div className="container mx-auto px-6 lg:px-12 text-center">
-          <h2 className="text-4xl font-black tracking-tighter mb-4 text-foreground uppercase">Don't See Your Industry?</h2>
+          <h2 className="text-4xl font-bold tracking-tighter mb-4 text-foreground uppercase">Don't See Your Industry?</h2>
           <p className="text-muted-foreground mb-10 max-w-xl mx-auto">We've worked with hundreds of businesses across various sectors. Contact us for a custom solution tailored to your specific needs.</p>
           <Link href="/contact">
             <Button size="lg" className="h-14 px-12 bg-indigo-600 hover:bg-indigo-700 text-white border-0 font-bold text-base rounded-none">
