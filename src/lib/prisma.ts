@@ -8,22 +8,21 @@ declare global {
 
 const getPrismaClient = () => {
   const url = process.env.DATABASE_URL;
-  const isBuild = process.env.NODE_ENV === "production" && process.env.NEXT_PHASE === "phase-production-build";
   
-  // During build, use a completely clean, standard Prisma client with no adapters
-  if (isBuild || !url || url.includes("127.0.0.1")) {
-    console.warn("Build Mode: Using standard Prisma client.");
+  if (!url || url.includes("127.0.0.1")) {
+    console.warn("Build/Local Mode: Using standard Prisma client.");
     return new PrismaClient();
   }
 
-  try {
-    const pool = new Pool({ connectionString: url });
-    const adapter = new PrismaPg(pool);
-    return new PrismaClient({ adapter });
-  } catch (error) {
-    console.warn("Runtime: Falling back to default client.");
-    return new PrismaClient();
-  }
+  // Use standard PrismaClient - it works perfectly with Vercel/Neon 
+  // and is much more stable during build time than the PG Adapter.
+  return new PrismaClient({
+    datasources: {
+      db: {
+        url: url
+      }
+    }
+  });
 };
 
 export const prisma = globalThis.prismaV4 || getPrismaClient();
