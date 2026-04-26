@@ -25,33 +25,21 @@ export const posts: BlogPost[] = [
     category: "power-bi",
     tag: "Power BI",
     readTime: "12 min read",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2070&auto=format&fit=crop",
     author: { name: "Datta Sable", role: "Principal BI Architect", avatar: "/author.jpg" },
-    content: `
-      <h2>The Evolution of DAX in Enterprise BI</h2>
-      <p>Data Analysis Expressions (DAX) has become the cornerstone of modern business intelligence. As datasets grow from millions to billions of rows, the difference between a 'working' measure and an 'optimized' measure can mean the difference between a sub-second response and a dashboard that hangs indefinitely.</p>
-      <h3>1. Context Transition: The Silent Performance Killer</h3>
-      <p>One of the most misunderstood concepts in DAX is context transition. When you use CALCULATE inside an iterator like SUMX, every row of the table triggers a context transition from row context to filter context.</p>
-      <h3>2. Optimized Time Intelligence</h3>
-      <p>We recommend building custom time-intelligence measures using CALCULATE and FILTER for maximum control and performance over native functions.</p>
-    `
+    content: `<h2>The Evolution of DAX in Enterprise BI</h2><p>Optimization is not just about writing shorter code; it's about understanding the engine.</p>`
   },
   {
     slug: "power-bi-fabric-integration-2026",
     title: "Microsoft Fabric & Power BI: The Unified Data Architecture",
-    desc: "How Microsoft Fabric's OneLake is revolutionizing the Power BI ecosystem by eliminating data silos and enabling real-time analytics.",
+    desc: "How Microsoft Fabric's OneLake is revolutionizing the Power BI ecosystem by eliminating data silos.",
     date: "May 20, 2024",
     category: "power-bi",
     tag: "Power BI",
     readTime: "14 min read",
-    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2070&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=2070&auto=format&fit=crop",
     author: { name: "Datta Sable", role: "Principal BI Architect", avatar: "/author.jpg" },
-    content: `
-      <h2>The Paradigm Shift: From Data Silos to OneLake</h2>
-      <p>Microsoft Fabric represents the single largest update to the Microsoft data ecosystem since the launch of Power BI in 2015.</p>
-      <h3>1. OneLake: The OneDrive for Data</h3>
-      <p>OneLake is the logical equivalent of OneDrive for your organization's data. Every Fabric tenant automatically has a OneLake.</p>
-    `
+    content: `<h2>OneLake: The OneDrive for Data</h2><p>Microsoft Fabric represents the single largest update to the data ecosystem.</p>`
   },
   {
     slug: "real-time-streaming-analytics-power-bi",
@@ -63,10 +51,7 @@ export const posts: BlogPost[] = [
     readTime: "11 min read",
     image: "https://images.unsplash.com/photo-1518186239751-1710508ecf4a?q=80&w=2070&auto=format&fit=crop",
     author: { name: "Datta Sable", role: "Principal BI Architect", avatar: "/author.jpg" },
-    content: `
-      <h2>Why Real-Time Matters in 2026</h2>
-      <p>In the world of high-frequency trading and logistics, a 4-hour data lag is an eternity.</p>
-    `
+    content: `<h2>Why Real-Time Matters</h2><p>In high-frequency trading, a 4-hour data lag is an eternity.</p>`
   },
 
   // ── SQL CATEGORY ────────────────────────────────────────────────────────
@@ -78,27 +63,21 @@ export const posts: BlogPost[] = [
     category: "sql",
     tag: "SQL Server",
     readTime: "13 min read",
-    image: "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?q=80&w=2042&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=2070&auto=format&fit=crop",
     author: { name: "Datta Sable", role: "Principal BI Architect", avatar: "/author.jpg" },
-    content: `
-      <h2>The Power of OVER()</h2>
-      <p>Window functions are arguably the most powerful tool in the SQL developer's arsenal.</p>
-    `
+    content: `<h2>The Power of OVER()</h2><p>Window functions are arguably the most powerful tool in the SQL developer's arsenal.</p>`
   },
   {
     slug: "sql-json-data-warehousing",
     title: "JSON in SQL Server: Bridging the Gap Between NoSQL and RDBMS",
-    desc: "How to efficiently store, query, and index JSON data in SQL Server to handle semi-structured data from modern APIs.",
+    desc: "How to efficiently store, query, and index JSON data in SQL Server to handle semi-structured data.",
     date: "May 08, 2024",
     category: "sql",
     tag: "SQL Server",
     readTime: "10 min read",
     image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2070&auto=format&fit=crop",
     author: { name: "Datta Sable", role: "Principal BI Architect", avatar: "/author.jpg" },
-    content: `
-      <h2>The Rise of Semi-Structured Data</h2>
-      <p>Modern applications speak JSON. Your data warehouse must handle it natively.</p>
-    `
+    content: `<h2>The Rise of JSON</h2><p>Modern applications speak JSON. Your warehouse must speak it too.</p>`
   },
   {
     slug: "sql-deadlock-prevention-strategies",
@@ -110,10 +89,7 @@ export const posts: BlogPost[] = [
     readTime: "12 min read",
     image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=2070&auto=format&fit=crop",
     author: { name: "Datta Sable", role: "Principal BI Architect", avatar: "/author.jpg" },
-    content: `
-      <h2>Preventing the 1205 Error</h2>
-      <p>Nothing ruins a BI developer's day like a "Transaction was deadlocked" error.</p>
-    `
+    content: `<h2>Preventing Clashes</h2><p>Consistency in object access patterns can eliminate circular wait conditions.</p>`
   },
 
   // ── AUTOMATION CATEGORY ─────────────────────────────────────────────────
@@ -127,10 +103,7 @@ export const posts: BlogPost[] = [
     readTime: "13 min read",
     image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=2070&auto=format&fit=crop",
     author: { name: "Datta Sable", role: "Principal BI Architect", avatar: "/author.jpg" },
-    content: `
-      <h2>The Crisis of Trust in Data</h2>
-      <p>Bad data costs businesses trillions. In 2026, manual validation is dead.</p>
-    `
+    content: `<h2>Automated Trust</h2><p>Machine learning models now learn the "normal" range of your data.</p>`
   },
   {
     slug: "power-automate-financial-reporting-workflow",
@@ -142,10 +115,7 @@ export const posts: BlogPost[] = [
     readTime: "10 min read",
     image: "https://images.unsplash.com/photo-1454165833767-129670c02755?q=80&w=2070&auto=format&fit=crop",
     author: { name: "Datta Sable", role: "Principal BI Architect", avatar: "/author.jpg" },
-    content: `
-      <h2>Flipping the 80/20 Ratio</h2>
-      <p>Finance teams should spend time on analysis, not data gathering.</p>
-    `
+    content: `<h2>Speeding up Finance</h2><p>Trigger-based reporting ensures refreshes happen exactly when data is ready.</p>`
   },
   {
     slug: "self-healing-etl-pipelines",
@@ -157,10 +127,7 @@ export const posts: BlogPost[] = [
     readTime: "12 min read",
     image: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop",
     author: { name: "Datta Sable", role: "Principal BI Architect", avatar: "/author.jpg" },
-    content: `
-      <h2>The End of 3 AM Pager Alerts</h2>
-      <p>Self-healing systems detect data quality issues and alert the team before reports are sent.</p>
-    `
+    content: `<h2>The Self-Healing Grid</h2><p>If an API call fails, the system should retry and log, not just break.</p>`
   },
 
   // ── STRATEGY CATEGORY ───────────────────────────────────────────────────
@@ -172,12 +139,9 @@ export const posts: BlogPost[] = [
     category: "strategy",
     tag: "Strategy",
     readTime: "15 min read",
-    image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=2070&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2070&auto=format&fit=crop",
     author: { name: "Datta Sable", role: "Principal BI Architect", avatar: "/author.jpg" },
-    content: `
-      <h2>The Evolving Role of the CDO</h2>
-      <p>The CDO is no longer just a custodian; they are a growth driver.</p>
-    `
+    content: `<h2>The CDO's Mission</h2><p>Shifting from thinking about data as raw material to a primary business product.</p>`
   },
   {
     slug: "measuring-bi-roi-financial-framework",
@@ -189,10 +153,7 @@ export const posts: BlogPost[] = [
     readTime: "12 min read",
     image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=2011&auto=format&fit=crop",
     author: { name: "Datta Sable", role: "Principal BI Architect", avatar: "/author.jpg" },
-    content: `
-      <h2>Stop Guessing, Start Measuring</h2>
-      <p>Prove the value of your data investments with a rigorous financial framework.</p>
-    `
+    content: `<h2>Quantifying Value</h2><p>A rigorous framework for proving the value of data investments.</p>`
   },
   {
     slug: "scaling-data-culture-enterprise",
@@ -202,12 +163,9 @@ export const posts: BlogPost[] = [
     category: "strategy",
     tag: "Strategy",
     readTime: "11 min read",
-    image: "https://images.unsplash.com/photo-152202176988-66273c2fd55f?q=80&w=2000&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2000&auto=format&fit=crop",
     author: { name: "Datta Sable", role: "Principal BI Architect", avatar: "/author.jpg" },
-    content: `
-      <h2>Culture Eats Strategy for Breakfast</h2>
-      <p>The best tools fail if the culture isn't data-literate.</p>
-    `
+    content: `<h2>The Cultural Foundation</h2><p>The best technology fails without a team that knows the right questions.</p>`
   },
 
   // ── NEWS CATEGORY ───────────────────────────────────────────────────────
@@ -219,9 +177,9 @@ export const posts: BlogPost[] = [
     category: "news",
     tag: "Industry News",
     readTime: "8 min read",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2026&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=2070&auto=format&fit=crop",
     author: { name: "Datta Sable", role: "Principal BI Architect", avatar: "/author.jpg" },
-    content: `<h2>The Death of Static Dashboards</h2>`
+    content: `<h2>Insight Engines</h2><p>The market is moving toward proactive alerting over static visuals.</p>`
   },
   {
     slug: "global-data-privacy-regulations-2026",
@@ -233,7 +191,7 @@ export const posts: BlogPost[] = [
     readTime: "10 min read",
     image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop",
     author: { name: "Datta Sable", role: "Principal BI Architect", avatar: "/author.jpg" },
-    content: `<h2>Beyond GDPR: The New Wave</h2>`
+    content: `<h2>Regulatory Complexity</h2><p>Maintaining a global BI stack requires navigating country-specific privacy laws.</p>`
   },
   {
     slug: "data-mesh-adoption-trends-2026",
@@ -245,21 +203,21 @@ export const posts: BlogPost[] = [
     readTime: "9 min read",
     image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop",
     author: { name: "Datta Sable", role: "Principal BI Architect", avatar: "/author.jpg" },
-    content: `<h2>Decentralizing the Warehouse</h2>`
+    content: `<h2>Decentralizing Data</h2><p>Data mesh is moving from a buzzword to a standard implementation pattern.</p>`
   },
 
   // ── VIDEOS CATEGORY ─────────────────────────────────────────────────────
   {
     slug: "video-building-c-suite-dashboard",
     title: "[Video] Building a C-Suite Dashboard from Scratch",
-    desc: "Watch a full 45-minute walkthrough of transforming raw financial data into a board-ready Power BI dashboard.",
+    desc: "Watch a full 45-minute walkthrough of transforming raw financial data into a board-ready dashboard.",
     date: "May 18, 2024",
     category: "videos",
     tag: "Video Tutorial",
     readTime: "45 min video",
     image: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=2070&auto=format&fit=crop",
     author: { name: "Datta Sable", role: "Principal BI Architect", avatar: "/author.jpg" },
-    content: `<p>Full video tutorial transcript available inside.</p>`
+    content: `<h2>Dashboard Masterclass</h2><p>Full video transcript and resources included.</p>`
   },
   {
     slug: "video-sql-tuning-live",
@@ -269,9 +227,9 @@ export const posts: BlogPost[] = [
     category: "videos",
     tag: "Video Tutorial",
     readTime: "30 min video",
-    image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2000&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?q=80&w=2000&auto=format&fit=crop",
     author: { name: "Datta Sable", role: "Principal BI Architect", avatar: "/author.jpg" },
-    content: `<p>Watch the performance tuning magic happen live.</p>`
+    content: `<h2>The Art of the Query</h2><p>Performance tuning magic happen live.</p>`
   },
   {
     slug: "video-fabric-end-to-end",
@@ -283,6 +241,6 @@ export const posts: BlogPost[] = [
     readTime: "60 min video",
     image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop",
     author: { name: "Datta Sable", role: "Principal BI Architect", avatar: "/author.jpg" },
-    content: `<p>The ultimate guide to Microsoft Fabric architecture.</p>`
+    content: `<h2>The Fabric Roadmap</h2><p>The ultimate guide to unified data architecture.</p>`
   }
 ];
