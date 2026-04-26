@@ -46,7 +46,6 @@ export default function TermsPage() {
             <p>BI Expert will not be liable for any damages of any kind arising from the use of our services or from any information, content, or materials included on this site.</p>
           </section>
         </div>
-      </div>
     </main>
   );
 }

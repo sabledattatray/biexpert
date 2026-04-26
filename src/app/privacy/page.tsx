@@ -46,7 +46,6 @@ export default function PrivacyPage() {
             <p>If you have any questions about this Privacy Policy, please contact us at hello@biexpert.in.</p>
           </section>
         </div>
-      </div>
     </main>
   );
 }
