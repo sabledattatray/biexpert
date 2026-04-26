@@ -7,13 +7,21 @@ declare global {
 }
 
 const getPrismaClient = () => {
-  if (!process.env.DATABASE_URL) {
-    console.warn("WARNING: DATABASE_URL is not defined!");
+  const url = process.env.DATABASE_URL;
+  
+  if (!url || url.includes("127.0.0.1")) {
+    console.warn("WARNING: DATABASE_URL is missing or local. Using standard client for build stability.");
+    return new PrismaClient();
   }
 
-  const pool = new Pool({ connectionString: process.env.DATABASE_URL });
-  const adapter = new PrismaPg(pool);
-  return new PrismaClient({ adapter });
+  try {
+    const pool = new Pool({ connectionString: url });
+    const adapter = new PrismaPg(pool);
+    return new PrismaClient({ adapter });
+  } catch (error) {
+    console.warn("Prisma Adapter initialization failed. Falling back to default client.");
+    return new PrismaClient();
+  }
 };
 
 export const prisma = globalThis.prismaV4 || getPrismaClient();
