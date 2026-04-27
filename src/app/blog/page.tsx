@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import prisma from "@/lib/prisma";
 
 export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 const categories = [
   { label: "All", id: "all" },

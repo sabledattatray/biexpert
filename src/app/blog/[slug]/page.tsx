@@ -16,6 +16,7 @@ import { LinkedInIcon, GithubIcon } from "@/components/social-icons";
 import { Metadata } from "next";
 
 export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
