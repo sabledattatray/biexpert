@@ -140,6 +140,7 @@ export default async function SeedPage() {
     redirect("/admin/content");
     return null;
   } catch (error: any) {
+    if (error?.message === 'NEXT_REDIRECT') throw error;
     console.error("SEED ERROR:", error);
     return (
       <div className="flex flex-col items-center justify-center min-h-screen bg-background p-10">
