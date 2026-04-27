@@ -1,7 +1,7 @@
-import { Mail, Phone, MapPin, Globe, ArrowRight, CheckCircle2, Zap, Share2, GitBranch, Send } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Mail, Phone, MapPin, Globe, CheckCircle2, Zap } from "lucide-react";
 import Image from "next/image";
 import { SocialLink } from "@/components/social-link";
+import { ContactForm } from "./contact-form";
 
 export const metadata = {
   title: "Contact | BI Expert — Book Your Data Strategy Audit",
@@ -46,33 +46,8 @@ export default function ContactPage() {
         <div className="container mx-auto px-6 lg:px-12">
           <div className="grid lg:grid-cols-[1fr_500px] gap-20">
             {/* Form */}
-            <div className="space-y-12">
-              <div className="grid sm:grid-cols-2 gap-8">
-                <div className="space-y-2">
-                  <label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Full Name</label>
-                  <input type="text" className="w-full bg-muted/50 border border-border px-4 py-4 text-foreground focus:outline-none focus:border-blue-500 transition-all rounded-none" placeholder="John Doe" />
-                </div>
-                <div className="space-y-2">
-                  <label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Work Email</label>
-                  <input type="email" className="w-full bg-muted/50 border border-border px-4 py-4 text-foreground focus:outline-none focus:border-blue-500 transition-all rounded-none" placeholder="john@company.com" />
-                </div>
-              </div>
-              <div className="space-y-2">
-                <label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Service Interest</label>
-                <select className="w-full bg-muted/50 border border-border px-4 py-4 text-foreground focus:outline-none focus:border-blue-500 transition-all rounded-none appearance-none">
-                  <option>Power BI & Tableau Dashboard Design</option>
-                  <option>MIS Automation</option>
-                  <option>SQL Architecture & ETL</option>
-                  <option>Full BI Stack Audit</option>
-                </select>
-              </div>
-              <div className="space-y-2">
-                <label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">How can we help?</label>
-                <textarea rows={6} className="w-full bg-muted/50 border border-border px-4 py-4 text-foreground focus:outline-none focus:border-blue-500 transition-all rounded-none" placeholder="Tell us about your data challenge..." />
-              </div>
-              <Button className="h-16 px-12 bg-blue-600 hover:bg-blue-700 text-white font-bold text-lg uppercase tracking-tighter rounded-none border-0 w-full sm:w-auto">
-                Send Inquiry <Zap size={18} className="ml-3" />
-              </Button>
+            <div>
+              <ContactForm />
             </div>
 
             {/* Sidebar info */}
@@ -84,7 +59,7 @@ export default function ContactPage() {
                     <Mail className="text-blue-500 mt-1" />
                     <div>
                       <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-1">Email Us</p>
-                      <p className="text-lg font-bold text-foreground">hello@biexpert.com</p>
+                      <p className="text-lg font-bold text-foreground">hello@biexpert.online</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
