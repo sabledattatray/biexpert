@@ -96,6 +96,20 @@ export default function RootLayout({
             {children}
           </SiteShell>
         </ThemeProvider>
+
+        {/* Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-WFTZB9LNXS"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-WFTZB9LNXS');
+          `}
+        </Script>
       </body>
     </html>
   );
