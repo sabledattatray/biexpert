@@ -233,7 +233,7 @@ function MainDashboardUI() {
 
 export function HeroSection() {
   return (
-    <section className="relative bg-background w-full">
+    <section className="relative bg-background w-full overflow-hidden">
       {/* Background effects */}
       <div className="absolute inset-0 -z-10 pointer-events-none">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-600/8 blur-[120px] rounded-full" />

@@ -36,7 +36,7 @@ export default function RootLayout({
       style={{ backgroundColor: 'var(--background)' }}
     >
       <body 
-        className="min-h-full flex flex-col bg-background text-foreground"
+        className="min-h-full flex flex-col bg-background text-foreground overflow-x-hidden"
         suppressHydrationWarning
       >
         <ThemeProvider
