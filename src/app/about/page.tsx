@@ -1,3 +1,5 @@
+// Metadata for this page is inherited from layout.tsx
+// To add page-specific metadata, convert to a server component wrapper
 "use client";
 
 import Image from "next/image";

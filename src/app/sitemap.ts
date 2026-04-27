@@ -1,8 +1,7 @@
 import { MetadataRoute } from 'next';
-import { posts } from '@/lib/blog-data';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://biexpert.in';
+  const baseUrl = 'https://biexpert.online';
 
   // Static routes
   const staticRoutes = [
@@ -23,9 +22,26 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   // Blog post routes
-  const blogRoutes = posts.map((post) => ({
-    url: `${baseUrl}/blog/${post.slug}`,
-    lastModified: new Date(post.date),
+  const blogSlugs = [
+    'mastering-dax-patterns-2026',
+    'power-bi-fabric-integration-2026',
+    'real-time-streaming-analytics-power-bi',
+    'sql-server-window-functions-advanced',
+    'sql-json-data-warehousing',
+    'sql-deadlock-prevention-strategies',
+    'ai-driven-data-quality-2026',
+    'power-automate-financial-reporting-workflow',
+    'self-healing-etl-pipelines',
+    'cdo-playbook-2026-strategy',
+    'measuring-bi-roi-financial-framework',
+    'scaling-data-culture-enterprise',
+    'gartner-magic-quadrant-2026-bi',
+    'global-data-privacy-regulations-2026',
+    'data-mesh-adoption-trends-2026',
+  ];
+  const blogRoutes = blogSlugs.map((slug) => ({
+    url: `${baseUrl}/blog/${slug}`,
+    lastModified: new Date(),
     changeFrequency: 'monthly' as const,
     priority: 0.7,
   }));

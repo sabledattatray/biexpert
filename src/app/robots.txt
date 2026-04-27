@@ -3,5 +3,6 @@ Allow: /
 Disallow: /admin
 Disallow: /login
 Disallow: /signup
+Disallow: /api
 
-Sitemap: https://biexpert.in/sitemap.xml
+Sitemap: https://biexpert.online/sitemap.xml
