@@ -32,6 +32,7 @@ const NAV = {
     { label: "Downloads", href: "/downloads" },
     { label: "Blog", href: "/blog" },
     { label: "Contact", href: "/contact" },
+    { label: "Datta Sable →", href: "https://dattasable.com", external: true },
   ],
   legal: [
     { label: "Privacy Policy", href: "/privacy" },
@@ -47,7 +48,7 @@ const SOCIAL = [
 ];
 
 const CONTACT = [
-  { icon: <Mail size={14} />, text: "hello@biexpert.in" },
+  { icon: <Mail size={14} />, text: "hello@biexpert.online" },
   { icon: <Phone size={14} />, text: "+91 8010803756" },
   { icon: <MapPin size={14} />, text: "Mumbai, Maharashtra, India 421503" },
 ];
@@ -199,6 +200,8 @@ export function Footer() {
                 <li key={link.label}>
                   <NextLink
                     href={link.href}
+                    target={(link as any).external ? "_blank" : undefined}
+                    rel={(link as any).external ? "noopener noreferrer" : undefined}
                     className="text-sm text-muted-foreground hover:text-foreground hover:translate-x-1 transition-all duration-200 inline-flex items-center gap-1.5 group"
                   >
                     <ArrowRight size={11} className="opacity-0 group-hover:opacity-100 transition-opacity text-violet-400" />
@@ -246,7 +249,8 @@ export function Footer() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-5">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <p className="text-[11px] text-muted-foreground order-2 sm:order-1">
-              © {new Date().getFullYear()} BI Expert. All rights reserved. Crafted with precision by <a href="https://dattasable.com" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition-colors">Datta Sable</a>
+              © {new Date().getFullYear()} BI Expert. All rights reserved. Built by{" "}
+              <a href="https://dattasable.com" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 font-bold transition-colors">Datta Sable</a>
             </p>
             <div className="flex items-center gap-5 order-1 sm:order-2">
               {NAV.legal.map((link) => (

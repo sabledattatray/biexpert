@@ -43,7 +43,7 @@ export default function PrivacyPage() {
 
           <section className="mb-12">
             <h2>4. Contact Us</h2>
-            <p>If you have any questions about this Privacy Policy, please contact us at hello@biexpert.in.</p>
+            <p>If you have any questions about this Privacy Policy, please contact us at hello@biexpert.online.</p>
           </section>
         </div>
     </main>
