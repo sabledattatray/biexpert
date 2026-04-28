@@ -10,6 +10,11 @@ Biexpert (biexpert.online) is a modern, full-stack Business Intelligence and Dat
 🔐 Authentication System – Secure login (Google, GitHub, LinkedIn)
 ⚙️ Admin Panel – Manage users, data, dashboards, and system settings
 🔗 Sharing & Collaboration – Share dashboards with teams or clients
+📸 Screenshots
+🏠 Dashboard Overview
+<p align="center"> <img width="100%" alt="Dashboard" src="https://github.com/user-attachments/assets/8f5b23c1-a2be-4204-8077-6a8fe093e83d" /> </p>
+⚙️ Admin Panel
+<p align="center"> <img width="100%" alt="Admin Panel" src="https://github.com/user-attachments/assets/80217e4a-fc1d-439b-9670-fa6a74239094" /> </p>
 🏗️ Tech Stack
 Frontend: Next.js, React
 Backend: Node.js, Express
@@ -58,3 +63,4 @@ Feel free to fork the repo and submit a pull request.
 📄 License
 
 This project is licensed under the MIT License.
+
