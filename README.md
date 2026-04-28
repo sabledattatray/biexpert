@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+🚀 Biexpert — Advanced Business Intelligence Platform
 
-## Getting Started
+Biexpert (biexpert.online) is a modern, full-stack Business Intelligence and Data Analytics platform designed to transform raw data into meaningful insights through interactive dashboards, automated analytics, and scalable data pipelines.
 
-First, run the development server:
-
-```bash
+✨ Features
+📊 Interactive Dashboards – Build dynamic, multi-visual dashboards like Power BI
+🧠 AI-Powered Insights – Automatically generate trends and insights from data
+📁 Multi-Source Data Upload – CSV, Excel, APIs, and more
+🎨 Premium UI/UX – Clean, modern interface with Dark/Light mode
+🔐 Authentication System – Secure login (Google, GitHub, LinkedIn)
+⚙️ Admin Panel – Manage users, data, dashboards, and system settings
+🔗 Sharing & Collaboration – Share dashboards with teams or clients
+🏗️ Tech Stack
+Frontend: Next.js, React
+Backend: Node.js, Express
+Database: MongoDB / PostgreSQL
+Analytics: Python (Pandas, NumPy)
+Visualization: Chart.js / D3.js / Recharts
+🚀 Getting Started
+1. Clone the repository
+git clone https://github.com/your-username/biexpert.git
+cd biexpert
+2. Install dependencies
+npm install
+3. Run the development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+4. Open in browser
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Visit: http://localhost:3000
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+📂 Project Structure
+biexpert/
+├── app/              # Next.js app router
+├── components/       # Reusable UI components
+├── lib/              # Utilities and helpers
+├── services/         # API & business logic
+├── public/           # Static assets
+└── styles/           # Global styles
+🌐 Live Demo
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+👉 https://biexpert.online/
 
-## Learn More
+🎯 Vision
 
-To learn more about Next.js, take a look at the following resources:
+To build a next-generation self-service BI platform that rivals tools like Power BI and Tableau, making data analytics simple, powerful, and accessible to everyone.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+🔮 Roadmap
+🤖 AI Chat with Data
+📱 Mobile Analytics App
+⚡ Real-time Data Streaming
+🔌 Plugin & Integration Ecosystem
+🧩 Drag-and-Drop Dashboard Builder
+🤝 Contributing
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Contributions are welcome!
+Feel free to fork the repo and submit a pull request.
 
-## Deploy on Vercel
+📄 License
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is licensed under the MIT License.
