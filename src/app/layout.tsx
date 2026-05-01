@@ -7,6 +7,7 @@ import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { SiteShell } from "@/components/site-shell";
 import { AuthProvider } from "@/components/auth-provider";
+import { CookieBanner } from "@/components/cookie-banner";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -113,6 +114,7 @@ export default function RootLayout({
             gtag('config', 'G-WFTZB9LNXS');
           `}
         </Script>
+        <CookieBanner />
       </body>
     </html>
   );
