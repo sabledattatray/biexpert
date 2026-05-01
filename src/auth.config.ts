@@ -5,23 +5,28 @@ import CredentialsProvider from "next-auth/providers/credentials";
 
 const isReal = (v?: string) => !!v && !v.startsWith("YOUR_");
 
+// Build providers array dynamically to avoid 'null' type issues
+const providers = [];
+
+if (isReal(process.env.GOOGLE_CLIENT_ID) && isReal(process.env.GOOGLE_CLIENT_SECRET)) {
+  providers.push(GoogleProvider({ clientId: process.env.GOOGLE_CLIENT_ID!, clientSecret: process.env.GOOGLE_CLIENT_SECRET! }));
+}
+
+if (isReal(process.env.LINKEDIN_CLIENT_ID) && isReal(process.env.LINKEDIN_CLIENT_SECRET)) {
+  providers.push(LinkedInProvider({ clientId: process.env.LINKEDIN_CLIENT_ID!, clientSecret: process.env.LINKEDIN_CLIENT_SECRET! }));
+}
+
+// Placeholder for middleware compatibility
+providers.push(CredentialsProvider({
+  credentials: { email: {}, password: {} },
+}));
+
 export const authConfig = {
   session: { strategy: "jwt" },
   pages: {
     signIn: "/login",
   },
-  providers: [
-    isReal(process.env.GOOGLE_CLIENT_ID) && isReal(process.env.GOOGLE_CLIENT_SECRET)
-      ? GoogleProvider({ clientId: process.env.GOOGLE_CLIENT_ID!, clientSecret: process.env.GOOGLE_CLIENT_SECRET! })
-      : null,
-    isReal(process.env.LINKEDIN_CLIENT_ID) && isReal(process.env.LINKEDIN_CLIENT_SECRET)
-      ? LinkedInProvider({ clientId: process.env.LINKEDIN_CLIENT_ID!, clientSecret: process.env.LINKEDIN_CLIENT_SECRET! })
-      : null,
-    // We omit Credentials authorize logic here because it uses bcrypt/Prisma
-    CredentialsProvider({
-      credentials: { email: {}, password: {} },
-    }),
-  ].filter(Boolean),
+  providers: providers,
   callbacks: {
     authorized({ auth, request: { nextUrl } }) {
       const isLoggedIn = !!auth?.user;
@@ -31,7 +36,7 @@ export const authConfig = {
 
       if (isAdminPath || isUploadApi) {
         if (isLoggedIn && isAdmin) return true;
-        return false; // Redirect to login
+        return false;
       }
       return true;
     },
@@ -43,7 +48,7 @@ export const authConfig = {
     },
     session({ session, token }) {
       if (token.role) {
-        (session.user as any).role = token.role;
+        (session.user as any).role = token.role as string;
       }
       return session;
     },
