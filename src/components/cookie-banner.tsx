@@ -44,10 +44,10 @@ export function CookieBanner() {
           <ShieldCheck size={20} />
         </div>
         <div className="flex-1">
-          <h4 className="text-[11px] font-bold uppercase tracking-widest text-foreground mb-2">Cookie Policy</h4>
-          <p className="text-[11px] text-muted-foreground leading-relaxed mb-4">
+          <h4 className="text-[11px] font-bold uppercase tracking-widest text-white mb-2">Cookie Policy</h4>
+          <p className="text-[11px] text-white/80 leading-relaxed mb-4">
             We use cookies to optimize site performance and analyze traffic. By clicking accept, you agree to our{" "}
-            <Link href="/privacy" className="text-blue-500 hover:underline">Privacy Policy</Link>.
+            <Link href="/privacy" className="text-blue-400 hover:underline font-bold">Privacy Policy</Link>.
           </p>
           <div className="flex gap-3">
             <button 
