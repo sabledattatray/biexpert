@@ -31,8 +31,8 @@ export function CookieBanner() {
         left: '24px',
         maxWidth: '400px',
         zIndex: 9999,
-        backgroundColor: 'hsl(var(--card))',
-        border: '1px solid hsl(var(--border))',
+        backgroundColor: '#111111',
+        border: '1px solid #333333',
         padding: '24px',
         boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)',
         marginLeft: 'auto'
