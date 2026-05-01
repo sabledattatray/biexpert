@@ -2,6 +2,7 @@
 
 import prisma from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
+import { auth } from "@/auth";
 
 interface PostData {
   title: string;
@@ -16,6 +17,11 @@ interface PostData {
 
 export async function updatePost(id: string, data: PostData) {
   try {
+    const session = await auth();
+    if (!session || (session.user as any).role !== 'ADMIN') {
+      return { success: false, error: "Unauthorized access." };
+    }
+
     await prisma.post.update({
       where: { id },
       data: {
@@ -42,6 +48,11 @@ export async function updatePost(id: string, data: PostData) {
 
 export async function deletePost(id: string) {
   try {
+    const session = await auth();
+    if (!session || (session.user as any).role !== 'ADMIN') {
+      return { success: false, error: "Unauthorized access." };
+    }
+
     await prisma.post.delete({
       where: { id }
     });
@@ -56,6 +67,11 @@ export async function deletePost(id: string) {
 
 export async function createPost(data: PostData & { authorId: string }) {
   try {
+    const session = await auth();
+    if (!session || (session.user as any).role !== 'ADMIN') {
+      return { success: false, error: "Unauthorized access." };
+    }
+
     const post = await prisma.post.create({
       data: {
         title: data.title,

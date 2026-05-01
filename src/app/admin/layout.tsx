@@ -24,6 +24,7 @@ import {
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { useSession, signOut } from "next-auth/react";
 
 const menuItems = [
   { label: "Dashboard", href: "/admin", icon: <LayoutDashboard size={18} /> },
@@ -37,83 +38,27 @@ const menuItems = [
 ];
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
+  const { data: session, status } = useSession();
   const [sidebarOpen, setSidebarOpen] = useState(true);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [isChecking, setIsChecking] = useState(true);
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
   const pathname = usePathname();
 
-  React.useEffect(() => {
-    const authStatus = sessionStorage.getItem("adminAuth");
-    if (authStatus === "true") {
-      setIsAuthenticated(true);
-    }
-    setIsChecking(false);
-  }, []);
-
-  const handleLogin = (e: React.FormEvent) => {
-    e.preventDefault();
-    const actualPassword = localStorage.getItem("adminPassword") || "Jobless@1511";
-    
-    if (username === "admin" && password === actualPassword) {
-      sessionStorage.setItem("adminAuth", "true");
-      setIsAuthenticated(true);
-      setError("");
-    } else {
-      setError("Invalid credentials.");
-    }
-  };
-
-  const handleLogout = () => {
-    sessionStorage.removeItem("adminAuth");
-    setIsAuthenticated(false);
-  };
-
-  if (isChecking) {
-    return <div className="min-h-screen bg-background flex items-center justify-center text-foreground font-bold">Verifying Access...</div>;
+  if (status === "loading") {
+    return <div className="min-h-screen bg-background flex items-center justify-center text-foreground font-bold uppercase tracking-widest animate-pulse">Verifying Access...</div>;
   }
 
-  if (!isAuthenticated) {
+  if (!session || (session.user as any).role !== "ADMIN") {
     return (
-      <div className="min-h-screen bg-background flex flex-col items-center justify-center p-6">
+      <div className="min-h-screen bg-background flex flex-col items-center justify-center p-6 text-center">
         <div className="w-full max-w-md bg-card border border-border p-8 shadow-2xl relative overflow-hidden">
-          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-violet-600" />
-          <div className="flex flex-col items-center mb-8">
-            <div className="h-12 w-12 rounded-none bg-gradient-to-br from-blue-500 to-violet-600 flex items-center justify-center shadow-lg shadow-blue-500/20 mb-4">
-              <span className="text-white font-bold text-lg">BI</span>
-            </div>
-            <h1 className="text-2xl font-bold uppercase tracking-tighter text-foreground">Control Center</h1>
-            <p className="text-muted-foreground text-xs font-bold uppercase tracking-widest mt-1">Restricted Access</p>
-          </div>
-          
-          <form onSubmit={handleLogin} className="space-y-6">
-            <div>
-              <label className="block text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-2">Username</label>
-              <input 
-                type="text" 
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                placeholder="Enter admin"
-                className="w-full bg-muted/50 border border-border px-4 h-12 text-sm focus:outline-none focus:border-blue-500 rounded-none transition-colors text-foreground"
-              />
-            </div>
-            <div>
-              <label className="block text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-2">Password</label>
-              <input 
-                type="password" 
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="Enter password"
-                className="w-full bg-muted/50 border border-border px-4 h-12 text-sm focus:outline-none focus:border-blue-500 rounded-none transition-colors text-foreground"
-              />
-            </div>
-            {error && <p className="text-rose-500 text-xs font-bold">{error}</p>}
-            <Button type="submit" className="w-full h-12 bg-blue-600 hover:bg-blue-700 text-white font-bold uppercase tracking-widest text-[10px] rounded-none border-0 shadow-lg shadow-blue-500/20">
-              Authenticate
-            </Button>
-          </form>
+          <div className="absolute top-0 left-0 w-full h-1 bg-rose-600" />
+          <h1 className="text-2xl font-bold uppercase tracking-tighter text-foreground mb-4">Access Denied</h1>
+          <p className="text-muted-foreground text-sm mb-8 uppercase tracking-widest">You do not have administrative privileges.</p>
+          <Button 
+            onClick={() => window.location.href = "/api/auth/signin"}
+            className="w-full h-12 bg-blue-600 hover:bg-blue-700 text-white font-bold uppercase tracking-widest text-[10px] rounded-none"
+          >
+            Sign In as Admin
+          </Button>
         </div>
       </div>
     );
@@ -188,7 +133,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             <ThemeToggle />
             <Button 
               variant="ghost" 
-              onClick={handleLogout}
+              onClick={() => signOut({ callbackUrl: "/" })}
               className="w-full justify-start gap-3 text-muted-foreground hover:text-rose-500 hover:bg-rose-500/5 px-3 rounded-none"
             >
               <LogOut size={18} />

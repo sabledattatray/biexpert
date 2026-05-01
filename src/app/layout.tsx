@@ -6,6 +6,7 @@ import { ThemeProvider } from "next-themes";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { SiteShell } from "@/components/site-shell";
+import { AuthProvider } from "@/components/auth-provider";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -91,10 +92,12 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Navbar />
-          <SiteShell>
-            {children}
-          </SiteShell>
+          <AuthProvider>
+            <Navbar />
+            <SiteShell>
+              {children}
+            </SiteShell>
+          </AuthProvider>
         </ThemeProvider>
 
         {/* Google Analytics */}

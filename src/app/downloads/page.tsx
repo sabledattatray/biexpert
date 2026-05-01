@@ -70,7 +70,7 @@ export default async function DownloadsPage() {
               <Zap size={10} /> The Data Vault
             </div>
             <h1 className="text-[40px] sm:text-[46px] lg:text-[46px] font-bold tracking-tighter leading-[1] mb-4 uppercase text-foreground">
-              Datasets &  
+              Member  
               
                 Resources.
             </h1>
@@ -86,15 +86,15 @@ export default async function DownloadsPage() {
         <div className="container mx-auto px-6 lg:px-12">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
              <div className="flex items-center gap-4">
-               <div className={`h-2 w-2 rounded-full ${session ? 'bg-emerald-500' : 'bg-orange-500'} animate-pulse`} />
+               <div className={`h-2 w-2 rounded-full ${session ? 'bg-emerald-500' : 'bg-muted-foreground/30'} animate-pulse`} />
                <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
-                 Status: {session ? `Authenticated as ${session.user?.name}` : 'Login Required for Access'}
+                 Status: {session ? `Logged in as ${session.user?.name}` : 'Authentication Required'}
                </p>
              </div>
              {!session && (
                <form action={async () => { "use server"; await signIn("google", { redirectTo: "/downloads" }); }}>
                  <Button type="submit" className="h-10 px-8 bg-blue-600 hover:bg-blue-700 text-white font-bold uppercase tracking-widest text-[10px] rounded-none">
-                   Connect with Google to Unlock
+                   Sign In for Full Access
                  </Button>
                </form>
              )}
@@ -172,13 +172,13 @@ export default async function DownloadsPage() {
           <div className="container mx-auto px-6 lg:px-12 text-center">
             <div className="max-w-xl mx-auto p-12 border border-blue-500/20 bg-blue-500/5">
                <ShieldCheck className="mx-auto text-blue-500 mb-6" size={40} />
-               <h3 className="text-2xl font-bold uppercase tracking-tighter text-foreground mb-4">Enterprise Grade Security</h3>
+               <h3 className="text-2xl font-bold uppercase tracking-tighter text-foreground mb-4">Member Data Access</h3>
                <p className="text-sm text-muted-foreground mb-8">
-                 We use Google OAuth to verify your identity and protect our proprietary datasets from unauthorized scraping.
+                 Access to proprietary datasets is restricted to registered members to ensure data governance and prevent unauthorized distribution.
                </p>
                <form action={async () => { "use server"; await signIn("google", { redirectTo: "/downloads" }); }}>
                  <Button type="submit" className="w-full h-12 bg-blue-600 hover:bg-blue-700 text-white font-bold uppercase tracking-widest text-[10px] rounded-none shadow-xl shadow-blue-600/20">
-                   Sign in to access vault
+                   Sign in to your account
                  </Button>
                </form>
             </div>

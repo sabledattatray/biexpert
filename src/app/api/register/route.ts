@@ -13,6 +13,14 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
 
+    // Security check: Only allow registration if a secret is provided
+    // This prevents bots from filling your DB.
+    const secret = body.secret;
+    if (secret !== process.env.REGISTRATION_SECRET) {
+      console.log("Unauthorized registration attempt blocked for:", email);
+      return NextResponse.json({ error: "Unauthorized registration." }, { status: 401 });
+    }
+
     // Check if user already exists
     const existingUser = await (prisma as any).user.findUnique({
       where: { email },
