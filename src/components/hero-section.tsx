@@ -19,7 +19,10 @@ import {
 import { Button } from "@/components/ui/button";
 import dynamic from 'next/dynamic';
 
-const MainDashboardUI = dynamic(() => import('./dashboard-demo'), { ssr: false });
+const MainDashboardUI = dynamic(() => import('./dashboard-demo'), { 
+  ssr: false,
+  loading: () => <div className="w-full aspect-[4/3] bg-muted/20 animate-pulse border border-border" />
+});
 
 // ─────────────────────────────────────────────────────────────────────────────
 
@@ -31,9 +34,9 @@ export function HeroSection() {
   return (
     <section className="relative bg-background w-full overflow-hidden">
       {/* Background effects */}
-      <div className="absolute inset-0 -z-10 pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-600/8 blur-[120px] rounded-full" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-indigo-600/6 blur-[120px] rounded-full" />
+      <div className="absolute inset-0 -z-10 pointer-events-none overflow-hidden" aria-hidden="true">
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-600/8 blur-[120px] rounded-full aspect-square" style={{ contentVisibility: 'auto' }} />
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-indigo-600/6 blur-[120px] rounded-full aspect-square" style={{ contentVisibility: 'auto' }} />
       </div>
 
       {/* ── Inner container: stacks vertically on mobile, side-by-side on desktop */}
@@ -42,36 +45,21 @@ export function HeroSection() {
 
           {/* ── LEFT: Copy ── */}
           <div className="w-full lg:w-5/12 flex flex-col items-center lg:items-start text-center lg:text-left">
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/5 px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.3em] text-blue-400 mb-6"
-            >
+            <div className="inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/5 px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.3em] text-blue-400 mb-6">
               <LayoutDashboard className="w-3 h-3 animate-pulse" />
               Data Architecture Elite
-            </motion.div>
+            </div>
 
-            <motion.h1
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.1 }}
-              className="text-4xl sm:text-[46px] lg:text-[46px] xl:text-[46px] font-bold tracking-tighter leading-[1.05] text-foreground mb-5"
-            >
+            <h1 className="text-4xl sm:text-[46px] lg:text-[46px] xl:text-[46px] font-bold tracking-tighter leading-[1.05] text-foreground mb-5">
               Turn Data Into{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-br from-blue-400 via-indigo-400 to-violet-500">
                 Revenue, Not Reports
               </span>
-            </motion.h1>
+            </h1>
 
-            <motion.p
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.2 }}
-              className="text-base sm:text-lg text-muted-foreground leading-relaxed mb-8 max-w-md"
-            >
+            <p className="text-base sm:text-lg text-muted-foreground leading-relaxed mb-8 max-w-md">
               I help businesses automate their MIS and build high-impact Power BI &amp; Tableau dashboards that save time and drive ROI. 10+ years of expertise in BFSI and Fintech.
-            </motion.p>
+            </p>
 
             <motion.div
               initial={{ opacity: 0, y: 16 }}

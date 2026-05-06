@@ -57,7 +57,7 @@ function BarChart({ hoveredBar, setHoveredBar }: { hoveredBar: number | null; se
               }`}
             />
           </div>
-          <span className="text-[7px] font-bold text-muted-foreground/30 uppercase">{bar.month}</span>
+          <span className="text-[7px] font-bold text-muted-foreground/60 uppercase">{bar.month}</span>
         </div>
       ))}
     </div>
