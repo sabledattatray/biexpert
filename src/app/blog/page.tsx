@@ -79,8 +79,29 @@ export default async function BlogPage({
   const { category = "all", search = "" } = await searchParams;
   
   let posts: any[] = [];
+  let counts: Record<string, number> = {};
   
   try {
+    // Fetch counts for all categories
+    const allCounts = await Promise.all(
+      categories.map(async (cat) => {
+        const count = await prisma.post.count({
+          where: {
+            published: true,
+            ...(cat.id !== "all" ? {
+              OR: [
+                { slug: { contains: cat.id, mode: 'insensitive' } },
+                { title: { contains: cat.id, mode: 'insensitive' } }
+              ]
+            } : {})
+          }
+        });
+        return { id: cat.id, count };
+      })
+    );
+    
+    counts = allCounts.reduce((acc, curr) => ({ ...acc, [curr.id]: curr.count }), {});
+
     // Fetch real posts from database
     posts = await prisma.post.findMany({
       where: {
@@ -106,6 +127,7 @@ export default async function BlogPage({
   } catch (error) {
     // Database is currently unreachable
     posts = fallbackPosts;
+    counts = categories.reduce((acc, cat) => ({ ...acc, [cat.id]: 0 }), {});
   }
 
   const dateFormatter = new Intl.DateTimeFormat("en-US", {
@@ -163,7 +185,16 @@ export default async function BlogPage({
                       : "bg-background/50 text-muted-foreground border-border hover:border-blue-500/50 hover:text-blue-400"
                   }`}
                 >
-                  {cat.label}
+                  <span className="flex items-center gap-2">
+                    {cat.label}
+                    <span className={`text-[8px] px-1.5 py-0.5 rounded-full ${
+                      category === cat.id 
+                        ? "bg-background/20 text-background" 
+                        : "bg-blue-600/10 text-blue-500"
+                    }`}>
+                      {counts[cat.id] || 0}
+                    </span>
+                  </span>
                 </Link>
               ))}
             </div>
