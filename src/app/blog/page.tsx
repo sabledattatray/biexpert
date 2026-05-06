@@ -13,6 +13,7 @@ const categories = [
   { label: "Power BI", id: "power-bi" },
   { label: "SQL", id: "sql" },
   { label: "Automation", id: "automation" },
+  { label: "Python", id: "python" },
   { label: "Strategy", id: "strategy" },
   { label: "Videos", id: "videos" },
   { label: "News", id: "news" },

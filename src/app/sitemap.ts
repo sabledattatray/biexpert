@@ -52,6 +52,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'data-mesh-adoption-trends-2026',
     'news-bi-expert-q2-2026-update',
     'video-master-power-bi-pagination',
+    'python-for-power-bi-automation',
+    'python-sql-data-pipelines-scale',
+    'python-eda-guide-bi-professionals',
   ];
   const blogRoutes = blogSlugs.map((slug) => ({
     url: `${baseUrl}/blog/${slug}`,
