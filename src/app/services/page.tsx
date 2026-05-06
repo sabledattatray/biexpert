@@ -6,6 +6,9 @@ import { Button } from "@/components/ui/button";
 export const metadata = {
   title: "Services | BI Expert — Power BI, Tableau, SQL & Data Analytics",
   description: "Premium Power BI & Tableau dashboards, SQL architecture, ETL pipelines, and real-time analytics services for BFSI and Fintech enterprises.",
+  alternates: {
+    canonical: "https://biexpert.online/services",
+  },
 };
 
 const services = [

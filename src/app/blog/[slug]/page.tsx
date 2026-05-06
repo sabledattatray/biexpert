@@ -34,6 +34,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     return {
       title: `${post.metaTitle || post.title} | BI Expert`,
       description: post.metaDesc || post.excerpt || "",
+      alternates: {
+        canonical: `https://biexpert.online/blog/${slug}`,
+      },
       openGraph: {
         title: post.metaTitle || post.title,
         description: post.metaDesc || post.excerpt || "",

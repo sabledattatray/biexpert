@@ -64,7 +64,7 @@ export const metadata: Metadata = {
     canonical: "https://biexpert.online"
   },
   verification: {
-    google: "YOUR_VERIFICATION_CODE",
+    google: "ADD_YOUR_SEARCH_CONSOLE_CODE_HERE",
   }
 };
 
