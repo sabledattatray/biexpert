@@ -125,7 +125,7 @@ export function Footer() {
                   </button>
                 </form>
               )}
-              <p className="text-[10px] text-muted-foreground/60 mt-2">No spam. Unsubscribe at any time.</p>
+              <p className="text-[10px] text-muted-foreground mt-2">No spam. Unsubscribe at any time.</p>
             </div>
           </div>
         </div>
@@ -234,7 +234,7 @@ export function Footer() {
             <div className="mt-8 pt-6 border-t border-border">
               <NextLink
                 href="/admin"
-                className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-muted-foreground/50 hover:text-blue-400 transition-colors"
+                className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-muted-foreground hover:text-blue-400 transition-colors"
               >
                 <Database size={11} /> Admin Console
               </NextLink>
