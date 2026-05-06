@@ -87,8 +87,6 @@ export default function RootLayout({
       style={{ backgroundColor: 'var(--background)' }}
     >
       <head>
-        <link rel="preconnect" href="https://pagead2.googlesyndication.com" />
-        <link rel="preconnect" href="https://www.googletagmanager.com" />
       </head>
       <body 
         className="min-h-full flex flex-col bg-background text-foreground overflow-x-hidden"
