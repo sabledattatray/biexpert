@@ -48,13 +48,11 @@ function BarChart({ hoveredBar, setHoveredBar }: { hoveredBar: number | null; se
             )}
           </AnimatePresence>
           <div className="w-full flex items-end" style={{ height: "110px" }}>
-            <motion.div
-              initial={{ height: 0 }}
-              animate={{ height: `${bar.value}%` }}
-              transition={{ duration: 0.9, delay: i * 0.08, ease: "easeOut" }}
+            <div
               className={`w-full rounded-t-sm transition-colors duration-200 ${
                 hoveredBar === i ? "bg-blue-400" : "bg-blue-600"
               }`}
+              style={{ height: `${bar.value}%` }}
             />
           </div>
           <span className="text-[7px] font-bold text-muted-foreground uppercase">{bar.month}</span>

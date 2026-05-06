@@ -161,7 +161,8 @@
     z-index: 9999;
     pointer-events: none;
     opacity: 0.02;
-    background-image: url('https://grainy-gradients.vercel.app/noise.svg');
+    background-image: none;
+    background-color: transparent;
   }
 
   .text-glow {

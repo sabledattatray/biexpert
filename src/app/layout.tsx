@@ -86,6 +86,10 @@ export default function RootLayout({
       className={`${inter.variable} h-full antialiased`}
       style={{ backgroundColor: 'var(--background)' }}
     >
+      <head>
+        <link rel="preconnect" href="https://pagead2.googlesyndication.com" />
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+      </head>
       <body 
         className="min-h-full flex flex-col bg-background text-foreground overflow-x-hidden"
         suppressHydrationWarning
@@ -105,7 +109,7 @@ export default function RootLayout({
         </ThemeProvider>
 
         {/* Organization Schema Markup */}
-        <Script id="organization-schema" type="application/ld+json" strategy="beforeInteractive">
+        <Script id="organization-schema" type="application/ld+json" strategy="afterInteractive">
           {`
             {
               "@context": "https://schema.org",
@@ -120,9 +124,9 @@ export default function RootLayout({
         {/* Google Analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-WFTZB9LNXS"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
-        <Script id="google-analytics" strategy="afterInteractive">
+        <Script id="google-analytics" strategy="lazyOnload">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
