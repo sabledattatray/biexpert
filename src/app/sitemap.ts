@@ -50,6 +50,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'gartner-magic-quadrant-2026-bi',
     'global-data-privacy-regulations-2026',
     'data-mesh-adoption-trends-2026',
+    'news-bi-expert-q2-2026-update',
+    'video-master-power-bi-pagination',
   ];
   const blogRoutes = blogSlugs.map((slug) => ({
     url: `${baseUrl}/blog/${slug}`,

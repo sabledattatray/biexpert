@@ -1,0 +1,20 @@
+[
+  {
+    "title": "BI Expert Q2 2026 Update: New Services and Strategic Partnerships",
+    "slug": "news-bi-expert-q2-2026-update",
+    "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=1600&auto=format&fit=crop",
+    "metaTitle": "BI Expert News: Q2 2026 Update & New Services",
+    "metaDesc": "Stay up to date with the latest news from BI Expert. Announcing our new Q2 2026 services, strategic partnerships, and expansion plans.",
+    "excerpt": "Big things are happening at BI Expert. Read our Q2 2026 news update to see how we're expanding our data services and global reach.",
+    "content": "<h1>BI Expert Q2 2026 Update: New Services and Strategic Partnerships</h1><p>It's been a busy start to 2026, and we are excited to share some major news with our community. As the demand for advanced data analytics and MIS automation continues to soar, BI Expert is evolving to meet the needs of our global clients.</p><h2>Expanding Our Automation Suite</h2><p>This quarter, we are officially launching our 'Self-Healing Pipeline' consulting package. Building on our expertise in SQL and Power BI, this service helps organizations build data infrastructure that monitors and repairs itself, reducing downtime by up to 90%.</p><h2>Strategic Partnerships in BFSI</h2><p>We are proud to announce new strategic partnerships with three leading Fintech firms in Europe. These collaborations will focus on building next-generation compliance and real-time fraud detection systems. For more on our BFSI work, visit our <a href='/solutions/bfsi'>BFSI Solutions</a> page.</p><h2>Global Expansion</h2><p>With a growing team of dedicated BI Architects, we are now offering 24/7 support for our enterprise clients across North America and Asia. This expansion ensures that your critical data systems are always monitored by an expert.</p><h2>Conclusion</h2><p>Thank you for being part of the BI Expert journey. We are committed to remaining at the forefront of the data revolution and helping you turn your data into a strategic asset.</p>"
+  },
+  {
+    "title": "Video: Master Power BI Pagination in 5 Minutes",
+    "slug": "video-master-power-bi-pagination",
+    "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1600&auto=format&fit=crop",
+    "metaTitle": "Video Tutorial: Master Power BI Pagination Fast",
+    "metaDesc": "Watch our latest video tutorial on Power BI pagination. Learn the professional techniques for building pixel-perfect paginated reports in 5 minutes.",
+    "excerpt": "Want to build perfect PDF reports in Power BI? Watch this 5-minute video tutorial on mastering paginated reports.",
+    "content": "<h1>Video: Master Power BI Pagination in 5 Minutes</h1><p>Paginated reports are essential for high-fidelity, printable documentation in enterprise BI. In our latest video tutorial, we break down the complex world of Power BI Report Builder into simple, actionable steps.</p><h2>Why Paginated Reports?</h2><p>While standard dashboards are great for interaction, paginated reports are designed for the printed page. They ensure that your tables don't get cut off and your headers appear on every page. This is a requirement for many formal financial statements. See more at <a href='https://dattasable.com/paginated-reports' target='_blank'>Datta Sable's Paginated Reports Guide</a>.</p><h2>What You'll Learn</h2><p>In this video, we cover:<ul><li>Setting up your first dataset in Report Builder.</li><li>Designing a table with group headers and footers.</li><li>Configuring parameters for user-driven reporting.</li><li>Best practices for exporting to PDF and Excel.</li></ul></p><h2>Watch the Full Tutorial</h2><p>Check out the full video on our <a href='/videos'>Videos page</a> and start building professional reports today. Our <a href='/services/report-automation'>Report Automation services</a> can also help you implement these at scale.</p><h2>Conclusion</h2><p>Mastering pagination is a key skill for any Power BI professional. Watch the video, try it out, and let us know what you think!</p>"
+  }
+]
