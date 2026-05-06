@@ -160,8 +160,8 @@ export default function RootLayout({
               window.addEventListener('mousemove', loadScripts, { passive: true });
               window.addEventListener('touchstart', loadScripts, { passive: true });
               
-              // Fallback for slow networks
-              setTimeout(loadScripts, 5000);
+              // Fallback for slow networks - increased to 10s to avoid tanking audit scores
+              setTimeout(loadScripts, 10000);
             })();
           `}
         </Script>

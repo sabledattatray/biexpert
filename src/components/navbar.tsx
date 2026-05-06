@@ -74,7 +74,7 @@ const megaMenus: Record<string, {
       desc: "Explore the full catalogue of BI solutions.", 
       href: "/solutions",
       tag: "Strategy",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2026&auto=format&fit=crop"
+      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=600&auto=format&fit=crop"
     },
   },
   "Case Studies": {
@@ -101,7 +101,7 @@ const megaMenus: Record<string, {
       desc: "See how data transformed these businesses.", 
       href: "/case-studies",
       tag: "Success Stories",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop"
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=600&auto=format&fit=crop"
     },
   },
   Blog: {
@@ -128,7 +128,7 @@ const megaMenus: Record<string, {
       desc: "Learn how to build bulletproof financial models with high-performance DAX patterns.", 
       href: "/blog/mastering-dax-patterns-2026",
       tag: "Latest Article",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop"
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=600&auto=format&fit=crop"
     },
   },
 };
