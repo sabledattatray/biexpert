@@ -12,7 +12,7 @@ const caseStudies = [
   {
     title: "HDFC — MIS Overhaul",
     category: "Banking",
-    image: "/case-studies-hero.png",
+    image: "/case-studies-hero.webp",
     metric: "Saved 40 hrs/month",
     desc: "Automated a complex manual reporting process for one of the largest banks, replacing 15+ Excel trackers with a single Power BI source of truth.",
     impact: ["Zero manual data entry", "Real-time NPA tracking", "Executive-level visibility"],
@@ -21,7 +21,7 @@ const caseStudies = [
   {
     title: "Retail Chain Dashboard",
     category: "Retail",
-    image: "/solutions-hero.png",
+    image: "/solutions-hero.webp",
     metric: "24% Increase in Sales Efficiency",
     desc: "Implemented a real-time POS analytics suite for a 50+ store retail chain, enabling store managers to optimize inventory on the fly.",
     impact: ["Stock-out reduction", "Basket analysis insights", "Performance benchmarking"],
@@ -30,7 +30,7 @@ const caseStudies = [
   {
     title: "Hospital KPI Suite",
     category: "Healthcare",
-    image: "/services-hero.png",
+    image: "/services-hero.webp",
     metric: "99.9% Data Accuracy",
     desc: "Built a comprehensive operational dashboard for a diagnostic chain to monitor bed utilization, patient footfall, and doctor performance.",
     impact: ["Operational bottleneck identification", "Revenue cycle optimization", "Staffing efficiency"],

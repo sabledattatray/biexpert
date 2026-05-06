@@ -61,7 +61,7 @@ export default function SolutionsPage() {
       {/* Hero */}
       <section className="relative min-h-[250px] py-10 flex items-center justify-center overflow-hidden border-b border-border text-center">
         <div className="absolute inset-0 -z-10">
-          <Image src="/solutions-hero.png" alt="Solutions" fill className="object-cover opacity-[0.07]" />
+          <Image src="/solutions-hero.webp" alt="Solutions" fill className="object-cover opacity-[0.07]" />
           <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/95 to-background" />
         </div>
         <div className="container mx-auto px-6 lg:px-12 relative">

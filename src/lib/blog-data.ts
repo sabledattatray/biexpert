@@ -26,7 +26,7 @@ export const posts: BlogPost[] = [
     tag: "Power BI",
     readTime: "12 min read",
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2070&auto=format&fit=crop",
-    author: { name: "Datta Sable", role: "Principal BI Architect", avatar: "/author.jpg" },
+    author: { name: "Datta Sable", role: "Principal BI Architect", avatar: "/author.webp" },
     content: `<h2>The Evolution of DAX in Enterprise BI</h2><p>Optimization is not just about writing shorter code; it's about understanding the engine.</p>`
   },
   {
@@ -38,7 +38,7 @@ export const posts: BlogPost[] = [
     tag: "Power BI",
     readTime: "14 min read",
     image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=2070&auto=format&fit=crop",
-    author: { name: "Datta Sable", role: "Principal BI Architect", avatar: "/author.jpg" },
+    author: { name: "Datta Sable", role: "Principal BI Architect", avatar: "/author.webp" },
     content: `<h2>OneLake: The OneDrive for Data</h2><p>Microsoft Fabric represents the single largest update to the data ecosystem.</p>`
   },
   {
@@ -50,7 +50,7 @@ export const posts: BlogPost[] = [
     tag: "Power BI",
     readTime: "11 min read",
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070",
-    author: { name: "Datta Sable", role: "Principal BI Architect", avatar: "/author.jpg" },
+    author: { name: "Datta Sable", role: "Principal BI Architect", avatar: "/author.webp" },
     content: `<h2>Why Real-Time Matters</h2><p>In high-frequency trading, a 4-hour data lag is an eternity.</p>`
   },
 
@@ -64,7 +64,7 @@ export const posts: BlogPost[] = [
     tag: "SQL Server",
     readTime: "13 min read",
     image: "https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=2070&auto=format&fit=crop",
-    author: { name: "Datta Sable", role: "Principal BI Architect", avatar: "/author.jpg" },
+    author: { name: "Datta Sable", role: "Principal BI Architect", avatar: "/author.webp" },
     content: `<h2>The Power of OVER()</h2><p>Window functions are arguably the most powerful tool in the SQL developer's arsenal.</p>`
   },
   {
@@ -76,7 +76,7 @@ export const posts: BlogPost[] = [
     tag: "SQL Server",
     readTime: "10 min read",
     image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2070&auto=format&fit=crop",
-    author: { name: "Datta Sable", role: "Principal BI Architect", avatar: "/author.jpg" },
+    author: { name: "Datta Sable", role: "Principal BI Architect", avatar: "/author.webp" },
     content: `<h2>The Rise of JSON</h2><p>Modern applications speak JSON. Your warehouse must speak it too.</p>`
   },
   {
@@ -88,7 +88,7 @@ export const posts: BlogPost[] = [
     tag: "SQL Server",
     readTime: "12 min read",
     image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=2070&auto=format&fit=crop",
-    author: { name: "Datta Sable", role: "Principal BI Architect", avatar: "/author.jpg" },
+    author: { name: "Datta Sable", role: "Principal BI Architect", avatar: "/author.webp" },
     content: `<h2>Preventing Clashes</h2><p>Consistency in object access patterns can eliminate circular wait conditions.</p>`
   },
 
@@ -102,7 +102,7 @@ export const posts: BlogPost[] = [
     tag: "Automation",
     readTime: "13 min read",
     image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=2070&auto=format&fit=crop",
-    author: { name: "Datta Sable", role: "Principal BI Architect", avatar: "/author.jpg" },
+    author: { name: "Datta Sable", role: "Principal BI Architect", avatar: "/author.webp" },
     content: `<h2>Automated Trust</h2><p>Machine learning models now learn the "normal" range of your data.</p>`
   },
   {
@@ -114,7 +114,7 @@ export const posts: BlogPost[] = [
     tag: "Automation",
     readTime: "10 min read",
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2026",
-    author: { name: "Datta Sable", role: "Principal BI Architect", avatar: "/author.jpg" },
+    author: { name: "Datta Sable", role: "Principal BI Architect", avatar: "/author.webp" },
     content: `<h2>Speeding up Finance</h2><p>Trigger-based reporting ensures refreshes happen exactly when data is ready.</p>`
   },
   {
@@ -126,7 +126,7 @@ export const posts: BlogPost[] = [
     tag: "Automation",
     readTime: "12 min read",
     image: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop",
-    author: { name: "Datta Sable", role: "Principal BI Architect", avatar: "/author.jpg" },
+    author: { name: "Datta Sable", role: "Principal BI Architect", avatar: "/author.webp" },
     content: `<h2>The Self-Healing Grid</h2><p>If an API call fails, the system should retry and log, not just break.</p>`
   },
 
@@ -140,7 +140,7 @@ export const posts: BlogPost[] = [
     tag: "Strategy",
     readTime: "15 min read",
     image: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2070&auto=format&fit=crop",
-    author: { name: "Datta Sable", role: "Principal BI Architect", avatar: "/author.jpg" },
+    author: { name: "Datta Sable", role: "Principal BI Architect", avatar: "/author.webp" },
     content: `<h2>The CDO's Mission</h2><p>Shifting from thinking about data as raw material to a primary business product.</p>`
   },
   {
@@ -152,7 +152,7 @@ export const posts: BlogPost[] = [
     tag: "Strategy",
     readTime: "12 min read",
     image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=2011&auto=format&fit=crop",
-    author: { name: "Datta Sable", role: "Principal BI Architect", avatar: "/author.jpg" },
+    author: { name: "Datta Sable", role: "Principal BI Architect", avatar: "/author.webp" },
     content: `<h2>Quantifying Value</h2><p>A rigorous framework for proving the value of data investments.</p>`
   },
   {
@@ -164,7 +164,7 @@ export const posts: BlogPost[] = [
     tag: "Strategy",
     readTime: "11 min read",
     image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2000&auto=format&fit=crop",
-    author: { name: "Datta Sable", role: "Principal BI Architect", avatar: "/author.jpg" },
+    author: { name: "Datta Sable", role: "Principal BI Architect", avatar: "/author.webp" },
     content: `<h2>The Cultural Foundation</h2><p>The best technology fails without a team that knows the right questions.</p>`
   },
 
@@ -178,7 +178,7 @@ export const posts: BlogPost[] = [
     tag: "Industry News",
     readTime: "8 min read",
     image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=2070&auto=format&fit=crop",
-    author: { name: "Datta Sable", role: "Principal BI Architect", avatar: "/author.jpg" },
+    author: { name: "Datta Sable", role: "Principal BI Architect", avatar: "/author.webp" },
     content: `<h2>Insight Engines</h2><p>The market is moving toward proactive alerting over static visuals.</p>`
   },
   {
@@ -190,7 +190,7 @@ export const posts: BlogPost[] = [
     tag: "Industry News",
     readTime: "10 min read",
     image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop",
-    author: { name: "Datta Sable", role: "Principal BI Architect", avatar: "/author.jpg" },
+    author: { name: "Datta Sable", role: "Principal BI Architect", avatar: "/author.webp" },
     content: `<h2>Regulatory Complexity</h2><p>Maintaining a global BI stack requires navigating country-specific privacy laws.</p>`
   },
   {
@@ -202,7 +202,7 @@ export const posts: BlogPost[] = [
     tag: "Industry News",
     readTime: "9 min read",
     image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop",
-    author: { name: "Datta Sable", role: "Principal BI Architect", avatar: "/author.jpg" },
+    author: { name: "Datta Sable", role: "Principal BI Architect", avatar: "/author.webp" },
     content: `<h2>Decentralizing Data</h2><p>Data mesh is moving from a buzzword to a standard implementation pattern.</p>`
   },
 
@@ -216,7 +216,7 @@ export const posts: BlogPost[] = [
     tag: "Video Tutorial",
     readTime: "45 min video",
     image: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=2070&auto=format&fit=crop",
-    author: { name: "Datta Sable", role: "Principal BI Architect", avatar: "/author.jpg" },
+    author: { name: "Datta Sable", role: "Principal BI Architect", avatar: "/author.webp" },
     content: `<h2>Dashboard Masterclass</h2><p>Full video transcript and resources included.</p>`
   },
   {
@@ -228,7 +228,7 @@ export const posts: BlogPost[] = [
     tag: "Video Tutorial",
     readTime: "30 min video",
     image: "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?q=80&w=2000&auto=format&fit=crop",
-    author: { name: "Datta Sable", role: "Principal BI Architect", avatar: "/author.jpg" },
+    author: { name: "Datta Sable", role: "Principal BI Architect", avatar: "/author.webp" },
     content: `<h2>The Art of the Query</h2><p>Performance tuning magic happen live.</p>`
   },
   {
@@ -240,7 +240,7 @@ export const posts: BlogPost[] = [
     tag: "Video Tutorial",
     readTime: "60 min video",
     image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop",
-    author: { name: "Datta Sable", role: "Principal BI Architect", avatar: "/author.jpg" },
+    author: { name: "Datta Sable", role: "Principal BI Architect", avatar: "/author.webp" },
     content: `<h2>The Fabric Roadmap</h2><p>The ultimate guide to unified data architecture.</p>`
   }
 ];

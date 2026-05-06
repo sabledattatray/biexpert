@@ -5,14 +5,14 @@ import { UploadCloud, Search, Filter, Trash2, Link as LinkIcon, Download, ImageI
 import { Button } from "@/components/ui/button";
 
 const mockMedia = [
-  { id: 1, name: "hero-dashboard-preview.png", type: "image", size: "1.2 MB", date: "Apr 25, 2026", url: "/media/hero-dashboard.png", previewUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&q=80" },
+  { id: 1, name: "hero-dashboard-preview.png", type: "image", size: "1.2 MB", date: "Apr 25, 2026", url: "/media/hero-dashboard.webp", previewUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&q=80" },
   { id: 2, name: "report-automation-demo.mp4", type: "video", size: "14.5 MB", date: "Apr 22, 2026", url: "/media/demo.mp4" },
-  { id: 3, name: "case-study-fintech-bg.jpg", type: "image", size: "3.4 MB", date: "Apr 18, 2026", url: "/media/fintech.jpg", previewUrl: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=400&q=80" },
+  { id: 3, name: "case-study-fintech-bg.jpg", type: "image", size: "3.4 MB", date: "Apr 18, 2026", url: "/media/fintech.webp", previewUrl: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=400&q=80" },
   { id: 4, name: "data-architecture-diagram.pdf", type: "document", size: "850 KB", date: "Apr 10, 2026", url: "/media/diagram.pdf" },
   { id: 5, name: "client-logo-pack.zip", type: "archive", size: "4.2 MB", date: "Apr 05, 2026", url: "/media/logos.zip" },
-  { id: 6, name: "author-datta-sable.jpg", type: "image", size: "1.8 MB", date: "Mar 30, 2026", url: "/media/profile.jpg", previewUrl: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80" },
-  { id: 7, name: "power-bi-dashboard-1.png", type: "image", size: "2.1 MB", date: "Mar 28, 2026", url: "/media/dashboard1.png", previewUrl: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&q=80" },
-  { id: 8, name: "power-bi-dashboard-2.png", type: "image", size: "1.9 MB", date: "Mar 28, 2026", url: "/media/dashboard2.png", previewUrl: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=400&q=80" },
+  { id: 6, name: "author-datta-sable.jpg", type: "image", size: "1.8 MB", date: "Mar 30, 2026", url: "/media/profile.webp", previewUrl: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80" },
+  { id: 7, name: "power-bi-dashboard-1.png", type: "image", size: "2.1 MB", date: "Mar 28, 2026", url: "/media/dashboard1.webp", previewUrl: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&q=80" },
+  { id: 8, name: "power-bi-dashboard-2.png", type: "image", size: "1.9 MB", date: "Mar 28, 2026", url: "/media/dashboard2.webp", previewUrl: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=400&q=80" },
 ];
 
 export default function MediaLibrary() {

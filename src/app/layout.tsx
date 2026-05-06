@@ -52,13 +52,13 @@ export const metadata: Metadata = {
     siteName: "BI Expert",
     title: "BI Expert | Power BI, Tableau & SQL Data Analytics",
     description: "10+ years of enterprise BI expertise. Power BI, Tableau, SQL architecture, MIS automation for BFSI and Fintech organizations.",
-    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "BI Expert - Data Analytics Consultancy" }]
+    images: [{ url: "/og-image.webp", width: 1200, height: 630, alt: "BI Expert - Data Analytics Consultancy" }]
   },
   twitter: {
     card: "summary_large_image",
     title: "BI Expert | Power BI, Tableau & SQL Data Analytics",
     description: "10+ years of enterprise BI expertise. Power BI, Tableau, SQL for BFSI and Fintech.",
-    images: ["/og-image.jpg"]
+    images: ["/og-image.webp"]
   },
   alternates: {
     canonical: "https://biexpert.online"

@@ -116,7 +116,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               <div className="flex items-center gap-4">
                 <div className="h-12 w-12 rounded-full overflow-hidden border-2 border-blue-600 shadow-lg shadow-blue-600/20 relative">
                   <Image 
-                    src="/author-datta.jpg" 
+                    src="/author-datta.webp" 
                     alt={post.author.name || "Datta Sable"}
                     fill
                     className="object-cover object-top"
@@ -180,7 +180,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                   <div className="flex items-center gap-4 mb-4">
                     <div className="h-12 w-12 rounded-full overflow-hidden border-2 border-blue-600 shadow-lg shadow-blue-600/20 relative">
                       <Image 
-                        src="/author-datta.jpg" 
+                        src="/author-datta.webp" 
                         alt={post.author.name || "Datta Sable"}
                         fill
                         className="object-cover object-top"
