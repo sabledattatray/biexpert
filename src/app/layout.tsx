@@ -130,6 +130,14 @@ export default function RootLayout({
             gtag('config', 'G-WFTZB9LNXS');
           `}
         </Script>
+
+        {/* Google AdSense */}
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4242010382827250"
+          crossOrigin="anonymous"
+          strategy="lazyOnload"
+        />
         <CookieBanner />
       </body>
     </html>
