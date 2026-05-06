@@ -14,6 +14,13 @@ export function ContactForm() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('event', 'form_submit', {
+        event_category: 'lead',
+        event_label: 'contact_form'
+      });
+    }
+
     const subject = encodeURIComponent(`[BI Expert Inquiry] ${service} — from ${name}`);
     const body = encodeURIComponent(
       `Name: ${name}\nEmail: ${email}\nService Interest: ${service}\n\nMessage:\n${message}`

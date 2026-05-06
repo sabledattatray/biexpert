@@ -62,6 +62,9 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://biexpert.online"
+  },
+  verification: {
+    google: "YOUR_VERIFICATION_CODE",
   }
 };
 
@@ -100,6 +103,19 @@ export default function RootLayout({
             </SiteShell>
           </AuthProvider>
         </ThemeProvider>
+
+        {/* Organization Schema Markup */}
+        <Script id="organization-schema" type="application/ld+json" strategy="beforeInteractive">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "BI Expert",
+              "url": "https://biexpert.online",
+              "logo": "https://biexpert.online/icon.svg"
+            }
+          `}
+        </Script>
 
         {/* Google Analytics */}
         <Script
