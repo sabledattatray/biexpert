@@ -242,7 +242,7 @@ export const posts: BlogPost[] = [
     image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop",
     author: { name: "Datta Sable", role: "Principal BI Architect", avatar: "/author.webp" },
     content: `<h2>The Fabric Roadmap</h2><p>The ultimate guide to unified data architecture.</p>`
-  }
+  },
   {
     slug: "agentic-shift-autonomous-intelligence-2026",
     title: "The Agentic Shift: Architecting Autonomous Intelligence in Enterprise Workflows (2026)",
