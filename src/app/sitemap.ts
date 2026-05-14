@@ -55,6 +55,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'python-for-power-bi-automation',
     'python-sql-data-pipelines-scale',
     'python-eda-guide-bi-professionals',
+    'agentic-shift-autonomous-intelligence-2026',
+    'death-of-static-dashboards-decision-intelligence',
+    'zero-trust-2-autonomous-cybersecurity',
+    'edge-first-era-web-performance-2026',
+    'saas-liquidity-trap-ai-strategy-2026',
   ];
   const blogRoutes = blogSlugs.map((slug) => ({
     url: `${baseUrl}/blog/${slug}`,
