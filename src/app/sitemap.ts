@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next';
+import { prisma } from '@/lib/prisma';
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://biexpert.online';
 
   // Static routes
@@ -21,52 +22,46 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: route === '' ? 1 : 0.8,
   }));
 
-  // Blog post routes
-  const blogSlugs = [
-    'mastering-dax-patterns-2026',
-    'tableau-vs-power-bi-2026',
-    'sql-json-data-warehousing',
-    'mis-automation-framework',
-    'bfsi-real-time-analytics',
-    'fintech-etl-pipelines',
-    'retail-predictive-analytics',
-    'bi-expert-digital-transformation',
-    'power-bi-fabric-integration',
-    'sql-performance-tuning-finance',
-    'scaling-data-culture-enterprise',
-    'real-time-streaming-power-bi',
-    'data-quality-framework-mis',
-    'self-healing-etl-robustness',
-    'measuring-bi-roi-framework',
-    'power-bi-fabric-integration-2026',
-    'real-time-streaming-analytics-power-bi',
-    'sql-server-window-functions-advanced',
-    'sql-deadlock-prevention-strategies',
-    'ai-driven-data-quality-2026',
-    'power-automate-financial-reporting-workflow',
-    'self-healing-etl-pipelines',
-    'cdo-playbook-2026-strategy',
-    'measuring-bi-roi-financial-framework',
-    'gartner-magic-quadrant-2026-bi',
-    'global-data-privacy-regulations-2026',
-    'data-mesh-adoption-trends-2026',
-    'news-bi-expert-q2-2026-update',
-    'video-master-power-bi-pagination',
-    'python-for-power-bi-automation',
-    'python-sql-data-pipelines-scale',
-    'python-eda-guide-bi-professionals',
-    'agentic-shift-autonomous-intelligence-2026',
-    'death-of-static-dashboards-decision-intelligence',
-    'zero-trust-2-autonomous-cybersecurity',
-    'edge-first-era-web-performance-2026',
-    'saas-liquidity-trap-ai-strategy-2026',
-  ];
-  const blogRoutes = blogSlugs.map((slug) => ({
-    url: `${baseUrl}/blog/${slug}`,
-    lastModified: new Date(),
-    changeFrequency: 'monthly' as const,
-    priority: 0.7,
-  }));
+  // Dynamic Blog post routes from database
+  let blogRoutes: MetadataRoute.Sitemap = [];
+  try {
+    const publishedPosts = await prisma.post.findMany({
+      where: { published: true },
+      select: { slug: true, updatedAt: true }
+    });
+    
+    blogRoutes = publishedPosts.map((post) => ({
+      url: `${baseUrl}/blog/${post.slug}`,
+      lastModified: post.updatedAt || new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    }));
+  } catch (error) {
+    console.error("Error generating sitemap blog routes:", error);
+    // Fallback if DB query fails during build
+    const fallbackSlugs = [
+      'mastering-dax-patterns-2026',
+      'power-bi-fabric-integration-2026',
+      'real-time-streaming-analytics-power-bi',
+      'sql-server-window-functions-advanced',
+      'sql-json-data-warehousing',
+      'sql-deadlock-prevention-strategies',
+      'ai-driven-data-quality-2026',
+      'power-automate-financial-reporting-workflow',
+      'self-healing-etl-pipelines',
+      'measuring-bi-roi-financial-framework',
+      'scaling-data-culture-enterprise',
+      'gartner-magic-quadrant-2026-bi',
+      'global-data-privacy-regulations-2026',
+      'data-mesh-adoption-trends-2026'
+    ];
+    blogRoutes = fallbackSlugs.map((slug) => ({
+      url: `${baseUrl}/blog/${slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    }));
+  }
 
   // Case Study routes
   const caseStudyRoutes = ['hdfc', 'retail', 'hospital'].map((slug) => ({
@@ -103,3 +98,4 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...solutionRoutes
   ];
 }
+

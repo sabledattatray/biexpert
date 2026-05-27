@@ -119,50 +119,31 @@ export default function RootLayout({
           `}
         </Script>
 
-        {/* Interaction-based Script Loader */}
-        <Script id="interaction-script-loader" strategy="lazyOnload">
+        {/* Google AdSense */}
+        <Script
+          id="adsense-init"
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4242010382827250"
+          strategy="afterInteractive"
+          crossOrigin="anonymous"
+          async
+        />
+
+        {/* Google Tag Manager */}
+        <Script
+          id="gtm-init"
+          src="https://www.googletagmanager.com/gtag/js?id=G-WFTZB9LNXS"
+          strategy="afterInteractive"
+          async
+        />
+        <Script id="gtm-config" strategy="afterInteractive">
           {`
-            (function() {
-              var scriptsLoaded = false;
-              function loadScripts() {
-                if (scriptsLoaded) return;
-                scriptsLoaded = true;
-
-                // Load GTM
-                var gtmScript = document.createElement('script');
-                gtmScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-WFTZB9LNXS';
-                gtmScript.async = true;
-                document.head.appendChild(gtmScript);
-
-                gtmScript.onload = function() {
-                  window.dataLayer = window.dataLayer || [];
-                  function gtag(){dataLayer.push(arguments);}
-                  gtag('js', new Date());
-                  gtag('config', 'G-WFTZB9LNXS');
-                };
-
-                // Load AdSense
-                var adsenseScript = document.createElement('script');
-                adsenseScript.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4242010382827250';
-                adsenseScript.async = true;
-                adsenseScript.crossOrigin = 'anonymous';
-                document.head.appendChild(adsenseScript);
-
-                // Clean up listeners
-                window.removeEventListener('scroll', loadScripts);
-                window.removeEventListener('mousemove', loadScripts);
-                window.removeEventListener('touchstart', loadScripts);
-              }
-
-              window.addEventListener('scroll', loadScripts, { passive: true });
-              window.addEventListener('mousemove', loadScripts, { passive: true });
-              window.addEventListener('touchstart', loadScripts, { passive: true });
-              
-              // Fallback for slow networks - increased to 10s to avoid tanking audit scores
-              setTimeout(loadScripts, 10000);
-            })();
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-WFTZB9LNXS');
           `}
         </Script>
+
         <CookieBanner />
       </body>
     </html>
