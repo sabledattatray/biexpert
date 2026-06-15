@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     default: "Power BI & Tableau Consultant Mumbai | MIS Automation for BFSI – BI Expert",
     template: "%s | BI Expert"
   },
-  description: "10+ years of enterprise BI expertise. Power BI dashboards, Tableau analytics, and MIS automation for BFSI & Fintech in Mumbai, India. Book a free BI audit.",
+  description: "Mumbai Power BI consultant for banks & NBFCs. Automate MIS, RLS dashboards, RBI-compliant reporting. 150+ audits. Free 45-min BI audit.",
   keywords: [
     "Power BI consultant India",
     "Power BI consultant Mumbai",
@@ -66,13 +66,13 @@ export const metadata: Metadata = {
     url: "https://biexpert.online",
     siteName: "BI Expert",
     title: "Power BI & Tableau Consultant Mumbai | MIS Automation for BFSI – BI Expert",
-    description: "10+ years of enterprise BI expertise. Power BI dashboards, Tableau analytics, and MIS automation for BFSI & Fintech in Mumbai, India. Book a free BI audit.",
+    description: "Mumbai Power BI consultant for banks & NBFCs. Automate MIS, RLS dashboards, RBI-compliant reporting. 150+ audits. Free 45-min BI audit.",
     images: [{ url: "/og-image.webp", width: 1200, height: 630, alt: "BI Expert - Data Analytics Consultancy" }]
   },
   twitter: {
     card: "summary_large_image",
     title: "Power BI & Tableau Consultant Mumbai | MIS Automation for BFSI – BI Expert",
-    description: "10+ years of enterprise BI expertise. Power BI dashboards, Tableau analytics, and MIS automation for BFSI & Fintech in Mumbai, India. Book a free BI audit.",
+    description: "Mumbai Power BI consultant for banks & NBFCs. Automate MIS, RLS dashboards, RBI-compliant reporting. 150+ audits. Free 45-min BI audit.",
     images: ["/og-image.webp"]
   },
   alternates: {

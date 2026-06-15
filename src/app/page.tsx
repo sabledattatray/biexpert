@@ -127,6 +127,81 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Testimonials Section */}
+      <section className="py-24 border-t border-white/[0.05] relative overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-primary-blue/5 blur-[120px] rounded-full -z-10" />
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+          <div className="text-center max-w-xl mx-auto mb-16">
+            <span className="px-3 py-1 bg-primary-blue/10 border border-primary-blue/20 text-primary-blue text-[9px] font-bold uppercase tracking-widest rounded">
+              Testimonials
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight leading-tight mt-4 uppercase">
+              Proven Results from <span className="gradient-text">BFSI Leaders.</span>
+            </h2>
+            <p className="text-neutral-text text-sm mt-3">Read how we helped financial executives take back control of their reporting cycles.</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="glass-card p-8 border border-white/[0.05] rounded-2xl relative shadow-2xl">
+              <p className="text-neutral-text text-sm italic leading-relaxed mb-6">
+                "We were spending over 20 hours a week compiling regional collections trackers manually. BI Expert replaced that mess with a single, real-time dashboard featuring secure Row-Level Security. Our regional heads can only see their data, and month-end close dropped from 3 days to 4 hours."
+              </p>
+              <div>
+                <h4 className="text-sm font-bold text-white uppercase">CFO</h4>
+                <p className="text-[10px] text-accent-green uppercase font-bold tracking-wider mt-0.5">Leading NBFC Lender — Mumbai</p>
+              </div>
+            </div>
+
+            <div className="glass-card p-8 border border-white/[0.05] rounded-2xl relative shadow-2xl">
+              <p className="text-neutral-text text-sm italic leading-relaxed mb-6">
+                "Implementing RBI-compliant reporting was our biggest hurdle. The team built an audit-ready Power BI framework with full data lineage that passed inspection on the first run. The automated data pipelines save us hundreds of manual compliance hours every single month."
+              </p>
+              <div>
+                <h4 className="text-sm font-bold text-white uppercase">Head of Operations</h4>
+                <p className="text-[10px] text-secondary-cyan uppercase font-bold tracking-wider mt-0.5">Fintech Payments Bank — Pune</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Schema Markup */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What is MIS automation in BFSI?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "MIS automation in Banking, Financial Services, and Insurance (BFSI) replaces manual, error-prone Excel reporting cycles with automated, real-time data ingestion pipelines and interactive dashboards."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How does Row-Level Security (RLS) protect banking data in Power BI?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Row-Level Security (RLS) restricts data access at the row level for specific users, ensuring that department heads or regional managers can only view data relevant to their authorization, compliant with RBI guidelines."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How long does a typical Power BI or Tableau dashboard implementation take?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "While complex systems vary, we can deploy a high-impact, production-ready operational dashboard or automated reporting pipeline within one week, live by Friday."
+                }
+              }
+            ]
+          })
+        }}
+      />
+
       {/* Lead Magnet Download Section */}
       <section className="py-24 border-t border-white/[0.05] bg-white/[0.01] relative overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">

@@ -43,17 +43,14 @@ export function HeroSection() {
               ✨ Elite Business Intelligence
             </motion.div>
 
-            <motion.h1 
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7 }}
+            <h1 
               className="text-4xl sm:text-[50px] lg:text-[46px] xl:text-[54px] font-bold tracking-tight leading-[1.05] text-foreground mb-6"
             >
               Turn Data Into{" "}
               <span className="gradient-text-hero block">
                 Revenue, Not Reports
               </span>
-            </motion.h1>
+            </h1>
 
             <motion.p 
               initial={{ opacity: 0, y: 15 }}

@@ -10,26 +10,69 @@ import Image from "next/image";
 
 // Premium Mock Data Generator based on Slug
 const getCaseStudyData = (slug: string) => {
-  const formattedTitle = slug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
-  
+  if (slug === "hdfc") {
+    return {
+      title: "HDFC Bank — Corporate Collections MIS Overhaul",
+      client: "HDFC Bank (MIS System)",
+      industry: "Banking / BFSI",
+      date: "April 2026",
+      heroImage: "https://images.unsplash.com/photo-1541354346785-3c880f38253a?q=80&w=2070",
+      challenge: "The corporate collections and retail asset departments relied heavily on legacy Excel sheets. Over 15 disjointed trackers required 40+ hours of manual consolidation weekly. Executive leadership lacked real-time visibility into NPA (Non-Performing Asset) changes, collections efficiency ratios, and daily recovery runs.",
+      solution: "Engineered a centralized data hub with automated ETL pipelines utilizing SQL Server staging and Azure Data Factory. Built a suite of high-performance Power BI dashboards equipped with RBI-compliant Row-Level Security (RLS) to restrict regional manager access, establishing a single source of truth.",
+      impact: [
+        { label: "Hours Saved Monthly", value: "40 Hrs", icon: <Clock className="w-5 h-5 text-emerald-500" /> },
+        { label: "Reporting Errors", value: "0%", icon: <TrendingUp className="w-5 h-5 text-blue-500" /> },
+        { label: "Manual Consolidation", value: "None", icon: <BarChart3 className="w-5 h-5 text-violet-500" /> }
+      ],
+      gallery: [
+        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015",
+        "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?q=80&w=2070"
+      ],
+      techStack: ["Power BI", "SQL Server", "Azure Data Factory", "DAX", "Row-Level Security (RLS)", "Power Automate"]
+    };
+  }
+
+  if (slug === "retail" || slug === "retail-chain") {
+    return {
+      title: "Retail Chain — Real-Time POS Analytics Suite",
+      client: "Retail Brand",
+      industry: "Retail & E-Commerce",
+      date: "May 2026",
+      heroImage: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=2070",
+      challenge: "A retail diagnostic operation with 50+ store outlets suffered from delayed inventory visibility. Out-of-stock items and slow sales analysis led to high stock-outs, inaccurate benchmarking, and decreased store efficiency.",
+      solution: "Engineered a sub-second load-time Tableau dashboard connected directly to the POS transaction database. Implemented advanced Level-of-Detail (LOD) parameter actions for real-time inventory monitoring, sales efficiency, and outlet benchmarking.",
+      impact: [
+        { label: "Sales Efficiency Boost", value: "+24%", icon: <TrendingUp className="w-5 h-5 text-emerald-500" /> },
+        { label: "Stock-Out Reduction", value: "90%", icon: <Clock className="w-5 h-5 text-blue-500" /> },
+        { label: "Benchmarking Latency", value: "<1s", icon: <BarChart3 className="w-5 h-5 text-violet-500" /> }
+      ],
+      gallery: [
+        "https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=2070",
+        "https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?q=80&w=2070"
+      ],
+      techStack: ["Tableau Desktop", "PostgreSQL", "LOD Calculations", "Parameter Actions", "Data Blending"]
+    };
+  }
+
+  // Fallback to hospital
   return {
-    title: `${formattedTitle} Data Transformation`,
-    client: formattedTitle,
-    industry: "BFSI & Fintech",
-    date: "March 2026",
-    heroImage: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070",
-    challenge: "The client was relying on legacy, disjointed Excel sheets requiring 40+ hours of manual consolidation weekly. Decision-makers lacked real-time visibility into transaction volumes and risk metrics, leading to delayed strategic pivots.",
-    solution: "Engineered an enterprise-grade automated ETL pipeline feeding directly into a suite of high-performance Power BI & Tableau dashboards. Implemented Row-Level Security (RLS) to ensure strict data governance across global departments.",
+    title: "Hospital Chain — Diagnostic Operations KPI Suite",
+    client: "Diagnostic Hospital Group",
+    industry: "Healthcare Operations",
+    date: "June 2026",
+    heroImage: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=2070",
+    challenge: "A Diagnostic hospital group lacked centralized tracking for doctor schedules, patient bed occupancy, and revenue cycles. Overloaded staff spent hours compiling status reports daily, leading to operational bottlenecks and lost margins.",
+    solution: "Built a fully automated diagnostic operations control center dashboard. Consolidated clinic databases and scheduling engines into a single visual suite showing live bed occupancy, staffing efficiency ratios, and revenue leakage indicators.",
     impact: [
-      { label: "Manual Effort Reduced", value: "95%", icon: <Clock className="w-5 h-5 text-emerald-500" /> },
-      { label: "Query Speed Improved", value: "10x", icon: <TrendingUp className="w-5 h-5 text-blue-500" /> },
-      { label: "Executive Adoption", value: "100%", icon: <BarChart3 className="w-5 h-5 text-violet-500" /> }
+      { label: "Reporting Accuracy", value: "99.9%", icon: <CheckCircle2 className="w-5 h-5 text-emerald-500" /> },
+      { label: "Daily Compilation", value: "0 Mins", icon: <Clock className="w-5 h-5 text-blue-500" /> },
+      { label: "Footfall Efficiency", value: "+30%", icon: <TrendingUp className="w-5 h-5 text-violet-500" /> }
     ],
     gallery: [
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015",
-      "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?q=80&w=2070"
+      "https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=2070",
+      "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=2070"
     ],
-    techStack: ["Power BI", "Tableau", "SQL Server", "Azure Data Factory", "DAX", "Power Automate"]
+    techStack: ["Power BI", "SQL Server Data Warehouse", "MIS Automation", "ETL Pipelines", "Operational Dashboards"]
   };
 };
 
