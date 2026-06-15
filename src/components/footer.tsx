@@ -45,6 +45,8 @@ const SOCIAL = [
   { platform: "linkedin" as const, href: "https://linkedin.com/in/dattasable" },
   { platform: "github" as const, href: "https://github.com/dattasable" },
   { platform: "telegram" as const, href: "https://t.me/sabledatta" },
+  { platform: "instagram" as const, href: "https://instagram.com/dattasable.in" },
+  { platform: "instagram" as const, href: "https://instagram.com/marathivision.in" },
 ];
 
 const CONTACT = [
@@ -61,8 +63,6 @@ export function Footer() {
     e.preventDefault();
     if (!email) return;
     
-    // In a real app we'd import { subscribeToNewsletter } from "@/app/actions/newsletter";
-    // For now we'll simulate the call or use a direct import if possible.
     try {
       const { subscribeToNewsletter } = await import("@/app/actions/newsletter");
       const result = await subscribeToNewsletter(new FormData(e.target as HTMLFormElement));
@@ -80,22 +80,22 @@ export function Footer() {
   };
 
   return (
-    <footer className="bg-background border-t border-border">
+    <footer className="bg-background border-t border-white/[0.04] relative z-20">
 
       {/* ── TOP BAND: Newsletter ────────────────────────────────── */}
-      <div className="border-b border-border bg-muted/20">
+      <div className="border-b border-white/[0.04] bg-white/[0.01]">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-10">
           <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
             {/* Left copy */}
             <div className="max-w-md">
               <div className="flex items-center gap-2 mb-2">
-                <Zap className="w-4 h-4 text-blue-400" />
-                <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-blue-400">Newsletter</span>
+                <Zap className="w-4 h-4 text-primary" />
+                <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-primary">Newsletter</span>
               </div>
               <h3 className="text-xl sm:text-2xl font-bold tracking-tighter text-foreground mb-1">
                 Stay Ahead with Data Insights
               </h3>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-muted-foreground leading-relaxed">
                 Power BI &amp; Tableau tips, dashboard strategies and analytics playbooks — weekly.
               </p>
             </div>
@@ -103,11 +103,11 @@ export function Footer() {
             {/* Right form */}
             <div className="w-full lg:w-auto lg:min-w-[400px]">
               {subscribed ? (
-                <div className="flex items-center gap-3 px-5 py-4 border border-emerald-500/30 bg-emerald-500/5 text-emerald-400 text-sm font-bold">
+                <div className="flex items-center gap-3 px-5 py-4 border border-emerald-500/20 bg-emerald-500/5 text-emerald-400 text-sm font-bold rounded-2xl">
                   <CheckCircle2 size={18} /> You&apos;re subscribed! Welcome aboard.
                 </div>
               ) : (
-                <form onSubmit={handleSubscribe} className="flex gap-0">
+                <form onSubmit={handleSubscribe} className="flex gap-2 w-full max-w-md bg-white/[0.03] border border-white/[0.06] rounded-full p-1 pl-4 focus-within:border-primary/50 focus-within:ring-2 focus-within:ring-primary/10 transition-all">
                   <input
                     type="email"
                     name="email"
@@ -115,17 +115,17 @@ export function Footer() {
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Enter your email address"
                     required
-                    className="flex-1 min-w-0 bg-background border border-border border-r-0 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-blue-500 transition-colors"
+                    className="flex-1 min-w-0 bg-transparent border-0 px-2 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none"
                   />
                   <button
                     type="submit"
-                    className="px-5 py-3 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold uppercase tracking-widest transition-colors border border-blue-600 shrink-0 flex items-center gap-2"
+                    className="px-5 py-2.5 bg-gradient-to-r from-primary to-indigo-500 hover:opacity-90 text-background text-xs font-bold uppercase tracking-widest transition-opacity rounded-full shrink-0 flex items-center gap-1.5"
                   >
                     Subscribe <ArrowRight size={14} />
                   </button>
                 </form>
               )}
-              <p className="text-[10px] text-muted-foreground mt-2">No spam. Unsubscribe at any time.</p>
+              <p className="text-[10px] text-muted-foreground mt-2 pl-4">No spam. Unsubscribe at any time.</p>
             </div>
           </div>
         </div>
@@ -147,21 +147,21 @@ export function Footer() {
             <ul className="space-y-2.5">
               {CONTACT.map((c, i) => (
                 <li key={i} className="flex items-center gap-2.5 text-sm text-muted-foreground">
-                  <span className="text-blue-400 shrink-0">{c.icon}</span>
+                  <span className="text-primary shrink-0">{c.icon}</span>
                   {c.text}
                 </li>
               ))}
             </ul>
 
             {/* Social */}
-            <div className="flex gap-4">
+            <div className="flex gap-3">
               {SOCIAL.map((item) => (
                 <SocialLink 
-                  key={item.platform} 
+                  key={item.href} 
                   platform={item.platform} 
                   href={item.href} 
-                  size={16} 
-                  className="p-2"
+                  size={14} 
+                  className="p-2.5 border border-white/[0.06] hover:border-primary/40 rounded-full hover:bg-primary/5 text-muted-foreground hover:text-primary transition-all duration-200"
                 />
               ))}
             </div>
@@ -173,16 +173,16 @@ export function Footer() {
           {/* Services — 3 cols */}
           <div className="lg:col-span-3">
             <h4 className="text-[10px] font-bold uppercase tracking-[0.25em] text-muted-foreground mb-6 flex items-center gap-2">
-              <span className="w-4 h-px bg-blue-500 inline-block" /> Services
+              <span className="w-3 h-px bg-primary inline-block" /> Services
             </h4>
             <ul className="space-y-3.5">
               {NAV.services.map((link) => (
                 <li key={link.label}>
                   <NextLink
                     href={link.href}
-                    className="text-sm text-muted-foreground hover:text-foreground hover:translate-x-1 transition-all duration-200 inline-flex items-center gap-1.5 group"
+                    className="text-sm text-muted-foreground hover:text-primary hover:translate-x-1 transition-all duration-200 inline-flex items-center gap-1.5 group"
                   >
-                    <ArrowRight size={11} className="opacity-0 group-hover:opacity-100 transition-opacity text-blue-400" />
+                    <ArrowRight size={11} className="opacity-0 group-hover:opacity-100 transition-opacity text-primary" />
                     {link.label}
                   </NextLink>
                 </li>
@@ -193,7 +193,7 @@ export function Footer() {
           {/* Company — 2 cols */}
           <div className="lg:col-span-2">
             <h4 className="text-[10px] font-bold uppercase tracking-[0.25em] text-muted-foreground mb-6 flex items-center gap-2">
-              <span className="w-4 h-px bg-violet-500 inline-block" /> Company
+              <span className="w-3 h-px bg-indigo-500 inline-block" /> Company
             </h4>
             <ul className="space-y-3.5">
               {NAV.company.map((link) => (
@@ -202,9 +202,9 @@ export function Footer() {
                     href={link.href}
                     target={(link as any).external ? "_blank" : undefined}
                     rel={(link as any).external ? "noopener noreferrer" : undefined}
-                    className="text-sm text-muted-foreground hover:text-foreground hover:translate-x-1 transition-all duration-200 inline-flex items-center gap-1.5 group"
+                    className="text-sm text-muted-foreground hover:text-indigo-400 hover:translate-x-1 transition-all duration-200 inline-flex items-center gap-1.5 group"
                   >
-                    <ArrowRight size={11} className="opacity-0 group-hover:opacity-100 transition-opacity text-violet-400" />
+                    <ArrowRight size={11} className="opacity-0 group-hover:opacity-100 transition-opacity text-indigo-400" />
                     {link.label}
                   </NextLink>
                 </li>
@@ -215,14 +215,14 @@ export function Footer() {
           {/* Legal — 2 cols */}
           <div className="lg:col-span-2">
             <h4 className="text-[10px] font-bold uppercase tracking-[0.25em] text-muted-foreground mb-6 flex items-center gap-2">
-              <span className="w-4 h-px bg-emerald-500 inline-block" /> Legal
+              <span className="w-3 h-px bg-emerald-500 inline-block" /> Legal
             </h4>
             <ul className="space-y-3.5">
               {NAV.legal.map((link) => (
                 <li key={link.label}>
                   <NextLink
                     href={link.href}
-                    className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                    className="text-sm text-muted-foreground hover:text-emerald-400 transition-colors"
                   >
                     {link.label}
                   </NextLink>
@@ -231,10 +231,10 @@ export function Footer() {
             </ul>
 
             {/* Admin shortcut */}
-            <div className="mt-8 pt-6 border-t border-border">
+            <div className="mt-8 pt-6 border-t border-white/[0.06]">
               <NextLink
                 href="/admin"
-                className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-muted-foreground hover:text-blue-400 transition-colors"
+                className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors"
               >
                 <Database size={11} /> Admin Console
               </NextLink>
@@ -245,12 +245,12 @@ export function Footer() {
       </div>
 
       {/* ── BOTTOM BAR ──────────────────────────────────────────── */}
-      <div className="border-t border-border">
+      <div className="border-t border-white/[0.04]">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-5">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <p className="text-[11px] text-muted-foreground order-2 sm:order-1">
-              © {new Date().getFullYear()} BI Expert. All rights reserved. Built by{" "}
-              <a href="https://dattasable.com" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 font-bold transition-colors">Datta Sable</a>
+              © {new Date().getFullYear()} BI Expert, Mumbai, India. All rights reserved. Built by{" "}
+              <a href="https://dattasable.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary/80 font-bold transition-colors">Datta Sable</a>
             </p>
             <div className="flex items-center gap-5 order-1 sm:order-2">
               {NAV.legal.map((link) => (

@@ -1,76 +1,79 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import {
-  BarChart3,
-  Activity,
-  Users,
-  Download,
-  Filter,
   LayoutDashboard,
   ArrowRight,
-  Settings,
-  ChevronDown,
-  RefreshCw,
-  TrendingUp,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import dynamic from 'next/dynamic';
 
 const MainDashboardUI = dynamic(() => import('./dashboard-demo'), { 
   ssr: false,
-  loading: () => <div className="w-full aspect-[4/3] bg-muted/20 animate-pulse border border-border" />
+  loading: () => (
+    <div className="w-full aspect-[4/3] rounded-2xl bg-white/[0.01] border border-white/[0.05] flex items-center justify-center">
+      <div className="w-12 h-12 rounded-full border-2 border-primary-blue/20 border-t-primary-blue animate-spin" />
+    </div>
+  )
 });
-
-// ─────────────────────────────────────────────────────────────────────────────
-
-// ─────────────────────────────────────────────────────────────────────────────
-// Hero Section
-// ─────────────────────────────────────────────────────────────────────────────
 
 export function HeroSection() {
   return (
-    <section className="relative bg-background w-full overflow-hidden">
-      {/* Background effects */}
+    <section className="relative w-full overflow-hidden min-h-[85vh] flex items-center">
+      {/* Background ambient light */}
       <div className="absolute inset-0 -z-10 pointer-events-none overflow-hidden" aria-hidden="true">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-600/8 blur-[120px] rounded-full aspect-square" style={{ contentVisibility: 'auto' }} />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-indigo-600/6 blur-[120px] rounded-full aspect-square" style={{ contentVisibility: 'auto' }} />
+        <div className="glow-ring w-[600px] h-[600px] bg-primary-blue/8 top-[-10%] left-[10%]" />
+        <div className="glow-ring w-[500px] h-[500px] bg-secondary-cyan/6 bottom-[10%] right-[10%]" />
       </div>
 
-      {/* ── Inner container: stacks vertically on mobile, side-by-side on desktop */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28 relative z-10">
         <div className="flex flex-col lg:flex-row lg:items-center lg:gap-16 gap-12">
 
-          {/* ── LEFT: Copy ── */}
+          {/* ── LEFT: Visual Copy ── */}
           <div className="w-full lg:w-5/12 flex flex-col items-center lg:items-start text-center lg:text-left">
-            <div className="inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/5 px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.3em] text-blue-400 mb-6">
-              <LayoutDashboard className="w-3 h-3 animate-pulse" />
-              Data Architecture Elite
-            </div>
+            <motion.div 
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="inline-flex items-center gap-2 rounded-full border border-white/[0.06] bg-white/[0.02] px-4 py-1.5 text-[9px] font-bold uppercase tracking-[0.25em] text-secondary-cyan mb-6 shadow-2xl backdrop-blur-md"
+            >
+              <LayoutDashboard className="w-3.5 h-3.5 text-secondary-cyan animate-pulse" />
+              ✨ Elite Business Intelligence
+            </motion.div>
 
-            <h1 className="text-4xl sm:text-[46px] lg:text-[46px] xl:text-[46px] font-bold tracking-tighter leading-[1.05] text-foreground mb-5">
+            <motion.h1 
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7 }}
+              className="text-4xl sm:text-[50px] lg:text-[46px] xl:text-[54px] font-bold tracking-tight leading-[1.05] text-foreground mb-6"
+            >
               Turn Data Into{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-br from-blue-400 via-indigo-400 to-violet-500">
+              <span className="gradient-text-hero block">
                 Revenue, Not Reports
               </span>
-            </h1>
+            </motion.h1>
 
-            <p className="text-base sm:text-lg text-muted-foreground leading-relaxed mb-8 max-w-md">
-              I help businesses automate their MIS and build high-impact Power BI &amp; Tableau dashboards that save time and drive ROI. 10+ years of expertise in BFSI and Fintech.
-            </p>
+            <motion.p 
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.15 }}
+              className="text-base sm:text-lg text-neutral-text leading-relaxed mb-8 max-w-md"
+            >
+              We replace 20-hour Excel MIS cycles with 1-click Power BI &amp; Tableau dashboards for banks, NBFCs, and fintechs in India. RLS-ready, audit-compliant, live by Friday.
+            </motion.p>
 
             <motion.div
-              initial={{ opacity: 0, y: 16 }}
+              initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.3 }}
-              className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto"
+              className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto mb-8"
             >
               <Link href="/contact" className="w-full sm:w-auto">
                 <Button 
                   size="lg" 
-                  className="w-full sm:w-48 h-12 text-sm font-bold bg-blue-600 hover:bg-blue-700 text-white border-0 shadow-xl shadow-blue-600/20 group"
+                  className="btn-primary w-full sm:w-48 h-12 text-sm"
                   aria-label="Book a free BI consultation"
                   onClick={() => {
                     if (typeof window !== 'undefined' && (window as any).gtag) {
@@ -81,14 +84,13 @@ export function HeroSection() {
                     }
                   }}
                 >
-                  Book Consultation <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                  Book Consultation <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
               </Link>
               <Link href="/services" className="w-full sm:w-auto">
                 <Button 
-                  variant="outline" 
                   size="lg" 
-                  className="w-full sm:w-48 h-12 text-sm font-bold border-border bg-muted/50 hover:bg-muted text-foreground"
+                  className="btn-secondary w-full sm:w-48 h-12 text-sm"
                   aria-label="View our data solutions and services"
                 >
                   View Solutions
@@ -96,10 +98,32 @@ export function HeroSection() {
               </Link>
             </motion.div>
 
-
+            {/* Trust and Rating indicator */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="flex items-center gap-3 text-left pl-1"
+            >
+              <div className="flex -space-x-2">
+                {[
+                  "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=100&auto=format&fit=crop",
+                  "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=100&auto=format&fit=crop",
+                  "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?q=80&w=100&auto=format&fit=crop"
+                ].map((src, i) => (
+                  <div key={i} className="w-7 h-7 rounded-full border border-[#081120] overflow-hidden relative shadow-md">
+                    <img src={src} alt="Client avatar" className="w-full h-full object-cover" />
+                  </div>
+                ))}
+              </div>
+              <div>
+                <p className="text-[10px] font-bold text-white leading-normal">Trusted by Fintech &amp; BFSI Leaders in Mumbai &amp; India</p>
+                <p className="text-[9px] text-neutral-text font-bold uppercase tracking-wider mt-0.5">⭐ 4.9/5 Rating (150+ Audits Completed)</p>
+              </div>
+            </motion.div>
           </div>
 
-          {/* ── RIGHT: Dashboard ── */}
+          {/* ── RIGHT: Interactive Dashboard Mock ── */}
           <div className="w-full lg:w-7/12">
             <MainDashboardUI />
           </div>

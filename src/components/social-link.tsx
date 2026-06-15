@@ -1,8 +1,8 @@
 import React from "react";
-import { LinkedInIcon, GithubIcon, TelegramIcon } from "./social-icons";
+import { LinkedInIcon, GithubIcon, TelegramIcon, InstagramIcon } from "./social-icons";
 
 interface SocialLinkProps {
-  platform: "linkedin" | "github" | "telegram";
+  platform: "linkedin" | "github" | "telegram" | "instagram";
   href: string;
   size?: number;
   className?: string;
@@ -13,6 +13,7 @@ export const SocialLink = ({ platform, href, size = 20, className = "" }: Social
     linkedin: <LinkedInIcon size={size} />,
     github: <GithubIcon size={size} />,
     telegram: <TelegramIcon size={size} />,
+    instagram: <InstagramIcon size={size} />,
   };
 
   return (

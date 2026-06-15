@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Space_Grotesk, Outfit } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
 import { ThemeProvider } from "next-themes";
@@ -12,18 +12,33 @@ import { CookieBanner } from "@/components/cookie-banner";
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
+  display: "swap",
+});
+
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const outfit = Outfit({
+  variable: "--font-outfit",
+  subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://biexpert.online'),
   title: {
-    default: "BI Expert | Power BI, Tableau & SQL Data Analytics | Datta Sable",
+    default: "Power BI & Tableau Consultant Mumbai | MIS Automation for BFSI – BI Expert",
     template: "%s | BI Expert"
   },
-  description: "10+ years of enterprise BI expertise. Power BI dashboards, Tableau analytics, SQL architecture, MIS automation, and ETL pipelines for BFSI and Fintech organizations in India.",
+  description: "10+ years of enterprise BI expertise. Power BI dashboards, Tableau analytics, and MIS automation for BFSI & Fintech in Mumbai, India. Book a free BI audit.",
   keywords: [
     "Power BI consultant India",
+    "Power BI consultant Mumbai",
     "Tableau developer Mumbai",
+    "Tableau developer India",
     "SQL data architect",
     "BI expert BFSI",
     "MIS automation",
@@ -50,14 +65,14 @@ export const metadata: Metadata = {
     locale: "en_IN",
     url: "https://biexpert.online",
     siteName: "BI Expert",
-    title: "BI Expert | Power BI, Tableau & SQL Data Analytics",
-    description: "10+ years of enterprise BI expertise. Power BI, Tableau, SQL architecture, MIS automation for BFSI and Fintech organizations.",
+    title: "Power BI & Tableau Consultant Mumbai | MIS Automation for BFSI – BI Expert",
+    description: "10+ years of enterprise BI expertise. Power BI dashboards, Tableau analytics, and MIS automation for BFSI & Fintech in Mumbai, India. Book a free BI audit.",
     images: [{ url: "/og-image.webp", width: 1200, height: 630, alt: "BI Expert - Data Analytics Consultancy" }]
   },
   twitter: {
     card: "summary_large_image",
-    title: "BI Expert | Power BI, Tableau & SQL Data Analytics",
-    description: "10+ years of enterprise BI expertise. Power BI, Tableau, SQL for BFSI and Fintech.",
+    title: "Power BI & Tableau Consultant Mumbai | MIS Automation for BFSI – BI Expert",
+    description: "10+ years of enterprise BI expertise. Power BI dashboards, Tableau analytics, and MIS automation for BFSI & Fintech in Mumbai, India. Book a free BI audit.",
     images: ["/og-image.webp"]
   },
   alternates: {
@@ -83,19 +98,20 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${inter.variable} h-full antialiased`}
+      className={`${inter.variable} ${spaceGrotesk.variable} ${outfit.variable} h-full antialiased`}
       style={{ backgroundColor: 'var(--background)' }}
     >
       <head>
       </head>
       <body 
         className="min-h-full flex flex-col bg-background text-foreground overflow-x-hidden"
+        style={{ fontFamily: "var(--font-inter), system-ui, sans-serif" }}
         suppressHydrationWarning
       >
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
-          enableSystem
+          forcedTheme="dark"
           disableTransitionOnChange
         >
           <AuthProvider>
@@ -106,16 +122,74 @@ export default function RootLayout({
           </AuthProvider>
         </ThemeProvider>
 
-        {/* Organization Schema Markup */}
-        <Script id="organization-schema" type="application/ld+json" strategy="afterInteractive">
+        {/* LocalBusiness & Person Schema Markup */}
+        <Script id="schema-markup" type="application/ld+json" strategy="afterInteractive">
           {`
-            {
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              "name": "BI Expert",
-              "url": "https://biexpert.online",
-              "logo": "https://biexpert.online/icon.svg"
-            }
+            [
+              {
+                "@context": "https://schema.org",
+                "@type": "LocalBusiness",
+                "name": "BI Expert",
+                "image": "https://biexpert.online/og-image.webp",
+                "@id": "https://biexpert.online/#localbusiness",
+                "url": "https://biexpert.online",
+                "telephone": "+918010803756",
+                "address": {
+                  "@type": "PostalAddress",
+                  "streetAddress": "Badlapur",
+                  "addressLocality": "Mumbai",
+                  "addressRegion": "Maharashtra",
+                  "postalCode": "421503",
+                  "addressCountry": "IN"
+                },
+                "geo": {
+                  "@type": "GeoCoordinates",
+                  "latitude": 19.1668,
+                  "longitude": 73.2244
+                },
+                "openingHoursSpecification": {
+                  "@type": "OpeningHoursSpecification",
+                  "dayOfWeek": [
+                    "Monday",
+                    "Tuesday",
+                    "Wednesday",
+                    "Thursday",
+                    "Friday"
+                  ],
+                  "opens": "09:00",
+                  "closes": "18:00"
+                },
+                "areaServed": [
+                  {
+                    "@type": "AdministrativeArea",
+                    "name": "Mumbai"
+                  },
+                  {
+                    "@type": "Country",
+                    "name": "India"
+                  }
+                ]
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "Person",
+                "name": "Datta Sable",
+                "jobTitle": "Principal BI Consultant & Architect",
+                "url": "https://biexpert.online",
+                "sameAs": [
+                  "https://linkedin.com/in/dattasable",
+                  "https://github.com/dattasable"
+                ],
+                "knowsAbout": [
+                  "Business Intelligence",
+                  "Power BI",
+                  "Tableau",
+                  "SQL Server",
+                  "Data Engineering",
+                  "MIS Automation"
+                ]
+              }
+            ]
           `}
         </Script>
 

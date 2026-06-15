@@ -1,7 +1,9 @@
+import React, { Suspense } from "react";
 import { Mail, Phone, MapPin, Globe, CheckCircle2, Zap } from "lucide-react";
 import Image from "next/image";
 import { SocialLink } from "@/components/social-link";
 import { ContactForm } from "./contact-form";
+import { Button } from "@/components/ui/button";
 
 export const metadata = {
   title: "Contact | BI Expert — Book Your Data Strategy Audit",
@@ -47,7 +49,9 @@ export default function ContactPage() {
           <div className="grid lg:grid-cols-[1fr_500px] gap-20">
             {/* Form */}
             <div>
-              <ContactForm />
+              <Suspense fallback={<div className="text-sm text-muted-foreground">Loading inquiry form...</div>}>
+                <ContactForm />
+              </Suspense>
             </div>
 
             {/* Sidebar info */}
@@ -74,6 +78,15 @@ export default function ContactPage() {
                     <div>
                       <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-1">Call Us</p>
                       <p className="text-lg font-bold text-foreground">+91 8010803756</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <Zap className="text-emerald-500 mt-1 animate-pulse" />
+                    <div>
+                      <p className="text-[10px] font-bold uppercase tracking-widest text-emerald-400 mb-1">WhatsApp Chat</p>
+                      <a href="https://wa.me/918010803756?text=Hi%20Datta,%20I%20would%20like%20to%20book%20a%20free%2045-minute%20BI%20audit." target="_blank" rel="noopener noreferrer" className="text-lg font-bold text-foreground hover:text-emerald-400 transition-colors">
+                        +91 8010803756 →
+                      </a>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
@@ -108,6 +121,19 @@ export default function ContactPage() {
                     </div>
                   ))}
                 </div>
+              </div>
+
+              <div className="p-10 bg-white/[0.01] border border-white/[0.05] space-y-6 rounded-2xl relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-primary-blue/5 blur-[40px] rounded-full pointer-events-none" />
+                <h4 className="text-lg font-bold text-foreground">Prefer Instant Booking?</h4>
+                <p className="text-xs text-neutral-text leading-relaxed">
+                  Skip the form and book a 45-minute audit directly on my calendar.
+                </p>
+                <a href="https://calendly.com/sabledatta/45min" target="_blank" rel="noopener noreferrer" className="block">
+                  <Button className="btn-primary w-full h-12">
+                    Book via Calendly
+                  </Button>
+                </a>
               </div>
             </div>
           </div>

@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { 
   ArrowLeft, 
   Calendar, 
@@ -14,6 +14,7 @@ import { Button } from "@/components/ui/button";
 import prisma from "@/lib/prisma";
 import { LinkedInIcon, GithubIcon } from "@/components/social-icons";
 import { Metadata } from "next";
+import { posts as staticPosts } from "@/lib/blog-data";
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
@@ -26,6 +27,21 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     });
 
     if (!post) {
+      const staticPost = staticPosts.find(p => p.slug === slug);
+      if (staticPost) {
+        return {
+          title: `${staticPost.title} | BI Expert`,
+          description: staticPost.desc || "",
+          alternates: {
+            canonical: `https://biexpert.online/blog/${slug}`,
+          },
+          openGraph: {
+            title: staticPost.title,
+            description: staticPost.desc || "",
+            images: staticPost.image ? [staticPost.image] : [],
+          },
+        };
+      }
       return {
         title: "Post Not Found | BI Expert",
       };
@@ -44,12 +60,23 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       },
     };
   } catch (e) {
+    const staticPost = staticPosts.find(p => p.slug === slug);
+    if (staticPost) {
+      return {
+        title: `${staticPost.title} | BI Expert`,
+        description: staticPost.desc || "",
+      };
+    }
     return { title: "Blog Post | BI Expert" };
   }
 }
 
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
+  
+  if (slug === "dax-optimization") {
+    redirect("/blog/mastering-dax-patterns-2026");
+  }
   
   let post;
   try {
@@ -62,8 +89,37 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   }
 
   if (!post) {
+    const staticPost = staticPosts.find(p => p.slug === slug);
+    if (staticPost) {
+      post = {
+        id: `static-${staticPost.slug}`,
+        slug: staticPost.slug,
+        title: staticPost.title,
+        content: staticPost.content,
+        image: staticPost.image,
+        excerpt: staticPost.desc,
+        metaTitle: staticPost.title,
+        metaDesc: staticPost.desc,
+        createdAt: new Date(staticPost.date || Date.now()),
+        author: {
+          id: "static-author",
+          name: staticPost.author.name,
+          email: "admin@biexpert.com",
+          role: "ADMIN" as const,
+          image: staticPost.author.avatar,
+          createdAt: new Date(),
+          updatedAt: new Date()
+        }
+      };
+    }
+  }
+
+  if (!post) {
     notFound();
   }
+
+  const staticMeta = staticPosts.find(p => p.slug === post.slug);
+  const readTime = staticMeta?.readTime || "10 min read";
 
   const dateFormatter = new Intl.DateTimeFormat("en-US", {
     month: "long",
@@ -72,14 +128,34 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   });
 
   // Fetch some related posts from DB
-  const relatedPosts = await prisma.post.findMany({
-    where: { 
-      published: true,
-      id: { not: post.id }
-    },
-    take: 3,
-    orderBy: { createdAt: 'desc' }
-  });
+  let relatedPosts: any[] = [];
+  try {
+    relatedPosts = await prisma.post.findMany({
+      where: { 
+        published: true,
+        id: { not: post.id }
+      },
+      take: 3,
+      orderBy: { createdAt: 'desc' }
+    });
+  } catch (e) {
+    // Fallback to static posts if DB is down
+    relatedPosts = staticPosts
+      .filter(p => p.slug !== slug)
+      .slice(0, 3)
+      .map(rp => ({
+        id: `static-${rp.slug}`,
+        slug: rp.slug,
+        title: rp.title,
+        content: rp.content,
+        image: rp.image,
+        excerpt: rp.desc,
+        metaTitle: rp.title,
+        metaDesc: rp.desc,
+        createdAt: new Date(rp.date || Date.now()),
+        authorId: "static-author"
+      }));
+  }
 
   return (
     <div className="min-h-screen bg-background">
@@ -108,7 +184,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               <span className="px-3 py-1 bg-blue-600/10 border border-blue-600/20 text-blue-500 font-bold">ARTICLE</span>
               <span>{dateFormatter.format(post.createdAt)}</span>
               <span>•</span>
-              <span>10 MIN READ</span>
+              <span>{readTime.toUpperCase()}</span>
             </div>
 
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight uppercase leading-[1.1] text-foreground mb-8">
@@ -152,8 +228,16 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 <div>
                   <h3 className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-6 pb-2 border-b border-border">Insights</h3>
                   <div className="flex flex-wrap gap-2">
-                    <span className="px-3 py-1 bg-muted border border-border text-[9px] font-bold uppercase tracking-widest text-muted-foreground">STRATEGY</span>
-                    <span className="px-3 py-1 bg-muted border border-border text-[9px] font-bold uppercase tracking-widest text-muted-foreground">ARCHITECTURE</span>
+                    {staticMeta?.category && (
+                      <span className="px-3 py-1 bg-muted border border-border text-[9px] font-bold uppercase tracking-widest text-blue-400">
+                        {staticMeta.category.toUpperCase()}
+                      </span>
+                    )}
+                    {staticMeta?.tag && (
+                      <span className="px-3 py-1 bg-muted border border-border text-[9px] font-bold uppercase tracking-widest text-muted-foreground">
+                        {staticMeta.tag.toUpperCase()}
+                      </span>
+                    )}
                   </div>
                 </div>
 

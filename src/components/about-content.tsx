@@ -153,7 +153,7 @@ export default function AboutContent() {
 
               <div className="mt-12 flex gap-8">
                 <div>
-                  <p className="text-2xl font-bold text-foreground">Pune, IN</p>
+                  <p className="text-2xl font-bold text-foreground">Badlapur, IN</p>
                   <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Base of Operations</p>
                 </div>
                 <div className="w-px h-12 bg-border" />

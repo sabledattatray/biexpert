@@ -38,22 +38,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }));
   } catch (error) {
     console.error("Error generating sitemap blog routes:", error);
-    // Fallback if DB query fails during build
     const fallbackSlugs = [
       'mastering-dax-patterns-2026',
       'power-bi-fabric-integration-2026',
-      'real-time-streaming-analytics-power-bi',
       'sql-server-window-functions-advanced',
-      'sql-json-data-warehousing',
       'sql-deadlock-prevention-strategies',
       'ai-driven-data-quality-2026',
-      'power-automate-financial-reporting-workflow',
-      'self-healing-etl-pipelines',
       'measuring-bi-roi-financial-framework',
-      'scaling-data-culture-enterprise',
-      'gartner-magic-quadrant-2026-bi',
-      'global-data-privacy-regulations-2026',
-      'data-mesh-adoption-trends-2026'
+      'video-building-c-suite-dashboard',
+      'gartner-magic-quadrant-2026-bi'
     ];
     blogRoutes = fallbackSlugs.map((slug) => ({
       url: `${baseUrl}/blog/${slug}`,

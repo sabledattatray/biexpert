@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ArrowRight, Calendar, Search, Zap, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import prisma from "@/lib/prisma";
+import { posts as staticPosts } from "@/lib/blog-data";
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
@@ -13,123 +14,96 @@ const categories = [
   { label: "Power BI", id: "power-bi" },
   { label: "SQL", id: "sql" },
   { label: "Automation", id: "automation" },
-  { label: "Python", id: "python" },
   { label: "Strategy", id: "strategy" },
   { label: "Videos", id: "videos" },
   { label: "News", id: "news" },
 ];
 
-const fallbackPosts = [
-  {
-    id: "f1",
-    slug: "mastering-dax-patterns-2026",
-    title: "Mastering Advanced DAX: High-Performance Patterns for 2026",
-    excerpt: "Deep dive into performance optimization and complex calculation patterns in Power BI.",
-    content: "Deep dive into performance optimization and complex calculation patterns in Power BI.",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1600",
-    createdAt: new Date(),
-    author: { name: "Datta Sable" }
-  },
-  {
-    id: "f2",
-    slug: "power-bi-fabric-integration-2026",
-    title: "Microsoft Fabric & Power BI: The Unified Data Architecture",
-    excerpt: "Exploring the revolutionary integration of Power BI within the Microsoft Fabric ecosystem.",
-    content: "Exploring the revolutionary integration of Power BI within the Microsoft Fabric ecosystem.",
-    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1600",
-    createdAt: new Date(),
-    author: { name: "Datta Sable" }
-  },
-  {
-    id: "f3",
-    slug: "real-time-streaming-analytics-power-bi",
-    title: "Real-Time Streaming Analytics: Sub-Second Dashboards",
-    excerpt: "How to build high-frequency data visualizations using streaming datasets.",
-    content: "How to build high-frequency data visualizations using streaming datasets.",
-    image: "https://images.unsplash.com/photo-1558489580-f169229d727b?auto=format&fit=crop&q=80&w=1600",
-    createdAt: new Date(),
-    author: { name: "Datta Sable" }
-  },
-  {
-    id: "f4",
-    slug: "sql-server-window-functions-advanced",
-    title: "SQL Window Functions: Solving Complex Analytical Challenges",
-    excerpt: "Advanced analytical techniques using OVER(), PARTITION BY, and framing.",
-    content: "Advanced analytical techniques using OVER(), PARTITION BY, and framing.",
-    image: "https://images.unsplash.com/photo-1542831371-29b0f74f9713?auto=format&fit=crop&q=80&w=1600",
-    createdAt: new Date(),
-    author: { name: "Datta Sable" }
-  },
-  {
-    id: "f5",
-    slug: "sql-json-data-warehousing",
-    title: "JSON in SQL Server: Bridging the Gap Between NoSQL and RDBMS",
-    excerpt: "Techniques for storing, querying, and optimizing JSON data in relational databases.",
-    content: "Techniques for storing, querying, and optimizing JSON data in relational databases.",
-    image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80&w=1600",
-    createdAt: new Date(),
-    author: { name: "Datta Sable" }
-  }
-];
-
 export default async function BlogPage({ 
   searchParams 
-}: { 
+  }: { 
   searchParams: Promise<{ category?: string, search?: string }> 
-}) {
+  }) {
   const { category = "all", search = "" } = await searchParams;
   
   let posts: any[] = [];
   let counts: Record<string, number> = {};
   
+  let dbPosts: any[] = [];
   try {
-    // Fetch counts for all categories
-    const allCounts = await Promise.all(
-      categories.map(async (cat) => {
-        const count = await prisma.post.count({
-          where: {
-            published: true,
-            ...(cat.id !== "all" ? {
-              OR: [
-                { slug: { contains: cat.id, mode: 'insensitive' } },
-                { title: { contains: cat.id, mode: 'insensitive' } }
-              ]
-            } : {})
-          }
-        });
-        return { id: cat.id, count };
-      })
-    );
-    
-    counts = allCounts.reduce((acc, curr) => ({ ...acc, [curr.id]: curr.count }), {});
-
-    // Fetch real posts from database
-    posts = await prisma.post.findMany({
-      where: {
-        published: true,
-        AND: [
-          category !== "all" ? { 
-            OR: [
-              { slug: { contains: category, mode: 'insensitive' } },
-              { title: { contains: category, mode: 'insensitive' } }
-            ]
-          } : {},
-          search ? {
-            OR: [
-              { title: { contains: search, mode: 'insensitive' } },
-              { content: { contains: search, mode: 'insensitive' } }
-            ]
-          } : {}
-        ]
-      },
-      orderBy: { createdAt: "desc" },
-      include: { author: true }
+    dbPosts = await prisma.post.findMany({
+      where: { published: true },
+      include: { author: true },
+      orderBy: { createdAt: "desc" }
     });
   } catch (error) {
     // Database is currently unreachable
-    posts = fallbackPosts;
-    counts = categories.reduce((acc, cat) => ({ ...acc, [cat.id]: 0 }), {});
   }
+
+  // Create a map of slugs from DB posts for fast lookup
+  const dbSlugs = new Set(dbPosts.map(p => p.slug));
+
+  // Build a list of all posts, prioritizing DB posts and falling back to static posts
+  const allPostsCombined = [
+    ...dbPosts.map(dbp => {
+      const staticMeta = staticPosts.find(sp => sp.slug === dbp.slug);
+      return {
+        id: dbp.id,
+        slug: dbp.slug,
+        title: dbp.title,
+        excerpt: dbp.excerpt || staticMeta?.desc || "",
+        content: dbp.content,
+        image: dbp.image || staticMeta?.image || null,
+        createdAt: dbp.createdAt,
+        author: { name: dbp.author?.name || staticMeta?.author.name || "Datta Sable" },
+        category: staticMeta?.category || "all",
+        tag: staticMeta?.tag || "",
+        readTime: staticMeta?.readTime || "10 min read"
+      };
+    }),
+    ...staticPosts
+      .filter(sp => !dbSlugs.has(sp.slug))
+      .map((sp, index) => ({
+        id: `fallback-${sp.slug}-${index}`,
+        slug: sp.slug,
+        title: sp.title,
+        excerpt: sp.desc,
+        content: sp.content,
+        image: sp.image,
+        createdAt: new Date(sp.date || Date.now()),
+        author: { name: sp.author.name },
+        category: sp.category,
+        tag: sp.tag,
+        readTime: sp.readTime
+      }))
+  ];
+
+  // Compute category counts based on combined posts
+  counts = categories.reduce((acc, cat) => {
+    const count = allPostsCombined.filter(p => 
+      cat.id === "all" || 
+      p.category.toLowerCase() === cat.id.toLowerCase() ||
+      p.tag.toLowerCase().includes(cat.id.toLowerCase())
+    ).length;
+    return { ...acc, [cat.id]: count };
+  }, {} as Record<string, number>);
+
+  // Filter posts based on search query and category Selection
+  posts = allPostsCombined.filter(p => {
+    const matchCat = category === "all" || 
+      p.category.toLowerCase() === category.toLowerCase() ||
+      p.tag.toLowerCase().includes(category.toLowerCase());
+      
+    const matchSearch = !search || 
+      p.title.toLowerCase().includes(search.toLowerCase()) || 
+      p.content.toLowerCase().includes(search.toLowerCase()) ||
+      p.excerpt.toLowerCase().includes(search.toLowerCase());
+      
+    return matchCat && matchSearch;
+  });
+
+  // Sort combined results by date descending
+  posts.sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
 
   const dateFormatter = new Intl.DateTimeFormat("en-US", {
     month: "short",
@@ -236,7 +210,7 @@ export default async function BlogPage({
                   <div className="flex items-center gap-4 text-[10px] font-bold uppercase tracking-widest text-blue-400 mb-4">
                      <span className="flex items-center gap-1.5"><Calendar size={12} /> {dateFormatter.format(post.createdAt)}</span>
                      <div className="w-1 h-1 bg-border rounded-full" />
-                     <span className="flex items-center gap-1.5"><Clock size={12} /> 10 MIN READ</span>
+                     <span className="flex items-center gap-1.5"><Clock size={12} /> {post.readTime}</span>
                   </div>
 
                   <h2 className="text-2xl font-bold mb-4 uppercase tracking-tighter leading-tight text-foreground group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-violet-500 transition-all duration-300">

@@ -23,7 +23,6 @@ import {
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ThemeToggle } from "@/components/theme-toggle";
 import { useSession, signOut } from "next-auth/react";
 
 const menuItems = [
@@ -130,7 +129,6 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
           {/* Bottom Actions */}
           <div className="p-4 border-t border-border space-y-2">
-            <ThemeToggle />
             <Button 
               variant="ghost" 
               onClick={() => signOut({ callbackUrl: "/" })}

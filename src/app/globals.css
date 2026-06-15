@@ -7,9 +7,19 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-primary-blue: var(--primary-blue);
+  --color-secondary-cyan: var(--secondary-cyan);
+  --color-accent-green: var(--accent-green);
+  --color-neutral-text: var(--neutral-text);
+  --color-dark-bg: var(--dark-bg);
+  --color-dark-surface: var(--dark-surface);
+  --color-light-surface: var(--light-surface);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
   --font-sans: var(--font-inter);
-  --font-mono: var(--font-inter);
-  --font-heading: var(--font-inter);
+  --font-mono: var(--font-space-grotesk);
+  --font-heading: var(--font-outfit);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -46,138 +56,436 @@
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
+
+  /* NexDial Animations */
+  --animate-fade-in-up: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-scale-in: scaleIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-slide-in-left: slideInLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-slide-in-right: slideInRight 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 :root {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.85 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --radius: 0px;
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
-  --layout-shadow: -1px 0 0 0 rgba(59,130,246,0.1), 1px 0 0 0 rgba(59,130,246,0.1);
-}
+  /* NexDial Style tokens mapped to ShadCN variables */
+  --background: #081120; /* --dark-bg */
+  --foreground: #E2E8F0;
+  
+  --card: rgba(15, 23, 42, 0.6); /* --card-bg */
+  --card-foreground: #E2E8F0;
+  
+  --popover: #0F172A; /* --dark-surface */
+  --popover-foreground: #E2E8F0;
+  
+  --primary: #0057D9; /* --primary-blue */
+  --primary-foreground: #FFFFFF;
+  
+  --secondary: #00C2FF; /* --secondary-cyan */
+  --secondary-foreground: #081120;
+  
+  --muted: #1E293B;
+  --muted-foreground: #64748B; /* --neutral-text */
+  
+  --accent: #00E5A0; /* --accent-green */
+  --accent-foreground: #081120;
+  
+  --destructive: oklch(0.60 0.18 25);
+  
+  --border: rgba(255, 255, 255, 0.06); /* --card-border */
+  --input: rgba(255, 255, 255, 0.08); /* --glass-border */
+  --ring: #0057D9;
+  
+  --radius: 16px;
+  
+  --sidebar: #0F172A;
+  --sidebar-foreground: #E2E8F0;
+  --sidebar-primary: #0057D9;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: rgba(15, 23, 42, 0.6);
+  --sidebar-accent-foreground: #E2E8F0;
+  --sidebar-border: rgba(255, 255, 255, 0.06);
+  --sidebar-ring: #0057D9;
 
-.light {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  /* NexDial raw variables for direct usage */
+  --primary-blue: #0057D9;
+  --secondary-cyan: #00C2FF;
+  --accent-green: #00E5A0;
+  --dark-bg: #081120;
+  --dark-surface: #0F172A;
+  --light-surface: #F8FAFC;
+  --success: #22C55E;
+  --warning: #F59E0B;
+  --danger: #EF4444;
+  --neutral-text: #64748B;
+  --card-border: rgba(255, 255, 255, 0.06);
+  --card-bg: rgba(15, 23, 42, 0.6);
+  --glass-bg: rgba(15, 23, 42, 0.4);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glow-blue: rgba(0, 87, 217, 0.4);
+  --glow-cyan: rgba(0, 194, 255, 0.3);
+  --glow-green: rgba(0, 229, 160, 0.3);
+
+  --color-primary-blue: #0057D9;
+  --color-secondary-cyan: #00C2FF;
+  --color-accent-green: #00E5A0;
+  --color-neutral-text: #64748B;
+  --color-dark-bg: #081120;
+  --color-dark-surface: #0F172A;
+  --color-light-surface: #F8FAFC;
+  --color-success: #22C55E;
+  --color-warning: #F59E0B;
+  --color-danger: #EF4444;
 }
 
 .dark {
-  /* Inherits from :root now, but keeping for compatibility */
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
+  /* Inherits from :root */
+  --background: #081120;
+  --foreground: #E2E8F0;
 }
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply border-border outline-ring/40;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
   }
+  
   body {
-    @apply bg-background text-foreground selection:bg-blue-500/30 selection:text-white;
-    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
-    background-color: oklch(0.145 0 0); /* Force dark background initially to prevent flash */
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+    overflow-x: hidden;
   }
+  
   html {
-    @apply font-sans scroll-smooth;
-    color-scheme: dark; /* Signals to browser to use dark system colors */
+    @apply scroll-smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color-scheme: dark;
   }
 
-  h1, h2 {
-    font-family: var(--font-inter);
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading), sans-serif;
+    @apply tracking-tight font-bold;
   }
 
-  /* Custom Scrollbar for Premium Look */
+  ::selection {
+    background: var(--primary-blue);
+    color: white;
+  }
+
+  /* Scrollbar */
   ::-webkit-scrollbar {
-    width: 10px;
+    width: 8px;
   }
   ::-webkit-scrollbar-track {
-    @apply bg-background;
+    background: var(--background);
   }
   ::-webkit-scrollbar-thumb {
-    @apply bg-muted-foreground/20 rounded-full border-4 border-solid border-transparent bg-clip-padding hover:bg-muted-foreground/40 transition-colors;
+    background: rgba(100, 116, 139, 0.4);
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(100, 116, 139, 0.6);
   }
 }
 
-@layer utilities {
+@layer components {
+  /* NexDial Components */
+  .glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius);
+    will-change: transform;
+    contain: layout style;
+  }
+
+  .glass-card-strong {
+    background: rgba(15, 23, 42, 0.7);
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    will-change: transform;
+    contain: layout style;
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #FFFFFF 0%, var(--secondary-cyan) 50%, var(--accent-green) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-text-blue {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-cyan) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-text-hero {
+    background: linear-gradient(135deg, #FFFFFF 0%, #FFFFFF 40%, var(--secondary-cyan) 70%, var(--accent-green) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-border {
+    position: relative;
+    border-radius: var(--radius);
+  }
+
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius);
+    padding: 1px;
+    background: linear-gradient(135deg, var(--primary-blue), var(--secondary-cyan), var(--accent-green));
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    -webkit-mask-composite: xor;
+    pointer-events: none;
+  }
+
+  .glow-blue {
+    box-shadow: 0 0 20px var(--glow-blue), 0 0 60px rgba(0, 87, 217, 0.15);
+  }
+
+  .glow-cyan {
+    box-shadow: 0 0 20px var(--glow-cyan), 0 0 60px rgba(0, 194, 255, 0.1);
+  }
+
+  .glow-green {
+    box-shadow: 0 0 20px var(--glow-green), 0 0 60px rgba(0, 229, 160, 0.1);
+  }
+
+  /* NexDial buttons */
+  .btn-primary {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #0066FF 100%);
+    color: white;
+    font-weight: 600;
+    padding: 12px 28px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-primary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(0, 87, 217, 0.4);
+  }
+  .btn-primary:hover::before {
+    opacity: 1;
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: white;
+    font-weight: 600;
+    padding: 12px 28px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
+  }
+  .btn-secondary:hover {
+    border-color: var(--secondary-cyan);
+    background: rgba(0, 194, 255, 0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(0, 194, 255, 0.2);
+  }
+
+  .btn-accent {
+    background: linear-gradient(135deg, var(--accent-green) 0%, #00C896 100%);
+    color: #081120;
+    font-weight: 700;
+    padding: 12px 28px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .btn-accent:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(0, 229, 160, 0.4);
+  }
+
+  .section-padding {
+    padding: 100px 0;
+  }
+
+  .section-title {
+    font-size: 2.75rem;
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+
+  .section-subtitle {
+    font-size: 1.125rem;
+    color: var(--neutral-text);
+    line-height: 1.7;
+    max-width: 640px;
+  }
+
+  /* Animated Background Mesh */
+  .mesh-gradient {
+    background: 
+      radial-gradient(ellipse at 20% 50%, rgba(0, 87, 217, 0.12) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 20%, rgba(0, 194, 255, 0.08) 0%, transparent 50%),
+      radial-gradient(ellipse at 40% 80%, rgba(0, 229, 160, 0.06) 0%, transparent 50%),
+      var(--background);
+  }
+
+  .grid-pattern {
+    background-image: 
+      linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(circle at center, black 60%, transparent 100%);
+  }
+
   .noise-overlay {
     position: fixed;
     inset: 0;
     z-index: 9999;
     pointer-events: none;
     opacity: 0.02;
-    background-image: none;
-    background-color: transparent;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
   }
 
-  .text-glow {
-    text-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+  .pulse-ring {
+    animation: pulseRing 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   }
 
-  .glass-card {
-    @apply bg-white/[0.03] backdrop-blur-xl border border-white/10 shadow-2xl;
+  .float {
+    animation: float 6s ease-in-out infinite;
+  }
+  .float-delayed {
+    animation: float 6s ease-in-out 2s infinite;
+  }
+  .float-slow {
+    animation: float 8s ease-in-out infinite;
   }
 
-  .animate-marquee {
-    display: flex;
-    animation: marquee 40s linear infinite;
-    width: max-content;
+  .shimmer {
+    position: relative;
+    overflow: hidden;
   }
+  .shimmer::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.04),
+      transparent
+    );
+    animation: shimmer 3s infinite;
+  }
+
+  .metric-number {
+    font-family: var(--font-mono), monospace;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+  }
+  
+  .hover-3d-lift {
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .hover-3d-lift:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 20px 40px -10px rgba(0, 194, 255, 0.15), 0 0 20px rgba(0, 87, 217, 0.2);
+  }
+
+  .animate-shine::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.05), transparent);
+    transform: skewX(-15deg);
+    animation: shine 4s infinite;
+    pointer-events: none;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .content-auto {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 600px;
+  }
+
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-none {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* Animations */
+@keyframes pulseRing {
+  0% { transform: scale(0.9); opacity: 1; }
+  50% { transform: scale(1); opacity: 0.5; }
+  100% { transform: scale(0.9); opacity: 1; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes shine {
+  0% { transform: translateX(-100%) skewX(-15deg); }
+  50%, 100% { transform: translateX(200%) skewX(-15deg); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(30px); }
+  to { opacity: 1; transform: translateX(0); }
 }
 
 @keyframes marquee {
@@ -185,73 +493,34 @@
   100% { transform: translateX(-50%); }
 }
 
-html {
-  scroll-behavior: smooth;
-  /* Blog Prose Styles - Manual Implementation */
-  .prose {
-    color: var(--muted-foreground);
-    line-height: 1.75;
-  }
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 35s linear infinite;
+}
 
-  .prose h1 {
-    color: var(--foreground);
-    font-size: 2.5rem;
-    font-weight: 800;
-    margin-top: 3rem;
-    margin-bottom: 1.5rem;
-    line-height: 1.1;
-    text-transform: uppercase;
-    letter-spacing: -0.05em;
-  }
+.hover-pause:hover {
+  animation-play-state: paused;
+}
 
-  .prose h2 {
-    color: var(--foreground);
-    font-size: 1.875rem;
-    font-weight: 700;
-    margin-top: 2.5rem;
-    margin-bottom: 1.25rem;
-    text-transform: uppercase;
-    letter-spacing: -0.025em;
-  }
+.perspective-1000 {
+  perspective: 1000px;
+}
 
-  .prose h3 {
-    color: var(--foreground);
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-    text-transform: uppercase;
-  }
+.transform-3d {
+  transform-style: preserve-3d;
+}
 
-  .prose p {
-    margin-bottom: 1.5rem;
-  }
-
-  .prose strong {
-    color: var(--foreground);
-    font-weight: 700;
-  }
-
-  .prose em {
-    color: var(--blue-400);
-    font-style: italic;
-  }
-
-  .prose ul {
-    margin-bottom: 1.5rem;
-    padding-left: 1.5rem;
-    list-style-type: disc;
-  }
-
-  .prose li {
-    margin-bottom: 0.5rem;
-  }
-
-  .prose blockquote {
-    border-left: 4px solid var(--blue-500);
-    padding-left: 1.5rem;
-    font-style: italic;
-    margin: 2rem 0;
-    color: var(--foreground);
-  }
+/* Prose manually */
+.prose {
+  color: var(--muted-foreground);
+  line-height: 1.8;
+}
+.prose h1, .prose h2, .prose h3 {
+  color: var(--foreground);
+  font-family: var(--font-heading), sans-serif;
+  @apply tracking-tight font-bold;
+}
+.prose strong {
+  color: var(--foreground);
 }
