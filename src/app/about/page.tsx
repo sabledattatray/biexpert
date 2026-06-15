@@ -189,7 +189,7 @@ export default function AboutPage() {
                 { year: "2016 – 2018", title: "Data Analyst & SQL Developer", org: "Major NBFC Group", desc: "Managed end-to-end MIS report automation, reducing manual compilation hours by 40%." },
                 { year: "2015 – 2016", title: "BI Developer", org: "HDFC Bank Project", desc: "Fleshed out executive dashboards and row-level isolated data structures." }
               ].map((item, i) => (
-                <div key={i} className="relative group" style={{ contentVisibility: 'auto' }}>
+                <div key={i} className="relative group">
                   {/* Timeline point */}
                   <span className="absolute -left-[33px] top-1.5 w-4 h-4 rounded-full bg-background border-2 border-secondary-cyan group-hover:bg-secondary-cyan transition-colors" />
                   <span className="text-[10px] font-bold text-secondary-cyan uppercase tracking-wider">{item.year}</span>
@@ -215,25 +215,24 @@ export default function AboutPage() {
                 icon: <Database size={22} className="text-secondary-cyan" />,
                 title: "Eradicating Fragmentation",
                 desc: "We believe that context-switching between disjointed databases, manual Excel sheets, and static PDF reports is the silent killer of growth. We unify every data stream into a single visual control room.",
-                color: "rgba(0, 194, 255, 0.08)"
+                hoverClass: "hover:shadow-[0_0_20px_rgba(0,194,255,0.08)] hover:border-secondary-cyan/20"
               },
               {
                 icon: <Cpu size={22} className="text-primary-blue" />,
                 title: "Algorithmic Precision",
                 desc: "Data is not a guessing game; it is a mathematical blueprint. Our optimized database structures, star schemas, and predictive models eliminate human audit error and highlight instant wins.",
-                color: "rgba(0, 87, 217, 0.08)"
+                hoverClass: "hover:shadow-[0_0_20px_rgba(0,87,217,0.08)] hover:border-primary-blue/20"
               },
               {
                 icon: <ShieldCheck size={22} className="text-accent-green" />,
                 title: "Enterprise Architecture",
                 desc: "Built on enterprise foundations with strict Row-Level Security (RLS), automated SQL pipelines, and robust data warehouse security standards, ensuring absolute row-level data isolation.",
-                color: "rgba(0, 229, 160, 0.08)"
+                hoverClass: "hover:shadow-[0_0_20px_rgba(0,229,160,0.08)] hover:border-accent-green/20"
               }
             ].map((principle, idx) => (
               <div 
                 key={idx}
-                className="bg-dark-bg/40 backdrop-blur-xl p-8 rounded-2xl border border-white/[0.04] hover:border-white/[0.1] hover:scale-[1.03] transition-all duration-300 shadow-xl flex flex-col justify-between"
-                style={{ hover: { boxShadow: `0 0 20px ${principle.color}` } } as any}
+                className={`bg-dark-bg/40 backdrop-blur-xl p-8 rounded-2xl border border-white/[0.04] hover:border-white/[0.1] hover:scale-[1.03] transition-all duration-300 shadow-xl flex flex-col justify-between ${principle.hoverClass}`}
               >
                 <div>
                   <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-6 border border-white/[0.05] bg-white/[0.02]">
