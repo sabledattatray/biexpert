@@ -30,10 +30,10 @@ const outfit = Outfit({
 export const metadata: Metadata = {
   metadataBase: new URL('https://biexpert.online'),
   title: {
-    default: "Power BI & Tableau Consultant Mumbai | MIS Automation for BFSI – BI Expert",
+    default: "Power BI & Tableau Consultant Mumbai | BI Expert",
     template: "%s | BI Expert"
   },
-  description: "Mumbai Power BI consultant for banks & NBFCs. Automate MIS, RLS dashboards, RBI-compliant reporting. 150+ audits. Free 45-min BI audit.",
+  description: "Mumbai Power BI consultant for banks & NBFCs. Automate MIS, RLS dashboards, RBI-compliant reporting. Free BI audit.",
   keywords: [
     "Power BI consultant India",
     "Power BI consultant Mumbai",
@@ -65,18 +65,22 @@ export const metadata: Metadata = {
     locale: "en_IN",
     url: "https://biexpert.online",
     siteName: "BI Expert",
-    title: "Power BI & Tableau Consultant Mumbai | MIS Automation for BFSI – BI Expert",
-    description: "Mumbai Power BI consultant for banks & NBFCs. Automate MIS, RLS dashboards, RBI-compliant reporting. 150+ audits. Free 45-min BI audit.",
+    title: "Power BI & Tableau Consultant Mumbai | BI Expert",
+    description: "Mumbai Power BI consultant for banks & NBFCs. Automate MIS, RLS dashboards, RBI-compliant reporting. Free BI audit.",
     images: [{ url: "/og-image.webp", width: 1200, height: 630, alt: "BI Expert - Data Analytics Consultancy" }]
   },
   twitter: {
     card: "summary_large_image",
-    title: "Power BI & Tableau Consultant Mumbai | MIS Automation for BFSI – BI Expert",
-    description: "Mumbai Power BI consultant for banks & NBFCs. Automate MIS, RLS dashboards, RBI-compliant reporting. 150+ audits. Free 45-min BI audit.",
+    title: "Power BI & Tableau Consultant Mumbai | BI Expert",
+    description: "Mumbai Power BI consultant for banks & NBFCs. Automate MIS, RLS dashboards, RBI-compliant reporting. Free BI audit.",
     images: ["/og-image.webp"]
   },
   alternates: {
-    canonical: "https://biexpert.online"
+    canonical: "https://biexpert.online",
+    languages: {
+      "en-IN": "https://biexpert.online",
+      "x-default": "https://biexpert.online"
+    }
   },
   verification: {
     google: "ADD_YOUR_SEARCH_CONSOLE_CODE_HERE",
@@ -123,9 +127,11 @@ export default function RootLayout({
         </ThemeProvider>
 
         {/* LocalBusiness & Person Schema Markup */}
-        <Script id="schema-markup" type="application/ld+json" strategy="afterInteractive">
-          {`
-            [
+        <script
+          id="schema-markup"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify([
               {
                 "@context": "https://schema.org",
                 "@type": "LocalBusiness",
@@ -189,9 +195,9 @@ export default function RootLayout({
                   "MIS Automation"
                 ]
               }
-            ]
-          `}
-        </Script>
+            ])
+          }}
+        />
 
         {/* Google AdSense */}
         <Script

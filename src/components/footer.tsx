@@ -46,7 +46,9 @@ const SOCIAL = [
   { platform: "github" as const, href: "https://github.com/dattasable" },
   { platform: "telegram" as const, href: "https://t.me/sabledatta" },
   { platform: "instagram" as const, href: "https://instagram.com/dattasable.in" },
-  { platform: "instagram" as const, href: "https://instagram.com/marathivision.in" },
+  { platform: "youtube" as const, href: "https://youtube.com/@dattasable" },
+  { platform: "x" as const, href: "https://x.com/dattasable" },
+  { platform: "facebook" as const, href: "https://facebook.com/dattasable" },
 ];
 
 const CONTACT = [

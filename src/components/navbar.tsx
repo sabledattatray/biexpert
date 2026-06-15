@@ -320,7 +320,7 @@ export function Navbar() {
           <div className="md:hidden flex items-center gap-2">
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="p-2 text-primary hover:text-primary/80 transition-colors z-[110]"
+              className="w-11 h-11 flex items-center justify-center text-primary hover:text-primary/80 hover:bg-white/[0.03] transition-all rounded-full z-[110]"
               aria-label={mobileOpen ? "Close menu" : "Open navigation menu"}
             >
               {mobileOpen ? <X size={24} /> : <Menu size={24} />}
