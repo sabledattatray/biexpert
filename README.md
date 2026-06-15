@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://biexpert.online/og-image.webp" alt="BI Expert Banner" width="100%" style="border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);" />
+  <img src="public/screenshots/dashboard.png" alt="BI Expert Dashboard" width="800" />
 </p>
 
 <h1 align="center">📊 BI Expert</h1>
