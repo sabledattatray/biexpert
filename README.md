@@ -1,20 +1,20 @@
-<p align="center">
-  <img src="public/screenshots/dashboard.png" alt="BI Expert Dashboard" width="800" />
-</p>
+<div align="center">
+  <img src="public/screenshots/dashboard.png" alt="BI Expert Dashboard Banner" style="width: 100%; border-radius: 12px; box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);" />
 
-<h1 align="center">📊 BI Expert</h1>
+  <h1 style="margin-top: 20px; font-size: 2.5rem; font-weight: 800;">📊 BI Expert</h1>
+  
+  <p style="font-size: 1.2rem; color: #555;">
+    <strong>Elite Business Intelligence & MIS Automation for BFSI, Fintech, and Retail</strong>
+  </p>
 
-<p align="center">
-  <strong>Elite Business Intelligence & MIS Automation for BFSI, Fintech, and Retail</strong>
-</p>
-
-<p align="center">
-  <a href="https://biexpert.online"><img src="https://img.shields.io/badge/Live-biexpert.online-0057D9?style=for-the-badge&logo=vercel" alt="Live Site" /></a>
-  <img src="https://img.shields.io/badge/Next.js-16.2.4-000000?style=for-the-badge&logo=nextdotjs" alt="Next.js Version" />
-  <img src="https://img.shields.io/badge/Tailwind-v4-38B2AC?style=for-the-badge&logo=tailwindcss" alt="Tailwind Version" />
-  <img src="https://img.shields.io/badge/Prisma-7.8.0-2D3748?style=for-the-badge&logo=prisma" alt="Prisma Version" />
-  <img src="https://img.shields.io/badge/License-MIT-emerald?style=for-the-badge" alt="MIT License" />
-</p>
+  <p>
+    <a href="https://biexpert.online"><img src="https://img.shields.io/badge/Live_Site-biexpert.online-0057D9?style=for-the-badge&logo=vercel" alt="Live Site" /></a>
+    <img src="https://img.shields.io/badge/Next.js-16.2.4-000000?style=for-the-badge&logo=nextdotjs" alt="Next.js Version" />
+    <img src="https://img.shields.io/badge/Tailwind_CSS-v4-38B2AC?style=for-the-badge&logo=tailwindcss" alt="Tailwind Version" />
+    <img src="https://img.shields.io/badge/Prisma-7.8.0-2D3748?style=for-the-badge&logo=prisma" alt="Prisma Version" />
+    <img src="https://img.shields.io/badge/PostgreSQL-Ready-336791?style=for-the-badge&logo=postgresql" alt="PostgreSQL" />
+  </p>
+</div>
 
 ---
 
@@ -22,7 +22,7 @@
 
 **BI Expert** is a bespoke, enterprise-grade Business Intelligence platform and data analytics consultancy system. Designed specifically for financial institutions (banks, NBFCs, and fintechs) in India and global clients, it replaces manual, error-prone 20-hour Excel MIS cycles with **1-click automated Power BI and Tableau dashboards**.
 
-Architected with Next.js 16 (Turbopack), Tailwind CSS v4, Prisma, and PostgreSQL, the platform features a borderless floating glassmorphism design system inspired by premium fintech aesthetics. It serves as both a high-converting portfolio/sales engine and a functional administrative hub for client data, blogs, and lead management.
+Architected with **Next.js 16 (Turbopack)**, **Tailwind CSS v4**, **Prisma**, and **PostgreSQL**, the platform features a borderless floating glassmorphism design system inspired by premium fintech aesthetics. It serves as both a high-converting portfolio/sales engine and a functional administrative hub for client data, blogs, and lead management.
 
 ---
 
@@ -41,16 +41,16 @@ graph TD
 
 ---
 
-## ✨ Features
+## ✨ Enterprise Features
 
 | Feature | Description | Core Technology |
 | :--- | :--- | :--- |
-| **Interactive Dashboards** | Dynamic real-time playgrounds for Finance, Sales, Operations, and Risk. | Recharts, Framer Motion, SVGs |
-| **MIS Automation** | Scheduled ingestion pipelines replacing manual spreadsheets. | Azure Data Factory, SQL Server |
-| **Row-Level Security (RLS)** | Dynamic data masking based on regional access control. | SQL Views, NextAuth.js v5 |
-| **CFO Lead Capture** | High-intent lead capture forms with prefilled templates. | React Suspense, Email Templates |
-| **Premium Blog Engine** | 23+ SEO-optimized technical blogs with rich inline TipTap editor. | TipTap, Prisma Client |
-| **Admin Console** | Detailed metrics, subscriber management, and config parameters. | NextJS Server Actions |
+| **⚡ Interactive Dashboards** | Dynamic real-time playgrounds for Finance, Sales, Operations, and Risk. | Recharts, Framer Motion, SVGs |
+| **⚙️ MIS Automation** | Scheduled ingestion pipelines replacing manual spreadsheets. | Azure Data Factory, SQL Server |
+| **🛡️ Row-Level Security (RLS)** | Dynamic data masking based on regional access control. | SQL Views, NextAuth.js v5 |
+| **📈 CFO Lead Capture** | High-intent lead capture forms with prefilled templates. | React Suspense, Email Templates |
+| **✍️ Premium Blog Engine** | 23+ SEO-optimized technical blogs with rich inline TipTap editor. | TipTap, Prisma Client |
+| **🛠️ Admin Console** | Detailed metrics, subscriber management, and config parameters. | NextJS Server Actions |
 
 ---
 
