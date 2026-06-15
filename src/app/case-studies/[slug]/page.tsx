@@ -5,7 +5,11 @@ export async function generateStaticParams() {
   return [
     { slug: 'hdfc' },
     { slug: 'retail' },
-    { slug: 'hospital' }
+    { slug: 'retail-chain' },
+    { slug: 'hospital' },
+    { slug: 'roi' },
+    { slug: 'automation' },
+    { slug: 'executive' }
   ];
 }
 

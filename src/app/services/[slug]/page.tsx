@@ -8,7 +8,8 @@ export async function generateStaticParams() {
     { slug: 'report-automation' },
     { slug: 'sql-architecture' },
     { slug: 'etl-pipelines' },
-    { slug: 'real-time-streaming' }
+    { slug: 'real-time-streaming' },
+    { slug: 'real-time' }
   ];
 }
 

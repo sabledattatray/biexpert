@@ -16,8 +16,11 @@ import { LinkedInIcon, GithubIcon } from "@/components/social-icons";
 import { Metadata } from "next";
 import { posts as staticPosts } from "@/lib/blog-data";
 
-export const dynamic = 'force-dynamic';
-export const revalidate = 0;
+export async function generateStaticParams() {
+  return staticPosts.map((post) => ({
+    slug: post.slug,
+  }));
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;

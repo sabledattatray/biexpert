@@ -57,7 +57,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }
 
   // Case Study routes
-  const caseStudyRoutes = ['hdfc', 'retail', 'hospital'].map((slug) => ({
+  const caseStudyRoutes = ['hdfc', 'retail', 'retail-chain', 'hospital', 'roi', 'automation', 'executive'].map((slug) => ({
     url: `${baseUrl}/case-studies/${slug}`,
     lastModified: new Date(),
     changeFrequency: 'monthly' as const,
@@ -67,7 +67,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Service routes
   const serviceRoutes = [
     'dashboard-design', 'predictive-analytics', 'report-automation',
-    'sql-architecture', 'etl-pipelines', 'real-time-streaming'
+    'sql-architecture', 'etl-pipelines', 'real-time-streaming', 'real-time'
   ].map((slug) => ({
     url: `${baseUrl}/services/${slug}`,
     lastModified: new Date(),
@@ -76,7 +76,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }));
 
   // Solution routes
-  const solutionRoutes = ['bfsi', 'mis-automation'].map((slug) => ({
+  const solutionRoutes = ['bfsi', 'mis-automation', 'retail', 'healthcare', 'sql-architecture', 'dashboard-design', 'fintech', 'enterprise-bi', 'compliance'].map((slug) => ({
     url: `${baseUrl}/solutions/${slug}`,
     lastModified: new Date(),
     changeFrequency: 'monthly' as const,

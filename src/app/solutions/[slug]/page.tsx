@@ -4,7 +4,14 @@ import SolutionClientPage from "./SolutionClientPage";
 export async function generateStaticParams() {
   return [
     { slug: 'bfsi' },
-    { slug: 'mis-automation' }
+    { slug: 'mis-automation' },
+    { slug: 'retail' },
+    { slug: 'healthcare' },
+    { slug: 'sql-architecture' },
+    { slug: 'dashboard-design' },
+    { slug: 'fintech' },
+    { slug: 'enterprise-bi' },
+    { slug: 'compliance' }
   ];
 }
 

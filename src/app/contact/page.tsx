@@ -127,13 +127,20 @@ export default function ContactPage() {
                 <div className="absolute top-0 right-0 w-32 h-32 bg-primary-blue/5 blur-[40px] rounded-full pointer-events-none" />
                 <h4 className="text-lg font-bold text-foreground">Prefer Instant Booking?</h4>
                 <p className="text-xs text-neutral-text leading-relaxed">
-                  Skip the form and book a 45-minute audit directly on my calendar.
+                  Skip the form and book a 45-minute audit directly via WhatsApp or Email.
                 </p>
-                <a href="https://calendly.com/sabledatta/45min" target="_blank" rel="noopener noreferrer" className="block">
-                  <Button className="btn-primary w-full h-12">
-                    Book via Calendly
-                  </Button>
-                </a>
+                <div className="grid grid-cols-2 gap-4">
+                  <a href="https://wa.me/918010803756?text=Hi%20Datta,%2520I%2520would%2520like%2520to%2520book%2520a%2520free%252045-minute%2520BI%2520audit." target="_blank" rel="noopener noreferrer" className="block">
+                    <Button className="btn-primary w-full h-12">
+                      WhatsApp
+                    </Button>
+                  </a>
+                  <a href="mailto:hello@biexpert.online?subject=Book%20a%20Free%252045-Minute%2520BI%2520Audit" className="block">
+                    <Button className="btn-secondary w-full h-12">
+                      Email
+                    </Button>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
