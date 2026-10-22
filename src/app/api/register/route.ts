@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 import prisma from "@/lib/prisma";
+import { normalizeAndValidateEmail } from "@/lib/email-normalizer";
 
 export async function POST(req: Request) {
   try {
@@ -13,21 +14,27 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
 
+    const emailValidation = normalizeAndValidateEmail(email);
+    if (!emailValidation.isValid || !emailValidation.normalizedEmail) {
+      return NextResponse.json({ error: emailValidation.error || "Invalid email address format." }, { status: 400 });
+    }
+    const cleanEmail = emailValidation.normalizedEmail;
+
     // Security check: Only allow registration if a secret is provided
     // This prevents bots from filling your DB.
     const secret = body.secret;
     if (secret !== process.env.REGISTRATION_SECRET) {
-      console.log("Unauthorized registration attempt blocked for:", email);
+      console.log("Unauthorized registration attempt blocked for:", cleanEmail);
       return NextResponse.json({ error: "Unauthorized registration." }, { status: 401 });
     }
 
     // Check if user already exists
     const existingUser = await (prisma as any).user.findUnique({
-      where: { email },
+      where: { email: cleanEmail },
     });
 
     if (existingUser) {
-      console.log("User already exists:", email);
+      console.log("User already exists:", cleanEmail);
       return NextResponse.json({ error: "An account with this email already exists." }, { status: 400 });
     }
 
@@ -38,7 +45,7 @@ export async function POST(req: Request) {
     const user = await (prisma as any).user.create({
       data: {
         name,
-        email,
+        email: cleanEmail,
         password: hashedPassword,
         role: 'USER'
       },
